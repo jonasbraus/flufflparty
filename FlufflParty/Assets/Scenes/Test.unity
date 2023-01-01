@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFieldConnection (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6747771123580590059, guid: 8a4c1f56cdf3b264b9f27207969fdf01, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4c1f56cdf3b264b9f27207969fdf01, type: 3}
 --- !u!4 &512179849 stripped
@@ -762,6 +766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFieldConnection (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6747771123580590059, guid: 8a4c1f56cdf3b264b9f27207969fdf01, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4c1f56cdf3b264b9f27207969fdf01, type: 3}
 --- !u!4 &2139568768 stripped
@@ -1135,6 +1143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerField_VS
       objectReference: {fileID: 0}
+    - target: {fileID: 268665820721341489, guid: 0fd8341a290a9fc4bb33e95d73b1a24c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 644488152736743051, guid: 0fd8341a290a9fc4bb33e95d73b1a24c, type: 3}
       propertyPath: m_RootOrder
       value: 29
@@ -1257,6 +1269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerField_Unlucky
       objectReference: {fileID: 0}
+    - target: {fileID: 7674362363978120917, guid: 7e474218c7655cf42ad6601be4907cbb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e474218c7655cf42ad6601be4907cbb, type: 3}
 --- !u!1001 &1491656888046090692
@@ -1332,6 +1348,18 @@ PrefabInstance:
       value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2008249026352490839, guid: 7d773f4891db8a049a62818a17512bd5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008249026352490839, guid: 7d773f4891db8a049a62818a17512bd5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008249026352490839, guid: 7d773f4891db8a049a62818a17512bd5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1515229
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008249026352490839, guid: 7d773f4891db8a049a62818a17512bd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -33.689278
       objectReference: {fileID: 0}
@@ -1388,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: 1273982785473882937, guid: 1421fa765e4ed524a918035e56557fb9, type: 3}
       propertyPath: m_Name
       value: PlayerField_Luck
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273982785473882937, guid: 1421fa765e4ed524a918035e56557fb9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 1938175372135920003, guid: 1421fa765e4ed524a918035e56557fb9, type: 3}
       propertyPath: m_RootOrder
@@ -1686,6 +1718,10 @@ PrefabInstance:
     - target: {fileID: 3663925849651850792, guid: 616c4d7a7df3216439e209b540a24966, type: 3}
       propertyPath: m_Name
       value: ItemShop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663925849651850792, guid: 616c4d7a7df3216439e209b540a24966, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4148714147383538834, guid: 616c4d7a7df3216439e209b540a24966, type: 3}
       propertyPath: m_RootOrder
@@ -1995,6 +2031,10 @@ PrefabInstance:
     - target: {fileID: 8303810613644242156, guid: 4c45f1da82168544688424fb1df22297, type: 3}
       propertyPath: m_Name
       value: PlayerFieldLooseCoins
+      objectReference: {fileID: 0}
+    - target: {fileID: 8303810613644242156, guid: 4c45f1da82168544688424fb1df22297, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8680370992906925654, guid: 4c45f1da82168544688424fb1df22297, type: 3}
       propertyPath: m_RootOrder
@@ -2403,6 +2443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerField_Item
       objectReference: {fileID: 0}
+    - target: {fileID: 8975204180790847127, guid: 80d097c3941e16842b887b6fed03f3b9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80d097c3941e16842b887b6fed03f3b9, type: 3}
 --- !u!4 &8319586650617658673 stripped
@@ -2431,7 +2475,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376330369100222945, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.947968
+      value: -40.733
       objectReference: {fileID: 0}
     - target: {fileID: 8376330369100222945, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2439,7 +2483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8376330369100222945, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.491318
+      value: 8.449
       objectReference: {fileID: 0}
     - target: {fileID: 8376330369100222945, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2472,6 +2516,10 @@ PrefabInstance:
     - target: {fileID: 9184357772923849563, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
       propertyPath: m_Name
       value: PlayerField_EVENT
+      objectReference: {fileID: 0}
+    - target: {fileID: 9184357772923849563, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5d471764a8bab74991ce859cf7a9108, type: 3}
@@ -2586,6 +2634,10 @@ PrefabInstance:
     - target: {fileID: 2110924961789879734, guid: 5f6fe4eec1bc656458eebd9867f08b47, type: 3}
       propertyPath: m_Name
       value: PlayerFieldCoins
+      objectReference: {fileID: 0}
+    - target: {fileID: 2110924961789879734, guid: 5f6fe4eec1bc656458eebd9867f08b47, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f6fe4eec1bc656458eebd9867f08b47, type: 3}
