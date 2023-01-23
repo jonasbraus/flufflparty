@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7046760420148421743}
   - component: {fileID: 6225316987031366602}
   - component: {fileID: 8178593654993411840}
+  - component: {fileID: 6203592078592959234}
   m_Layer: 0
   m_Name: PlayerField_Unlucky
   m_TagString: Untagged
@@ -85,3 +86,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6203592078592959234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674362363978120917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4015f6f60de231b43a33843ede469dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

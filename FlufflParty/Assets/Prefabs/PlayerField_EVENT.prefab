@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8376330369100222945}
   - component: {fileID: 4868795276527541828}
   - component: {fileID: 7238859977599150734}
+  - component: {fileID: -1196622610362675059}
   m_Layer: 0
   m_Name: PlayerField_EVENT
   m_TagString: Untagged
@@ -85,3 +86,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1196622610362675059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184357772923849563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d7e900a0cabce46b0c34899ad987a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
