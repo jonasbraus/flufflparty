@@ -4,9 +4,10 @@ using UnityEngine;
 
 public abstract class Field : MonoBehaviour
 {
-    [SerializeField] private GameObject[] target;
+    //Liste der nächsten Feld, die auf das diesige Feld folgen
+    [SerializeField] private Field[] target;
 
-    public GameObject[] Target
+    public Field[] Target
     {
         get
         {
@@ -14,5 +15,6 @@ public abstract class Field : MonoBehaviour
         }
     }
 
+    //Feld aktion (Münzen etc..)
     public abstract void Action();
 }
