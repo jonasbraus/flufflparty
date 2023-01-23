@@ -51,7 +51,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2110924961789879734}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -98,4 +98,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29627ef6f4e70e4b98cf9075b20afe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target:
+  - {fileID: 0}
