@@ -14732,21 +14732,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dice
       objectReference: {fileID: 0}
+    - target: {fileID: 315064472590105111, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1086640587503067309, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1086640587503067309, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100.36
+      value: 93.45
       objectReference: {fileID: 0}
     - target: {fileID: 1086640587503067309, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.396174
+      value: 3.173
       objectReference: {fileID: 0}
     - target: {fileID: 1086640587503067309, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 135.58
+      value: 124.57
       objectReference: {fileID: 0}
     - target: {fileID: 1086640587503067309, guid: 06e960ba226dd6e4c972ec724166cc0d, type: 3}
       propertyPath: m_LocalRotation.w

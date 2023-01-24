@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Field nextField;
     private Field currentField;
     [SerializeField] private GameObject dice;
+    private Dice diceScript;
     private Vector3 moveTo = Vector3.zero;
     private Vector3 lastPos = Vector3.zero;
     private float speed = 5;
@@ -17,10 +18,15 @@ public class Player : MonoBehaviour
 
     private bool activated = true;
     private bool wait = false;
+    private bool lastActivated = false;
+
+    private float timeSinceWurfeln = 0;
+
+    private Vector3 useLess = new Vector3();
 
     private void Start()
     {
-        
+        diceScript = dice.GetComponent<Dice>();
     }
     
     private void Update()
@@ -28,12 +34,18 @@ public class Player : MonoBehaviour
         if(activated)
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
-            if (Input.GetKeyDown(KeyCode.Space) && wurfelZahl == 0)
+            if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0)
             {
                 wurfelZahl = Random.Range(1, 7);
-                Debug.Log("Test: gewürfelt wurde " + wurfelZahl);
                 //nächstes Feld anvisieren
                 TargetNextField();
+                
+                //stop the dice
+                diceScript.StopRandom(wurfelZahl);
+
+                //delay for walk start
+                timeSinceWurfeln = Time.time;
+                
             }
         }
     }
@@ -47,7 +59,12 @@ public class Player : MonoBehaviour
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
                 if (interPol < 1 && wurfelZahl > 0)
                 {
-                    InterPolerate();
+                    
+                    //delay
+                    if(Time.time - timeSinceWurfeln > 1)
+                    {
+                        InterPolerate();
+                    }
                 }
                 //Würfelzahl um 1 verringern falls noch züge übrig sind
                 else if (wurfelZahl > 0 )
@@ -63,7 +80,10 @@ public class Player : MonoBehaviour
                 //Der Spieler steht gerade
                 else
                 {
-                
+                    //start the dice
+                    dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
+                        transform.position + Vector3.up * 2, ref useLess, 0.2f);
+                    diceScript.StartRandom();
                 }
             }
             else
