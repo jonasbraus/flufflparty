@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,16 +22,23 @@ public class Player : MonoBehaviour
     private bool lastActivated = false;
 
     private float timeSinceWurfeln = 0;
+    
+    //TESTTTTT
+    [SerializeField] private TMP_Text fpsText;
 
     private Vector3 useLess = new Vector3();
 
     private void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 9999;
         diceScript = dice.GetComponent<Dice>();
     }
     
     private void Update()
     {
+        fpsText.text = ((int)Time.frameCount / (int)Time.time) + " fps";
+        
         if(activated)
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
