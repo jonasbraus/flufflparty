@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Test: zum Würfeln Leertaste drücken!");
+        
     }
     
     private void Update()
@@ -68,16 +68,27 @@ public class Player : MonoBehaviour
             }
             else
             {
-                //TEST!!!!!!!!!!!!!!! 
-                //TODO: Replace with selection arrows
-                if (Input.GetKeyDown(KeyCode.N))
+                foreach(Arrow a in nextField.DirectionalArrow)
                 {
+                    a.Activate();
+                }
+                
+                if (nextField.DirectionalArrow[0].IsClicked())
+                {
+                    foreach(Arrow a in nextField.DirectionalArrow)
+                    {
+                        a.Deactivate();
+                    }
                     nextField = nextField = nextField.Target[0];
                     moveTo = nextField.transform.position;
                     wait = false;
                 }
-                else if (Input.GetKeyDown(KeyCode.A))
+                else if (nextField.DirectionalArrow[1].IsClicked())
                 {
+                    foreach(Arrow a in nextField.DirectionalArrow)
+                    {
+                        a.Deactivate();
+                    }
                     nextField = nextField = nextField.Target[1];
                     moveTo = nextField.transform.position;
                     wait = false;
@@ -100,7 +111,6 @@ public class Player : MonoBehaviour
         else
         {
             wait = true;
-            Debug.Log("Test: AlternativWeg = A NormalerWeg = N");
         }
     }
 

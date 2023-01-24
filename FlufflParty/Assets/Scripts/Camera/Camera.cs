@@ -18,6 +18,6 @@ public class Camera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, followUp.transform.position - offset, ref velocity, 0.6f);
+        transform.position = Vector3.SmoothDamp(transform.position, followUp.transform.position - offset, ref velocity, 0.2f);
     }
 }
