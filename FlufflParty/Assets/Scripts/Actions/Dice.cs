@@ -35,7 +35,6 @@ public class Dice : MonoBehaviour
         CancelInvoke("RandomNumbers");
         
         rb.useGravity = true;
-        rb.angularVelocity = new Vector3(Random.Range(5, 10), Random.Range(5, 10), Random.Range(5, 10));
 
         foreach (TMP_Text t in numbers)
         {
@@ -47,7 +46,7 @@ public class Dice : MonoBehaviour
     {
         int random = Random.Range(1, 7);
 
-        rb.angularVelocity = new Vector3(Random.Range(5, 10), Random.Range(5, 10), Random.Range(5, 10));
+        rb.angularVelocity = new Vector3(5, 5, 5);
         foreach (TMP_Text t in numbers)
         {
             t.text = random.ToString();
