@@ -7,11 +7,6 @@ import java.util.List;
 
 public class Room
 {
-//    1: 95.82, 0.5, 126.47
-//    2: 92.06, 0.36, 125.46
-//    3: 95.82, 0.5, 128.47
-//    4: 92.06, 0.36, 127.46
-
     private Client[] players = new Client[2];
     private Vector3[] startPositions;
     private String roomCode;

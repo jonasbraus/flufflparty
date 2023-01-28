@@ -46,7 +46,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/FlufflPartyBuild\FlufflParty.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/FlufflPartyBuild/FlufflParty.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\braus\OneDrive\Desktop\FlufflPartyTestBuild" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -106,7 +106,7 @@
       <workItem from="1674687637475" duration="660000" />
       <workItem from="1674838735946" duration="520000" />
       <workItem from="1674839572534" duration="23192000" />
-      <workItem from="1674896945068" duration="4294000" />
+      <workItem from="1674896945068" duration="5207000" />
     </task>
     <servers />
   </component>
