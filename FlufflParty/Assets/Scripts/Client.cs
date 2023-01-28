@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Client : MonoBehaviour
 {
@@ -55,6 +56,7 @@ public class Client : MonoBehaviour
                         script.client = this;
                         script.nextField = nextField;
                         script.dice = dice;
+                        script.camera = cam;
                         script.Init();
                     }
                     //player is not playable
@@ -68,6 +70,7 @@ public class Client : MonoBehaviour
                         players[job.data[5]] = script;
                         script.nextField = nextField;
                         script.dice = dice;
+                        script.camera = cam;
                         script.Init();
                     }
                     break;
@@ -83,6 +86,10 @@ public class Client : MonoBehaviour
                 //Jemand hat den Pfeil geklickt
                 case 4:
                     ((NoPlayablePlayer)players[job.data[1]]).ArrowSelect(job.data[2]);
+                    break;
+                case 127:
+                    client.Close();
+                    SceneManager.LoadScene(0, LoadSceneMode.Single);
                     break;
             }
         }
@@ -105,8 +112,8 @@ public class Client : MonoBehaviour
             }
         }
 
-        cam.transform.parent = players[player].transform;
-        cam.transform.localPosition = new Vector3(-3, 8, 7);
+        // cam.transform.parent = players[player].transform;
+        // cam.transform.localPosition = new Vector3(-3, 8, 7);
     }
 
 

@@ -18,6 +18,7 @@ public class PlayablePlayer : Player
     
 
     private float timeSinceWurfeln = 0;
+    private float timeSinceStop = 0;
 
     private Vector3 useLess = new Vector3();
 
@@ -59,13 +60,15 @@ public class PlayablePlayer : Player
     {
         if (activated)
         {
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
+            
             if (!wait)
             {
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
                 if (interPol < 1 && wurfelZahl > 0)
                 {
                     //delay
-                    if (Time.time - timeSinceWurfeln > 1)
+                    if (Time.time - timeSinceWurfeln > 2)
                     {
                         InterPolerate();
                     }
@@ -84,16 +87,18 @@ public class PlayablePlayer : Player
                 //Der Spieler steht gerade
                 else
                 {
-                    //start the dice
-                    dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
-                        transform.position + Vector3.up * 2, ref useLess, 0.2f);
-                    diceScript.StartRandom();
-
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
-                        client.SendFinished();
+                        Invoke("Finish", 2);
                         activated = false;
+                    }
+                    else
+                    {
+                        //start the dice
+                        dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
+                            transform.position + Vector3.up * 2, ref useLess, 0.2f);
+                        diceScript.StartRandom();
                     }
                 }
             }
@@ -157,5 +162,9 @@ public class PlayablePlayer : Player
         transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
         interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
     }
-    
+
+    private void Finish()
+    {
+        client.SendFinished();
+    }
 }

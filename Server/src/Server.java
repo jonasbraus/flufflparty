@@ -64,9 +64,17 @@ public class Server
                                     input.read(readData);
 
                                     String roomCode = new String(readData, StandardCharsets.US_ASCII);
-                                    Client client1 = new Client(output, input, client);
 
-                                    rooms.get(roomCode).addClient(client1);
+                                    if(rooms.containsKey(roomCode))
+                                    {
+                                        Client client1 = new Client(output, input, client);
+
+                                        rooms.get(roomCode).addClient(client1);
+                                    }
+                                    else
+                                    {
+                                        output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                                    }
 
                                     break;
                             }

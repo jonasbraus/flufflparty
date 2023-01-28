@@ -13,6 +13,9 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private GameObject layout1;
     [SerializeField] private GameObject layout2;
     [SerializeField] private TMP_Text roomCodeEnter;
+    [SerializeField] private GameObject buttonJoin;
+
+    private string roomcode;
 
     private void Start()
     {
@@ -20,6 +23,8 @@ public class StartHandler : MonoBehaviour
         
         layout1.SetActive(true);
         layout2.SetActive(false);
+        
+        buttonJoin.SetActive(false);
     }
 
     public void ButtonNewRoom()
@@ -41,6 +46,7 @@ public class StartHandler : MonoBehaviour
         string code = Encoding.ASCII.GetString(readMessage);
         
         PlayerPrefs.SetString("roomcode", code);
+        roomcode = code;
         PlayerPrefs.Save();
         
         layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code;
@@ -49,6 +55,7 @@ public class StartHandler : MonoBehaviour
     public void ButtonJoin()
     {
         string code = roomCodeEnter.text;
+        roomcode = code;
         PlayerPrefs.SetString("roomcode", code);
         PlayerPrefs.Save();
         
@@ -58,6 +65,9 @@ public class StartHandler : MonoBehaviour
 
     public void ButtonJoin2()
     {
+        PlayerPrefs.SetString("roomcode", roomcode);
+        PlayerPrefs.Save();
+        
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         client.Close();
     }
@@ -71,5 +81,17 @@ public class StartHandler : MonoBehaviour
     public void ButtonCopy()
     {
         GUIUtility.systemCopyBuffer = PlayerPrefs.GetString("roomcode");
+    }
+
+    public void OnTextHasChanged(string s)
+    {
+        if (s.Length >= 10)
+        {
+            buttonJoin.SetActive(true);
+        }
+        else
+        {
+            buttonJoin.SetActive(false);
+        }
     }
 }

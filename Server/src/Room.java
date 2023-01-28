@@ -111,6 +111,15 @@ public class Room
                                         }
                                         break;
                                     case 0:
+                                        try
+                                        {
+                                            for (int i = 0; i < players.length; i++)
+                                            {
+                                                players[player].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                                            }
+                                        } catch (IOException ex)
+                                        {
+                                        }
                                         server.deleteRoom(roomCode);
                                         for(int i = 0; i < threads.size(); i++)
                                         {
@@ -121,6 +130,15 @@ public class Room
 
                             } catch (IOException e)
                             {
+                                try
+                                {
+                                    for (int i = 0; i < players.length; i++)
+                                    {
+                                        players[player].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                                    }
+                                } catch (IOException ex)
+                                {
+                                }
                                 for(int i = 0; i < threads.size(); i++)
                                 {
                                     threads.get(i).stop();
