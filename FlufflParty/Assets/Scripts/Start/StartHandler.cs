@@ -42,9 +42,8 @@ public class StartHandler : MonoBehaviour
         
         PlayerPrefs.SetString("roomcode", code);
         PlayerPrefs.Save();
-
-        GUIUtility.systemCopyBuffer = code;
-        layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code + "\n copied to clipboard!";
+        
+        layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code;
     }
 
     public void ButtonJoin()
@@ -61,5 +60,16 @@ public class StartHandler : MonoBehaviour
     {
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         client.Close();
+    }
+
+    public void ButtonBack()
+    {
+        layout1.SetActive(true);
+        layout2.SetActive(false);
+    }
+
+    public void ButtonCopy()
+    {
+        GUIUtility.systemCopyBuffer = PlayerPrefs.GetString("roomcode");
     }
 }
