@@ -2,6 +2,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -68,7 +69,7 @@ public class Room
                 players[i] = client;
                 playerCount++;
 
-                System.out.println("[" + Server.getDateTime() + "] Client joined room " + roomCode + " successfully as player " + i);
+                System.out.println("[" + Server.getDateTime() + "] " + client.name.replace(" ", "") + " joined room " + roomCode + " successfully as player " + i);
 
                 Thread t = new Thread(new Runnable()
                 {
@@ -179,6 +180,17 @@ public class Room
                         try
                         {
                             players[j].output.write(new byte[]{1, 1, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, 0});
+                            byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
+                            byte[] send = new byte[10];
+                            send[0] = 5;
+                            send[1] = (byte)k;
+
+                            for(int i = 2; i < send.length; i++)
+                            {
+                                send[i] = name[i - 2];
+                            }
+
+                            players[j].output.write(send);
                         } catch (IOException e)
                         {
                             e.printStackTrace();
@@ -188,6 +200,17 @@ public class Room
                         try
                         {
                             players[j].output.write(new byte[]{1, 0, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, 0});
+                            byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
+                            byte[] send = new byte[10];
+                            send[0] = 5;
+                            send[1] = (byte)k;
+
+                            for(int i = 2; i < send.length; i++)
+                            {
+                                send[i] = name[i - 2];
+                            }
+
+                            players[j].output.write(send);
                         } catch (IOException e)
                         {
                             e.printStackTrace();

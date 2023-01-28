@@ -30,6 +30,8 @@ public class Client : MonoBehaviour
 
         string roomCode = PlayerPrefs.GetString("roomcode");
         stream.Write(Encoding.ASCII.GetBytes(roomCode));
+        string name = PlayerPrefs.GetString("name");
+        stream.Write(Encoding.ASCII.GetBytes(name));
         
         new Thread(Read).Start();
     }
@@ -57,7 +59,6 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
-                        script.Init();
                     }
                     //player is not playable
                     else
@@ -71,7 +72,6 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
-                        script.Init();
                     }
                     break;
                 //---------------------------------------------------------
@@ -86,6 +86,18 @@ public class Client : MonoBehaviour
                 //Jemand hat den Pfeil geklickt
                 case 4:
                     ((NoPlayablePlayer)players[job.data[1]]).ArrowSelect(job.data[2]);
+                    break;
+                case 5:
+                    byte[] name = new byte[8];
+                    for (int i = 0; i < 8; i++)
+                    {
+                        name[i] = job.data[i + 2];
+                    }
+
+                    players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
+                    players[job.data[1]].Init();
+                    
+                    Debug.Log("test");
                     break;
                 case 127:
                     client.Close();

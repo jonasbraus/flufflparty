@@ -78,9 +78,14 @@ public class Server
 
                                     String roomCode = new String(readData, StandardCharsets.US_ASCII);
 
+                                    input.read(readData);
+
+                                    String name = new String(readData, StandardCharsets.US_ASCII);
+                                    name = name.replace("?", " ");
+
                                     if(rooms.containsKey(roomCode))
                                     {
-                                        Client client1 = new Client(output, input, client);
+                                        Client client1 = new Client(output, input, client, name);
 
                                         rooms.get(roomCode).addClient(client1);
                                     }

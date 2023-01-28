@@ -24,7 +24,7 @@ public class PlayablePlayer : Player
 
     public Client client;
 
-    public void Init()
+    public override void Init()
     {
         activated = false;
         QualitySettings.vSyncCount = 0;
@@ -34,7 +34,7 @@ public class PlayablePlayer : Player
 
     private void Update()
     {
-        if (activated)
+        if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
             if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0 && !wurfelt)
@@ -58,7 +58,7 @@ public class PlayablePlayer : Player
 
     private void FixedUpdate()
     {
-        if (activated)
+        if (activated && !name.Equals(""))
         {
             camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
             

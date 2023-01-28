@@ -21,7 +21,7 @@ public class NoPlayablePlayer : Player
 
     private Vector3 useLess = new Vector3();
 
-    public void Init()
+    public override void Init()
     {
         activated = false;
         diceScript = dice.GetComponent<Dice>();
@@ -57,7 +57,7 @@ public class NoPlayablePlayer : Player
     private void FixedUpdate()
     {
         
-        if (activated)
+        if (activated && !name.Equals(""))
         {
             camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
             

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
+    public string name = "";
     public bool activated = false;
     protected bool wurfelt = false;
     
@@ -24,4 +25,6 @@ public class Player : MonoBehaviour
     {
         activated = false;
     }
+
+    public abstract void Init();
 }

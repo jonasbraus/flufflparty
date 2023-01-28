@@ -10,16 +10,30 @@ using UnityEngine.SceneManagement;
 public class StartHandler : MonoBehaviour
 {
     private TcpClient client;
+    [SerializeField] private GameObject layout0;
     [SerializeField] private GameObject layout1;
     [SerializeField] private GameObject layout2;
     [SerializeField] private TMP_Text roomCodeEnter;
+    [SerializeField] private TMP_Text nameEnter;
     [SerializeField] private GameObject buttonJoin;
+    [SerializeField] private GameObject buttonSubmitName;
 
     private string roomcode;
 
     private void Start()
     {
-        layout1.SetActive(true);
+        PlayerPrefs.DeleteAll();
+        
+        if (PlayerPrefs.HasKey("name"))
+        {
+            layout0.SetActive(false);
+            layout1.SetActive(true);
+        }
+        else
+        {
+            layout0.SetActive(true);
+            layout1.SetActive(false);
+        }
         layout2.SetActive(false);
         client = new TcpClient("185.245.96.48", 8051);
         buttonJoin.SetActive(false);
@@ -38,8 +52,6 @@ public class StartHandler : MonoBehaviour
 
         //wait for room code
         int i = stream.Read(readMessage, 0, 10);
-
-        Debug.Log(i);
 
         string code = Encoding.ASCII.GetString(readMessage);
 
@@ -90,5 +102,32 @@ public class StartHandler : MonoBehaviour
         {
             buttonJoin.SetActive(false);
         }
+    }
+
+    public void OnTextHasChangedNameInput(string s)
+    {
+        if (s.Length > 0)
+        {
+            buttonSubmitName.SetActive(true);
+        }
+        else
+        {
+            buttonSubmitName.SetActive(false);
+        }
+    }
+
+    public void ButtonSubmitName()
+    {
+        string name = nameEnter.text;
+        for (int i = name.Length; i < 10; i++)
+        {
+            name += " ";
+        }
+        
+        PlayerPrefs.SetString("name", name);
+        PlayerPrefs.Save();
+        
+        layout0.SetActive(false);
+        layout1.SetActive(true);
     }
 }
