@@ -15,6 +15,7 @@ public class Server
 
     public void deleteRoom(String code)
     {
+        rooms.get(code).closeRoom();
         rooms.remove(code);
         System.out.println("Room " + code + " successfully deleted");
     }

@@ -106,15 +106,6 @@ public class Room
                                         }
                                         break;
                                     case 0:
-                                        try
-                                        {
-                                            for (int i = 0; i < players.length; i++)
-                                            {
-                                                players[player].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-                                            }
-                                        } catch (IOException ex)
-                                        {
-                                        }
                                         server.deleteRoom(roomCode);
                                         for(int i = 0; i < threads.size(); i++)
                                         {
@@ -125,15 +116,7 @@ public class Room
 
                             } catch (IOException e)
                             {
-                                try
-                                {
-                                    for (int i = 0; i < players.length; i++)
-                                    {
-                                        players[player].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-                                    }
-                                } catch (IOException ex)
-                                {
-                                }
+
                                 for(int i = 0; i < threads.size(); i++)
                                 {
                                     threads.get(i).stop();
@@ -195,6 +178,45 @@ public class Room
             {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void closeRoom()
+    {
+        try
+        {
+
+            players[0].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        } catch (IOException ex)
+        {
+        }
+
+        try
+        {
+
+            players[1].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        } catch (IOException ex)
+        {
+        }
+
+        try
+        {
+
+            players[2].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        } catch (IOException ex)
+        {
+        }
+
+        try
+        {
+
+            players[3].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        } catch (IOException ex)
+        {
         }
     }
 }
