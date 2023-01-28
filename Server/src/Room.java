@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Room
 {
@@ -18,8 +20,13 @@ public class Room
 
     private int currentPlayer = 0;
 
+    private long timeOut = 0;
+    private Timer t;
+
     public Room(String roomCode, Server server)
     {
+        timeOut = System.currentTimeMillis();
+
         this.roomCode = roomCode;
         startPositions = new Vector3[4];
 
@@ -29,10 +36,31 @@ public class Room
         startPositions[3] = new Vector3(92, 1, 128);
 
         this.server = server;
+
+        try
+        {
+            t = new Timer();
+            TimerTask tt = new TimerTask()
+            {
+                @Override
+                public void run()
+                {
+                    if(System.currentTimeMillis() - timeOut > 600000)
+                    {
+                        System.out.println("[" + Server.getDateTime() + "] Room " + roomCode + " closed due to timeout!");
+                        server.deleteRoom(roomCode);
+                    }
+                }
+            };
+
+            t.scheduleAtFixedRate(tt, 0, 60000);
+        }catch(Exception e){}
     }
 
     public void addClient(Client client)
     {
+        timeOut = System.currentTimeMillis();
+
         for (int i = 0; i < players.length; i++)
         {
             if (players[i] == null)
@@ -40,7 +68,7 @@ public class Room
                 players[i] = client;
                 playerCount++;
 
-                System.out.println("Client joined room " + roomCode + " successfully as player " + i);
+                System.out.println("[" + Server.getDateTime() + "] Client joined room " + roomCode + " successfully as player " + i);
 
                 Thread t = new Thread(new Runnable()
                 {
@@ -65,6 +93,8 @@ public class Room
                                 byte[] readData = new byte[10];
 
                                 input.read(readData);
+
+                                timeOut = System.currentTimeMillis();
 
                                 switch (readData[0])
                                 {
@@ -183,39 +213,50 @@ public class Room
 
     public void closeRoom()
     {
+        t.cancel();
+
         try
         {
 
-            players[0].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            if(players[0] != null)
+            {
+                players[0].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            }
 
-        } catch (IOException ex)
+        } catch (Exception ex)
         {
         }
 
         try
         {
+            if(players[1] != null)
+            {
+                players[1].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            }
 
-            players[1].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-
-        } catch (IOException ex)
+        } catch (Exception ex)
         {
         }
 
         try
         {
+            if(players[2] != null)
+            {
+                players[2].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            }
 
-            players[2].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-
-        } catch (IOException ex)
+        } catch (Exception ex)
         {
         }
 
         try
         {
+            if(players[3] != null)
+            {
+                players[3].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+            }
 
-            players[3].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-
-        } catch (IOException ex)
+        } catch (Exception ex)
         {
         }
     }

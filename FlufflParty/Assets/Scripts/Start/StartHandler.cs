@@ -19,11 +19,9 @@ public class StartHandler : MonoBehaviour
 
     private void Start()
     {
-        client = new TcpClient("185.245.96.48", 8051);
-        
         layout1.SetActive(true);
         layout2.SetActive(false);
-        
+        client = new TcpClient("185.245.96.48", 8051);
         buttonJoin.SetActive(false);
     }
 
@@ -31,24 +29,24 @@ public class StartHandler : MonoBehaviour
     {
         Stream stream = client.GetStream();
         byte[] readMessage = new byte[10];
-        
+
         //Send message new room
-        stream.Write(new byte[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-        
+        stream.Write(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+
         layout1.SetActive(false);
         layout2.SetActive(true);
-        
+
         //wait for room code
         int i = stream.Read(readMessage, 0, 10);
-        
+
         Debug.Log(i);
 
         string code = Encoding.ASCII.GetString(readMessage);
-        
+
         PlayerPrefs.SetString("roomcode", code);
         roomcode = code;
         PlayerPrefs.Save();
-        
+
         layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code;
     }
 
@@ -58,7 +56,7 @@ public class StartHandler : MonoBehaviour
         roomcode = code;
         PlayerPrefs.SetString("roomcode", code);
         PlayerPrefs.Save();
-        
+
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         client.Close();
     }
@@ -67,15 +65,14 @@ public class StartHandler : MonoBehaviour
     {
         PlayerPrefs.SetString("roomcode", roomcode);
         PlayerPrefs.Save();
-        
+
         SceneManager.LoadScene(1, LoadSceneMode.Single);
         client.Close();
     }
 
     public void ButtonBack()
     {
-        layout1.SetActive(true);
-        layout2.SetActive(false);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void ButtonCopy()

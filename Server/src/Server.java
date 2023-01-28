@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 public class Server
@@ -13,26 +15,36 @@ public class Server
 
     private final Server server = this;
 
+    private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+    public static String getDateTime()
+    {
+        return dtf.format(LocalDateTime.now());
+    }
+
     public void deleteRoom(String code)
     {
         rooms.get(code).closeRoom();
         rooms.remove(code);
-        System.out.println("Room " + code + " successfully deleted");
+
+
+        System.out.println("[" + getDateTime() + "] Room" + code + " successfully deleted");
     }
 
     public void start()
     {
+
         try
         {
             serverSocket = new ServerSocket(8051);
 
-            System.out.println("Server started! IP 185.245.96.48 PORT 8051");
+            System.out.println("[" + getDateTime() + "] Server started! IP 185.245.96.48 PORT 8051");
 
             while(true)
             {
                 Socket tempClient = serverSocket.accept();
 
-                System.out.println("Client with IP " + tempClient.getInetAddress().getHostName() + " connected!");
+                System.out.println("[" + getDateTime() + "] Client with IP " + tempClient.getInetAddress().getHostName() + " connected!");
 
                 new Thread(new Runnable()
                 {
@@ -58,7 +70,7 @@ public class Server
                                     Room room = new Room(new String(code, StandardCharsets.US_ASCII), server);
                                     rooms.put(new String(code, StandardCharsets.US_ASCII), room);
 
-                                    System.out.println("Room " + new String(code, StandardCharsets.US_ASCII) + " successfully created!");
+                                    System.out.println("[" + getDateTime() + "] Room " + new String(code, StandardCharsets.US_ASCII) + " successfully created!");
                                     break;
                                 case 1:
 
@@ -104,6 +116,14 @@ public class Server
             {
                 code[i] = (byte)(Math.random() * 25 + 97);
             }
+        }
+
+        String roomCode = new String(code, StandardCharsets.US_ASCII);
+
+        //avoide double codes (just in case^^)
+        if(rooms.containsKey(roomCode))
+        {
+            code = generateRoomCode();
         }
 
         return code;
