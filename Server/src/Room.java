@@ -46,6 +46,26 @@ public class Room
                 @Override
                 public void run()
                 {
+                    try
+                    {
+                        for(int p = 0; p < players.length; p++)
+                        {
+                            if(players[p] != null)
+                            {
+                                if(System.currentTimeMillis() - players[p].lastTimeSendTimeOutCheck > 30000 && players[p].lastTimeSendTimeOutCheck != -1)
+                                {
+                                    server.deleteRoom(roomCode);
+                                }
+
+                                players[p].output.write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                            }
+                        }
+                    }
+                    catch(Exception e)
+                    {
+
+                    }
+
                     if(System.currentTimeMillis() - timeOut > 600000)
                     {
                         System.out.println("[" + Server.getDateTime() + "] Room " + roomCode + " closed due to timeout!");
@@ -54,7 +74,7 @@ public class Room
                 }
             };
 
-            t.scheduleAtFixedRate(tt, 0, 60000);
+            t.scheduleAtFixedRate(tt, 0, 10000);
         }catch(Exception e){}
     }
 
@@ -138,20 +158,14 @@ public class Room
                                         break;
                                     case 0:
                                         server.deleteRoom(roomCode);
-                                        for(int i = 0; i < threads.size(); i++)
-                                        {
-                                            threads.get(i).stop();
-                                        }
+                                        break;
+                                    case 126:
+                                        players[player].lastTimeSendTimeOutCheck = System.currentTimeMillis();
                                         break;
                                 }
 
                             } catch (IOException e)
                             {
-
-                                for(int i = 0; i < threads.size(); i++)
-                                {
-                                    threads.get(i).stop();
-                                }
                                 server.deleteRoom(roomCode);
                             }
                         }
@@ -236,7 +250,7 @@ public class Room
 
     public void closeRoom()
     {
-        t.cancel();
+        System.out.println(Server.getDateTime() + " A player has left!");
 
         try
         {
@@ -281,6 +295,11 @@ public class Room
 
         } catch (Exception ex)
         {
+        }
+
+        for(int i = 0; i < threads.size(); i++)
+        {
+            threads.get(i).interrupt();
         }
     }
 }

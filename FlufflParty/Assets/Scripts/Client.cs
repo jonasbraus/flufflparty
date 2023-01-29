@@ -19,6 +19,7 @@ public class Client : MonoBehaviour
     [SerializeField] private Field nextField;
     [SerializeField] private GameObject cam;
 
+    [SerializeField] private UIHandler uiHandler;
 
     private void Start()
     {
@@ -29,9 +30,9 @@ public class Client : MonoBehaviour
 
 
         string roomCode = PlayerPrefs.GetString("roomcode");
-        stream.Write(Encoding.ASCII.GetBytes(roomCode));
+        stream.Write(Encoding.ASCII.GetBytes(roomCode), 0, 10);
         string name = PlayerPrefs.GetString("name");
-        stream.Write(Encoding.ASCII.GetBytes(name));
+        stream.Write(Encoding.ASCII.GetBytes(name), 0, 10);
         
         new Thread(Read).Start();
     }
@@ -97,7 +98,11 @@ public class Client : MonoBehaviour
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
                     players[job.data[1]].Init();
                     
-                    Debug.Log("test");
+                    uiHandler.DeactivateLayout0();
+                    
+                    break;
+                case 126:
+                    stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
                 case 127:
                     client.Close();

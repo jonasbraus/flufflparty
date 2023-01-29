@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayablePlayer : Player
@@ -26,6 +27,8 @@ public class PlayablePlayer : Player
 
     public override void Init()
     {
+        GetComponentInChildren<TMP_Text>().text = name;
+        
         activated = false;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 59;

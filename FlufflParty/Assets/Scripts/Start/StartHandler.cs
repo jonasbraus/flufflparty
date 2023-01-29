@@ -17,20 +17,21 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private TMP_Text nameEnter;
     [SerializeField] private GameObject buttonJoin;
     [SerializeField] private GameObject buttonSubmitName;
+    [SerializeField] private TMP_Text playerName;
 
     private string roomcode;
 
     private void Start()
     {
-        PlayerPrefs.DeleteAll();
-        
         if (PlayerPrefs.HasKey("name"))
         {
+            playerName.text = "Name: " + PlayerPrefs.GetString("name");
             layout0.SetActive(false);
             layout1.SetActive(true);
         }
         else
         {
+            playerName.text = "";
             layout0.SetActive(true);
             layout1.SetActive(false);
         }
@@ -127,7 +128,15 @@ public class StartHandler : MonoBehaviour
         PlayerPrefs.SetString("name", name);
         PlayerPrefs.Save();
         
+        playerName.text = "Name: " + PlayerPrefs.GetString("name");
+        
         layout0.SetActive(false);
         layout1.SetActive(true);
+    }
+
+    public void ButtonEditName()
+    {
+        layout0.SetActive(true);
+        layout1.SetActive(false);
     }
 }

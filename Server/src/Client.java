@@ -10,6 +10,8 @@ public class Client
 
     public String name;
 
+    public long lastTimeSendTimeOutCheck = -1;
+
 
     public Client(DataOutputStream output, DataInputStream input, Socket socket, String name)
     {

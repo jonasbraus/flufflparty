@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NoPlayablePlayer : Player
@@ -23,6 +24,8 @@ public class NoPlayablePlayer : Player
 
     public override void Init()
     {
+        GetComponentInChildren<TMP_Text>().text = name;
+        
         activated = false;
         diceScript = dice.GetComponent<Dice>();
     }
