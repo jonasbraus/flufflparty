@@ -207,7 +207,7 @@ public class Room
                             players[j].output.write(send);
                         } catch (IOException e)
                         {
-                            e.printStackTrace();
+
                         }
                     } else
                     {
@@ -227,7 +227,7 @@ public class Room
                             players[j].output.write(send);
                         } catch (IOException e)
                         {
-                            e.printStackTrace();
+
                         }
                     }
                 }
