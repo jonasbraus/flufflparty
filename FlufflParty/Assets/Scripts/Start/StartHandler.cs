@@ -18,11 +18,14 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private GameObject buttonJoin;
     [SerializeField] private GameObject buttonSubmitName;
     [SerializeField] private TMP_Text playerName;
+    [SerializeField] private GameObject copiedMessage;
 
     private string roomcode;
 
     private void Start()
     {
+        copiedMessage.SetActive(false);
+        
         if (PlayerPrefs.HasKey("name"))
         {
             playerName.text = "Name: " + PlayerPrefs.GetString("name");
@@ -46,10 +49,11 @@ public class StartHandler : MonoBehaviour
         byte[] readMessage = new byte[10];
 
         //Send message new room
-        stream.Write(new byte[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
+        stream.Write(new byte[] { 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
 
         layout1.SetActive(false);
         layout2.SetActive(true);
+        copiedMessage.SetActive(false);
 
         //wait for room code
         int i = stream.Read(readMessage, 0, 10);
@@ -91,6 +95,7 @@ public class StartHandler : MonoBehaviour
     public void ButtonCopy()
     {
         GUIUtility.systemCopyBuffer = PlayerPrefs.GetString("roomcode");
+        copiedMessage.SetActive(true);
     }
 
     public void OnTextHasChanged(string s)
@@ -128,7 +133,7 @@ public class StartHandler : MonoBehaviour
         PlayerPrefs.SetString("name", name);
         PlayerPrefs.Save();
         
-        playerName.text = "Name: " + PlayerPrefs.GetString("name");
+        playerName.text = PlayerPrefs.GetString("name");
         
         layout0.SetActive(false);
         layout1.SetActive(true);

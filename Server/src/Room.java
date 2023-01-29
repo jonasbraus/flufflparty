@@ -243,15 +243,13 @@ public class Room
                 }
             } catch (IOException e)
             {
-                e.printStackTrace();
+
             }
         }
     }
 
     public void closeRoom()
     {
-        System.out.println(Server.getDateTime() + " A player has left!");
-
         try
         {
 

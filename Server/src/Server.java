@@ -63,7 +63,7 @@ public class Server
 
                             switch(readData[0])
                             {
-                                case 0:
+                                case 2:
                                     byte[] code = generateRoomCode();
                                     output.write(code);
 
@@ -104,7 +104,7 @@ public class Server
                 }).start();
             }
         }
-        catch(Exception e){e.printStackTrace();}
+        catch(Exception e){}
     }
 
     private byte[] generateRoomCode()
