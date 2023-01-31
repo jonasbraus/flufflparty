@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,14 @@ public abstract class Player : MonoBehaviour
     public int index;
     public int coins = 0;
     
+    //for coin animation
+    private AnimationHandler animationHandler;
+
+    private void Start()
+    {
+        animationHandler = GetComponentInChildren<AnimationHandler>();
+    }
+
     //Aktiviert den Player
     public void Activate()
     {
@@ -29,4 +38,19 @@ public abstract class Player : MonoBehaviour
     }
 
     public abstract void Init();
+
+    public void PlayAnimation(AnimationType animationType)
+    {
+        switch (animationType)
+        {
+            case AnimationType.Coin:
+                animationHandler.StartAnimation();
+                break;
+        }
+    }
+
+    public enum AnimationType
+    {
+        Coin
+    }
 }

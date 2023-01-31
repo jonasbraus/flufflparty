@@ -43,7 +43,7 @@ public class PlayablePlayer : Player
             if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0 && !wurfelt)
             {
                 wurfelt = true;
-                wurfelZahl = Random.Range(1, 7);
+                wurfelZahl = Random.Range(3, 4);
                 
                 client.SendWurfeln(wurfelZahl);
                 
@@ -96,7 +96,15 @@ public class PlayablePlayer : Player
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
-                        currentField.Action(index);
+                        int fieldReturnStatus = currentField.Action(index);
+
+                        switch (fieldReturnStatus)
+                        {
+                            case 0:
+                                PlayAnimation(AnimationType.Coin);
+                                break;
+                        }
+                        
                         Invoke("Finish", 2);
                         activated = false;
                     }
