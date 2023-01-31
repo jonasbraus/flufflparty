@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,8 +22,16 @@ public class Client : MonoBehaviour
 
     [SerializeField] private UIHandler uiHandler;
 
+    [SerializeField] private TMP_Text[] playerNameTexts;
+    [SerializeField] private GameObject[] playerInfo;
+
     private void Start()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            playerInfo[i].SetActive(false);
+        }
+        
         client = new TcpClient("185.245.96.48", 8051);
         stream = client.GetStream();
         
@@ -65,7 +74,7 @@ public class Client : MonoBehaviour
                     else
                     {
                         GameObject player = Instantiate(playerPrefab);
-                        
+
                         player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
 
                         NoPlayablePlayer script = player.AddComponent<NoPlayablePlayer>();
@@ -74,6 +83,7 @@ public class Client : MonoBehaviour
                         script.dice = dice;
                         script.camera = cam;
                     }
+
                     break;
                 //---------------------------------------------------------
                 //-----Activate a Player
@@ -98,7 +108,11 @@ public class Client : MonoBehaviour
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
                     players[job.data[1]].Init();
                     
-                    uiHandler.DeactivateLayout0();
+                    playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
+                    
+                    uiHandler.ActivateLayout1();
+                    
+                    playerInfo[job.data[1]].SetActive(true);
                     
                     break;
                 case 126:

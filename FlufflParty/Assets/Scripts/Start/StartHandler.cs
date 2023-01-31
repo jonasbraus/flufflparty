@@ -69,7 +69,7 @@ public class StartHandler : MonoBehaviour
 
     public void ButtonJoin()
     {
-        string code = roomCodeEnter.text;
+        string code = roomCodeEnter.text.ToLower();
         roomcode = code;
         PlayerPrefs.SetString("roomcode", code);
         PlayerPrefs.Save();
