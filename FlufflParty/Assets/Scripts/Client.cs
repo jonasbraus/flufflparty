@@ -106,8 +106,9 @@ public class Client : MonoBehaviour
                     }
 
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
+                    players[job.data[1]].index = job.data[1];
                     players[job.data[1]].Init();
-                    
+
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
                     
                     uiHandler.ActivateLayout1();

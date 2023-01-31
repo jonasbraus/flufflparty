@@ -81,6 +81,9 @@ public class PlayablePlayer : Player
                 {
                     wurfelZahl--;
 
+                    //the next field is the current field XD
+                    currentField = nextField;
+                    
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
                     if (wurfelZahl > 0)
                     {
@@ -93,6 +96,7 @@ public class PlayablePlayer : Player
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
+                        currentField.Action(index);
                         Invoke("Finish", 2);
                         activated = false;
                     }
@@ -146,7 +150,6 @@ public class PlayablePlayer : Player
     {
         interPol = 0;
         lastPos = transform.position;
-        currentField = nextField;
         if (nextField.Target.Length == 1)
         {
             nextField = nextField.Target[0];

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EventField : Field
 {
-    public override void Action()
+    public override int Action(int playerIndex)
     {
-        
+        return 6;
     }
 }

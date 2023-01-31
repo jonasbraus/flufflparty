@@ -8,6 +8,10 @@ public abstract class Field : MonoBehaviour
     [SerializeField] private Field[] target;
     [SerializeField] private Arrow[] directionalArrows;
 
+    /*
+     * Field Definition:
+     */
+    
     public Field[] Target
     {
         get
@@ -25,5 +29,5 @@ public abstract class Field : MonoBehaviour
     }
 
     //Feld aktion (Münzen etc..)
-    public abstract void Action();
+    public abstract int Action(int playerIndex);
 }

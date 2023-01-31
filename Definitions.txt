@@ -1,0 +1,59 @@
+Field Definitions:
+	0: Get Coins Field
+	1: Loose Coins Field
+	2: LuckyField
+	3: ItemFIeld
+	4: UnluckyField
+	5: VSField
+	6: EventField
+
+Inital Game Definitions (Server):
+	Get Room Code:
+		Client -> Server
+		Server -> Client
+		[2, ...]
+	Join Room Code:
+		Client -> Server
+		First Message:
+		[1, ...]
+		Second Message:
+		[Room Code in Ascii]
+		Third Message:
+		[Name]
+
+Game Run Definitions (Room Server):
+	TimeoutCheck:
+		[126, ...] (10 minute timeout checked every 10 seconds) Room and Clients
+
+	Rolled:
+		Client -> Server:
+		[3, number, ...]
+		Server -> Client:
+		[3, playerID, number, ...]
+
+	PathSelection:
+		Client -> Server:
+		[4, directionID, ...]
+		Server -> Client:
+		[4, playerID, directionID, ...]
+
+	FinishMovingEvent:
+		Client -> Server
+		[5, ...]
+		Server -> Client
+		[2, nextPlayerID, ...] (Player Activation event)
+	
+	DeleteRoomCall:
+		[0, ...]
+
+	LocalPlayerCreateEvent:
+		Server -> Client
+		[1, playable/dummy, startPosition.3.] 1 = playable !1 = dummy
+	
+	TransferNameDistrubutor:
+		Server -> Client
+		[5, playerID, name.8.]
+
+
+	
+		

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class VSField : Field
 {
-    public override void Action()
+    public override int Action(int playerIndex)
     {
-        
+        return 5;
     }
 }

@@ -12,6 +12,8 @@ public abstract class Player : MonoBehaviour
     protected Vector3 velocity = Vector3.zero;
 
     protected Vector3 cameraOffset = new Vector3(-2.81f, 8.13f, 5.6f);
+    public int index;
+    public int coins = 0;
     
     //Aktiviert den Player
     public void Activate()
