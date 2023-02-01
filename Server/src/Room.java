@@ -48,11 +48,11 @@ public class Room
                 {
                     try
                     {
-                        for(int p = 0; p < players.length; p++)
+                        for (int p = 0; p < players.length; p++)
                         {
-                            if(players[p] != null)
+                            if (players[p] != null)
                             {
-                                if(System.currentTimeMillis() - players[p].lastTimeSendTimeOutCheck > 30000 && players[p].lastTimeSendTimeOutCheck != -1)
+                                if (System.currentTimeMillis() - players[p].lastTimeSendTimeOutCheck > 30000 && players[p].lastTimeSendTimeOutCheck != -1)
                                 {
                                     server.deleteRoom(roomCode);
                                 }
@@ -60,13 +60,12 @@ public class Room
                                 players[p].output.write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
                             }
                         }
-                    }
-                    catch(Exception e)
+                    } catch (Exception e)
                     {
 
                     }
 
-                    if(System.currentTimeMillis() - timeOut > 600000)
+                    if (System.currentTimeMillis() - timeOut > 600000)
                     {
                         System.out.println("[" + Server.getDateTime() + "] Room " + roomCode + " closed due to timeout!");
                         server.deleteRoom(roomCode);
@@ -75,7 +74,9 @@ public class Room
             };
 
             t.scheduleAtFixedRate(tt, 0, 10000);
-        }catch(Exception e){}
+        } catch (Exception e)
+        {
+        }
     }
 
     public void addClient(Client client)
@@ -156,9 +157,6 @@ public class Room
                                             players[i].output.write(new byte[]{2, (byte) currentPlayer, 0, 0, 0, 0, 0, 0, 0, 0});
                                         }
                                         break;
-                                    case 0:
-                                        server.deleteRoom(roomCode);
-                                        break;
                                     case 126:
                                         players[player].lastTimeSendTimeOutCheck = System.currentTimeMillis();
                                         break;
@@ -171,6 +169,7 @@ public class Room
                         }
                     }
                 });
+                t.setName("Thread Player: " + (playerCount - 1));
                 t.start();
                 threads.add(t);
                 break;
@@ -197,9 +196,9 @@ public class Room
                             byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
                             byte[] send = new byte[10];
                             send[0] = 5;
-                            send[1] = (byte)k;
+                            send[1] = (byte) k;
 
-                            for(int i = 2; i < send.length; i++)
+                            for (int i = 2; i < send.length; i++)
                             {
                                 send[i] = name[i - 2];
                             }
@@ -217,9 +216,9 @@ public class Room
                             byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
                             byte[] send = new byte[10];
                             send[0] = 5;
-                            send[1] = (byte)k;
+                            send[1] = (byte) k;
 
-                            for(int i = 2; i < send.length; i++)
+                            for (int i = 2; i < send.length; i++)
                             {
                                 send[i] = name[i - 2];
                             }
@@ -253,7 +252,7 @@ public class Room
         try
         {
 
-            if(players[0] != null)
+            if (players[0] != null)
             {
                 players[0].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
             }
@@ -264,7 +263,7 @@ public class Room
 
         try
         {
-            if(players[1] != null)
+            if (players[1] != null)
             {
                 players[1].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
             }
@@ -275,7 +274,7 @@ public class Room
 
         try
         {
-            if(players[2] != null)
+            if (players[2] != null)
             {
                 players[2].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
             }
@@ -286,7 +285,7 @@ public class Room
 
         try
         {
-            if(players[3] != null)
+            if (players[3] != null)
             {
                 players[3].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
             }
@@ -295,9 +294,22 @@ public class Room
         {
         }
 
-        for(int i = 0; i < threads.size(); i++)
+
+        for (int i = 0; i < threads.size(); i++)
         {
-            threads.get(i).interrupt();
+            try
+            {
+                threads.get(i).interrupt();
+            } catch (Exception e)
+            {
+            }
+        }
+
+        try
+        {
+            t.cancel();
+        } catch (Exception e)
+        {
         }
     }
 }
