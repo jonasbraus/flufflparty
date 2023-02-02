@@ -13,6 +13,8 @@ public class Server
     private ServerSocket serverSocket;
     private HashMap<String, Room> rooms = new HashMap<>();
 
+    //hier ArrayList für public rooms
+
     private final Server server = this;
 
     private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -63,6 +65,13 @@ public class Server
 
                             switch(readData[0])
                             {
+                                //hier case 3 für public match making
+                                //dsfjlksdfjlöasdfjlsdkjflksdjflksdjflksdjflksdjflksdjflksdjflkjsdlkfjsdlkfsdjlkfsdlkfjsdlkfjsdlkfjlsdkfjlsdkjfldksjfjlk
+                                //fsjfklsdjflksdjflsdjflksdjflksdfjlksdjflksdjflksdjflksdjflksdjflksdjflksdjflksdjflksdjflsdkjflksdjflksdjflksdjflksdjf
+
+                                //schleife um zu checken ob ein offener room existiert (Liste)
+                                //ansonsten einen neuen room erstellen und zur liste inhzufügen
+
                                 case 2:
                                     byte[] code = generateRoomCode();
                                     output.write(code);
