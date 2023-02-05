@@ -125,10 +125,12 @@ public class NoPlayablePlayer : Player
         }
     }
 
+    private Vector3 nextPoint;
+
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
     private void InterPolerate()
     {
-        Vector3 nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+        nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
         transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
         interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
     }

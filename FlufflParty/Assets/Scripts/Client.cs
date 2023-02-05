@@ -25,8 +25,11 @@ public class Client : MonoBehaviour
     [SerializeField] private TMP_Text[] playerNameTexts;
     [SerializeField] private GameObject[] playerInfo;
 
+    [SerializeField] private TMP_Text fpsText;
+
     private void Start()
     {
+
         for (int i = 0; i < 4; i++)
         {
             playerInfo[i].SetActive(false);
@@ -48,6 +51,8 @@ public class Client : MonoBehaviour
 
     private void Update()
     {
+        fpsText.text = (int)(Time.frameCount / Time.time) + " FPS";
+        
         if (jobs.Count > 0)
         {
             Job job = jobs.Dequeue();
@@ -131,7 +136,7 @@ public class Client : MonoBehaviour
     {
         for (int i = 0; i < players.Length; i++)
         {
-            if (players[i] != null)
+            if (!(players[i] is null))
             {
                 if (i == player)
                 {

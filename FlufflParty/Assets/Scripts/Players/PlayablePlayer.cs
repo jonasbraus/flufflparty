@@ -31,7 +31,7 @@ public class PlayablePlayer : Player
         
         activated = false;
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 59;
+        Application.targetFrameRate = 61;
         diceScript = dice.GetComponent<Dice>();
     }
 
@@ -170,9 +170,11 @@ public class PlayablePlayer : Player
     }
 
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
+
+    private Vector3 nextPoint;
     private void InterPolerate()
     {
-        Vector3 nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+        nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
         transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
         interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
     }
