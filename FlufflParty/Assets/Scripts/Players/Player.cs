@@ -54,6 +54,10 @@ public abstract class Player : MonoBehaviour
     protected void AddCoins(int amount)
     {
         coins += amount;
+        if (coins < 0)
+        {
+            coins = 0;
+        }
         textCoinsInfo.text = coins + "";
         PlayAnimation(AnimationType.Coin);
     }
