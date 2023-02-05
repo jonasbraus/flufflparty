@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public abstract class Player : MonoBehaviour
@@ -15,6 +16,7 @@ public abstract class Player : MonoBehaviour
     protected Vector3 cameraOffset = new Vector3(-2.81f, 8.13f, 5.6f);
     public int index;
     public int coins = 0;
+    public TMP_Text textCoinsInfo;
     
     //for coin animation
     private AnimationHandler animationHandler;
@@ -41,16 +43,18 @@ public abstract class Player : MonoBehaviour
 
     public void PlayAnimation(AnimationType animationType)
     {
-        switch (animationType)
-        {
-            case AnimationType.Coin:
-                animationHandler.StartAnimation();
-                break;
-        }
+        animationHandler.StartAnimation(animationType);
     }
 
     public enum AnimationType
     {
         Coin
+    }
+
+    protected void AddCoins(int amount)
+    {
+        coins += amount;
+        textCoinsInfo.text = coins + "";
+        PlayAnimation(AnimationType.Coin);
     }
 }

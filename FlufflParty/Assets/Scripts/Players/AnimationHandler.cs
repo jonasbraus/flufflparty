@@ -7,9 +7,14 @@ public class AnimationHandler : MonoBehaviour
 {
     [SerializeField] private Animator anim;
     
-    public void StartAnimation()
+    public void StartAnimation(Player.AnimationType type)
     {
-        anim.SetInteger("value", 1);
+        switch (type)
+        {
+            case Player.AnimationType.Coin:
+                anim.SetInteger("value", 1);
+                break;
+        }
         Invoke("Stop", 0.6f);
     }
 

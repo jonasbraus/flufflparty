@@ -101,7 +101,12 @@ public class PlayablePlayer : Player
                         switch (fieldReturnStatus)
                         {
                             case 0:
-                                PlayAnimation(AnimationType.Coin);
+                                client.SendCoinFieldAction(0);
+                                AddCoins(3);
+                                break;
+                            case 1:
+                                client.SendCoinFieldAction(1);
+                                AddCoins(-3);
                                 break;
                         }
                         

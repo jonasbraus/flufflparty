@@ -24,8 +24,7 @@ public class Client : MonoBehaviour
 
     [SerializeField] private TMP_Text[] playerNameTexts;
     [SerializeField] private GameObject[] playerInfo;
-
-    [SerializeField] private TMP_Text fpsText;
+    private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
 
     private void Start()
     {
@@ -45,14 +44,17 @@ public class Client : MonoBehaviour
         stream.Write(Encoding.ASCII.GetBytes(roomCode), 0, 10);
         string name = PlayerPrefs.GetString("name");
         stream.Write(Encoding.ASCII.GetBytes(name), 0, 10);
+
+        for (int i = 0; i < playerInfo.Length; i++)
+        {
+            playerInfoElements[i] = playerInfo[i].GetComponent<PlayerInfoElements>();
+        }
         
         new Thread(Read).Start();
     }
 
     private void Update()
     {
-        fpsText.text = (int)(Time.frameCount / Time.time) + " FPS";
-        
         if (jobs.Count > 0)
         {
             Job job = jobs.Dequeue();
@@ -112,6 +114,7 @@ public class Client : MonoBehaviour
 
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
                     players[job.data[1]].index = job.data[1];
+                    players[job.data[1]].textCoinsInfo = playerInfoElements[job.data[1]].textCoinInfo;
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
@@ -120,6 +123,10 @@ public class Client : MonoBehaviour
                     
                     playerInfo[job.data[1]].SetActive(true);
                     
+                    break;
+                
+                case 6:
+                    ((NoPlayablePlayer)players[job.data[1]]).CoinFieldAction(job.data[2]);
                     break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
@@ -185,5 +192,10 @@ public class Client : MonoBehaviour
     public void SendFinished()
     {
         stream.Write(new byte[]{5, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    public void SendCoinFieldAction(int action)
+    {
+        stream.Write(new byte[]{6, (byte)action, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

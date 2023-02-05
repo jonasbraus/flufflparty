@@ -2,10 +2,7 @@ fileFormatVersion: 2
 guid: bbd5093a72be95c4893d4945fc77fb63
 ModelImporter:
   serializedVersion: 21300
-  internalIDToNameTable:
-  - first:
-      74: -623603649343465320
-    second: Scene
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Scene
+      name: CoinUp
       takeName: Scene
       internalID: -623603649343465320
       firstFrame: 1
-      lastFrame: 16
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -65,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Idle
+      name: CoinDown
       takeName: Scene
       internalID: -8800838248204228948
       firstFrame: 22

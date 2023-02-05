@@ -21,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/AnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/PlayerInfoElements.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,7 +49,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/FlufflPartyBuild\FlufflParty.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive/Desktop/FlufflPartyBuild/FlufflParty.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\braus\OneDrive\Desktop\FlufflPartyTestBuild" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -117,7 +118,7 @@
       <workItem from="1675280447181" duration="87000" />
       <workItem from="1675368491529" duration="860000" />
       <workItem from="1675541927675" duration="3056000" />
-      <workItem from="1675598313139" duration="4672000" />
+      <workItem from="1675598313139" duration="8363000" />
     </task>
     <servers />
   </component>

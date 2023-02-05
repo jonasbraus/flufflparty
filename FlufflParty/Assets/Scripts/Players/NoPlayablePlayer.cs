@@ -30,6 +30,18 @@ public class NoPlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
     }
 
+    public void CoinFieldAction(int action)
+    {
+        if (action == 0)
+        {
+            AddCoins(3);
+        }
+        else
+        {
+            AddCoins(-3);
+        }
+    }
+
     public void Wurfeln(int wurfelZahl)
     {
         wurfelt = true;

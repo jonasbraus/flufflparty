@@ -54,6 +54,12 @@ Game Run Definitions (Room Server):
 		Server -> Client
 		[5, playerID, name.8.]
 
+	CoinFieldAction:
+		Client -> Server
+		[6, 0/1, ...] 0=get 1=loose
+		Server -> Client
+		[6, playerID, 0/1, ...]
+
 
 	
 		
