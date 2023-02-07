@@ -21,6 +21,8 @@ public class NoPlayablePlayer : Player
     private float timeSinceWurfeln = 0;
 
     private Vector3 useLess = new Vector3();
+    
+    
 
     public override void Init()
     {
@@ -142,9 +144,17 @@ public class NoPlayablePlayer : Player
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
     private void InterPolerate()
     {
-        nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
-        transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
-        interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
+        if (!eventstop)
+        {
+            nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+            transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
+            interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
+        }
+    }
+
+    public void EventStopFinshed()
+    {
+        eventstop = false;
     }
     
 }

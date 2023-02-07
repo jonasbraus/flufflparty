@@ -17,6 +17,7 @@ public abstract class Player : MonoBehaviour
     public int index;
     public int coins = 0;
     public TMP_Text textCoinsInfo;
+    protected bool eventstop = false;
     
     //for coin animation
     private AnimationHandler animationHandler;
@@ -60,5 +61,10 @@ public abstract class Player : MonoBehaviour
         }
         textCoinsInfo.text = coins + "";
         PlayAnimation(AnimationType.Coin);
+    }
+    
+    private void OnTriggerEnter(Collider c)
+    {
+        eventstop = true;
     }
 }

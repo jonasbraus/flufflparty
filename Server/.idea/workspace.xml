@@ -9,7 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d89163f-4054-4765-8ee3-ac6da16b6997" name="Changes" comment="" />
+    <list default="true" id="6d89163f-4054-4765-8ee3-ac6da16b6997" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/.idea/.idea.FlufflParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/.idea/.idea.FlufflParty/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/Assets/Scenes/WesternMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/Assets/Scenes/WesternMap.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FlufflParty/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../FlufflParty/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Room.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

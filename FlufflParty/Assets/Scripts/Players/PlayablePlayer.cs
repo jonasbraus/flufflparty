@@ -14,9 +14,9 @@ public class PlayablePlayer : Player
     private float speed = 5;
     private float interPol = 0;
     private int wurfelZahl = 0;
-    
+
     private bool wait = false;
-    
+
 
     private float timeSinceWurfeln = 0;
     private float timeSinceStop = 0;
@@ -28,7 +28,7 @@ public class PlayablePlayer : Player
     public override void Init()
     {
         GetComponentInChildren<TMP_Text>().text = name;
-        
+
         activated = false;
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 61;
@@ -37,16 +37,21 @@ public class PlayablePlayer : Player
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            eventstop = false;
+        }
+
         if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
             if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0 && !wurfelt)
             {
                 wurfelt = true;
-                wurfelZahl = Random.Range(1, 7);
-                
+                wurfelZahl = Random.Range(6, 7);
+
                 client.SendWurfeln(wurfelZahl);
-                
+
                 //nächstes Feld anvisieren
                 TargetNextField();
 
@@ -63,8 +68,9 @@ public class PlayablePlayer : Player
     {
         if (activated && !name.Equals(""))
         {
-            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
-            
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset,
+                ref velocity, 0.2f);
+
             if (!wait)
             {
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
@@ -83,7 +89,7 @@ public class PlayablePlayer : Player
 
                     //the next field is the current field XD
                     currentField = nextField;
-                    
+
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
                     if (wurfelZahl > 0)
                     {
@@ -109,7 +115,7 @@ public class PlayablePlayer : Player
                                 AddCoins(-3);
                                 break;
                         }
-                        
+
                         Invoke("Finish", 2);
                         activated = false;
                     }
@@ -132,7 +138,7 @@ public class PlayablePlayer : Player
                 if (nextField.DirectionalArrow[0].IsClicked())
                 {
                     client.SendArrowSelected(0);
-                    
+
                     foreach (Arrow a in nextField.DirectionalArrow)
                     {
                         a.Deactivate();
@@ -177,15 +183,20 @@ public class PlayablePlayer : Player
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
 
     private Vector3 nextPoint;
+
     private void InterPolerate()
     {
-        nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
-        transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
-        interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
+        if (!eventstop)
+        {
+            nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+            transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
+            interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
+        }
     }
 
     private void Finish()
     {
         client.SendFinished();
     }
+
 }
