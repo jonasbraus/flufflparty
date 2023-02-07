@@ -49,7 +49,7 @@ public class PlayablePlayer : Player
             if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0 && !wurfelt)
             {
                 wurfelt = true;
-                wurfelZahl = Random.Range(6, 7);
+                wurfelZahl = Random.Range(1, 7);
 
                 client.SendWurfeln(wurfelZahl);
 

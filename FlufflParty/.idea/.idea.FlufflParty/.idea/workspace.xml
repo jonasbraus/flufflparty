@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0abe486-ee58-49bd-ad63-04a8b3fc78ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/NoPlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/NoPlayablePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/out/artifacts/Server_jar/Server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/out/artifacts/Server_jar/Server.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/out/production/Server/Room$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/out/production/Server/Room$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/out/production/Server/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/out/production/Server/Room.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +122,7 @@
       <workItem from="1675541927675" duration="3056000" />
       <workItem from="1675598313139" duration="8968000" />
       <workItem from="1675795702707" duration="512000" />
-      <workItem from="1675797317461" duration="3055000" />
+      <workItem from="1675797317461" duration="3244000" />
     </task>
     <servers />
   </component>
