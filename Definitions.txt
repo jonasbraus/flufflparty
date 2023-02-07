@@ -60,6 +60,12 @@ Game Run Definitions (Room Server):
 		Server -> Client
 		[6, playerID, 0/1, ...]
 
+	ItemShopStopAction:
+		Client -> Server
+		[7, ...]
+		Server -> Client
+		[7, PlayerID, ...]
+
 
 	
 		
