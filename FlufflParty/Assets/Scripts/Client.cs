@@ -202,7 +202,7 @@ public class Client : MonoBehaviour
         stream.Write(new byte[]{6, (byte)action, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 
-    public void EventStopFinshed()
+    public void EventStopFinished()
     {
         stream.Write(new byte[]{7, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     }

@@ -40,6 +40,7 @@ public class PlayablePlayer : Player
         if (Input.GetMouseButtonDown(0))
         {
             eventstop = false;
+            client.EventStopFinished();
         }
 
         if (activated && !name.Equals(""))
