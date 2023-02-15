@@ -28,15 +28,14 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
-
         for (int i = 0; i < 4; i++)
         {
             playerInfo[i].SetActive(false);
         }
-        
+
         client = new TcpClient("185.245.96.48", 8051);
         stream = client.GetStream();
-        
+
         stream.Write(new byte[] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 10);
 
 
@@ -49,7 +48,7 @@ public class Client : MonoBehaviour
         {
             playerInfoElements[i] = playerInfo[i].GetComponent<PlayerInfoElements>();
         }
-        
+
         new Thread(Read).Start();
     }
 
@@ -67,7 +66,7 @@ public class Client : MonoBehaviour
                     if (job.data[1] == 1)
                     {
                         GameObject player = Instantiate(playerPrefab);
-                        
+
                         player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
 
                         PlayablePlayer script = player.AddComponent<PlayablePlayer>();
@@ -118,13 +117,13 @@ public class Client : MonoBehaviour
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
-                    
+
                     uiHandler.ActivateLayout1();
-                    
+
                     playerInfo[job.data[1]].SetActive(true);
-                    
+
                     break;
-                
+
                 case 6:
                     ((NoPlayablePlayer)players[job.data[1]]).CoinFieldAction(job.data[2]);
                     break;
@@ -169,7 +168,7 @@ public class Client : MonoBehaviour
         while (true)
         {
             byte[] read = new byte[10];
-            
+
             stream.Read(read, 0, 10);
 
             jobs.Enqueue(new Job(read));
@@ -180,10 +179,10 @@ public class Client : MonoBehaviour
     //1 x, x = zahl
     public void SendWurfeln(int zahl)
     {
-        
+
         stream.Write(new byte[]{3, (byte)zahl, 0, 0, 0, 0, 0, 0, 0, 0});
     }
-    
+
     //0 4 arrow selected
     //1 x, x = arrow idx
     public void SendArrowSelected(int idx)
