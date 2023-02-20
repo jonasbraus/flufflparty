@@ -201,4 +201,8 @@ public class PlayablePlayer : Player
         client.SendFinished();
     }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        Layout2.SetActive(true);
+    }
 }

@@ -68,7 +68,7 @@ public abstract class Player : MonoBehaviour
     private void OnTriggerEnter(Collider c)
     {
         eventstop = true;
-        Layout2.SetActive(true);
+        
     }
     
     public void EventStopFinished()
