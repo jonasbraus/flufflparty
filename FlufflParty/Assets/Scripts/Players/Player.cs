@@ -6,6 +6,8 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+    private GameObject Layout2; 
+    
     public string name = "";
     public bool activated = false;
     protected bool wurfelt = false;
@@ -25,6 +27,7 @@ public abstract class Player : MonoBehaviour
     private void Start()
     {
         animationHandler = GetComponentInChildren<AnimationHandler>();
+        Layout2 = GameObject.Find("Layout2");
     }
 
     //Aktiviert den Player
@@ -66,5 +69,6 @@ public abstract class Player : MonoBehaviour
     private void OnTriggerEnter(Collider c)
     {
         eventstop = true;
+        Layout2.SetActive(true);
     }
 }

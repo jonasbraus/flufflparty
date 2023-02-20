@@ -9484,6 +9484,7 @@ MonoBehaviour:
   buttonSubmitName: {fileID: 1596386837}
   playerName: {fileID: 255154818}
   copiedMessage: {fileID: 1271841101}
+  backgroundNameText: {fileID: 309674619}
 --- !u!1001 &2045800167
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,7 +19,8 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private GameObject buttonSubmitName;
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private GameObject copiedMessage;
-
+    [SerializeField] private TMP_Text backgroundNameText;
+    
     private string roomcode;
 
     private void Start()
@@ -125,18 +126,25 @@ public class StartHandler : MonoBehaviour
     public void ButtonSubmitName()
     {
         string name = nameEnter.text;
-        for (int i = name.Length; i < 10; i++)
+        if (name.Length>2) 
         {
-            name += " ";
+            for (int i = name.Length; i < 10; i++)
+            {
+                name += " ";
+            }
+        
+            PlayerPrefs.SetString("name", name);
+            PlayerPrefs.Save();
+        
+            playerName.text = PlayerPrefs.GetString("name");
+        
+            layout0.SetActive(false);
+            layout1.SetActive(true);
         }
-        
-        PlayerPrefs.SetString("name", name);
-        PlayerPrefs.Save();
-        
-        playerName.text = PlayerPrefs.GetString("name");
-        
-        layout0.SetActive(false);
-        layout1.SetActive(true);
+        else
+        {
+            backgroundNameText.text = "to short...";
+        }
     }
 
     public void ButtonEditName()
