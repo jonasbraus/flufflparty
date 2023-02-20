@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayablePlayer : Player
@@ -203,6 +204,8 @@ public class PlayablePlayer : Player
 
     private void OnTriggerEnter(Collider collider)
     {
+        base.OnTriggerEnter(collider);
         Layout2.SetActive(true);
     }
+    
 }

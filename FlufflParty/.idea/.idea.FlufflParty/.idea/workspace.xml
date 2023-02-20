@@ -4,7 +4,6 @@
     <list default="true" id="f0abe486-ee58-49bd-ad63-04a8b3fc78ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

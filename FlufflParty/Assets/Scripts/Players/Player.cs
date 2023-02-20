@@ -65,10 +65,9 @@ public abstract class Player : MonoBehaviour
         PlayAnimation(AnimationType.Coin);
     }
     
-    private void OnTriggerEnter(Collider c)
+    public void OnTriggerEnter(Collider c)
     {
         eventstop = true;
-        
     }
     
     public void EventStopFinished()
