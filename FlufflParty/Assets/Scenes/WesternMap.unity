@@ -431,6 +431,7 @@ MonoBehaviour:
   - {fileID: 783643749}
   - {fileID: 1624290087}
   - {fileID: 1068960911}
+  layout2: {fileID: 1115580907}
 --- !u!114 &47812149
 MonoBehaviour:
   m_ObjectHideFlags: 0

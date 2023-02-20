@@ -25,6 +25,7 @@ public class Client : MonoBehaviour
     [SerializeField] private TMP_Text[] playerNameTexts;
     [SerializeField] private GameObject[] playerInfo;
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
+    [SerializeField] private GameObject layout2;
 
     private void Start()
     {
@@ -114,6 +115,7 @@ public class Client : MonoBehaviour
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
                     players[job.data[1]].index = job.data[1];
                     players[job.data[1]].textCoinsInfo = playerInfoElements[job.data[1]].textCoinInfo;
+                    players[job.data[1]].Layout2 = layout2;
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
