@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject Layout2;
+    [SerializeField] private GameObject LayoutItemShop;
+    [SerializeField] private Client client;
+    public void buttonMoveOn()
     {
-        
+        Layout2.SetActive(false);
+        client.EventStopFinished();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void buttonEnter()
     {
-        
+        Layout2.SetActive(false);
+        LayoutItemShop.SetActive(true);
     }
 }

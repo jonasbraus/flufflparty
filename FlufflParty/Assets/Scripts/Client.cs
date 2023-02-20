@@ -130,7 +130,7 @@ public class Client : MonoBehaviour
                     ((NoPlayablePlayer)players[job.data[1]]).CoinFieldAction(job.data[2]);
                     break;
                 case 7:
-                    ((NoPlayablePlayer)players[job.data[1]]).EventStopFinished();
+                    (players[job.data[1]]).EventStopFinished();
                     break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);

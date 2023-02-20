@@ -152,9 +152,4 @@ public class NoPlayablePlayer : Player
         }
     }
 
-    public void EventStopFinished()
-    {
-        eventstop = false;
-    }
-    
 }

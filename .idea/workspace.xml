@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1ac5a43-1258-486e-9afa-562e60808847" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlufflParty/.idea/.idea.FlufflParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/.idea/.idea.FlufflParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Client.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlufflParty/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/ItemShop.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/ItemShop.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/NoPlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/NoPlayablePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Assets/Scripts/Players/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FlufflParty/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FlufflParty/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FlufflParty/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +34,28 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/flufflparty"
+    "last_opened_file_path": "C:/flufflparty/Server",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="flufflparty" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="flufflparty" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -40,6 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676488026665</updated>
       <workItem from="1676488028412" duration="3783000" />
+      <workItem from="1676925887035" duration="132000" />
     </task>
     <servers />
   </component>

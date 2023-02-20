@@ -37,12 +37,13 @@ public class PlayablePlayer : Player
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        /*
+         if (Input.GetMouseButtonDown(0))
         {
             eventstop = false;
             client.EventStopFinished();
         }
-
+        */
         if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf

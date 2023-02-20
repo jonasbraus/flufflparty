@@ -70,4 +70,9 @@ public abstract class Player : MonoBehaviour
         eventstop = true;
         Layout2.SetActive(true);
     }
+    
+    public void EventStopFinished()
+    {
+        eventstop = false;
+    }
 }
