@@ -29,7 +29,7 @@ public class StartHandler : MonoBehaviour
         
         if (PlayerPrefs.HasKey("name"))
         {
-            playerName.text = "Name: " + PlayerPrefs.GetString("name");
+            playerName.text = PlayerPrefs.GetString("name");
             layout0.SetActive(false);
             layout1.SetActive(true);
         }

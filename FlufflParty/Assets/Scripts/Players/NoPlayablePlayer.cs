@@ -26,7 +26,8 @@ public class NoPlayablePlayer : Player
 
     public override void Init()
     {
-        GetComponentInChildren<TMP_Text>().text = name;
+        TMP_Text[] playerTexts = GetComponentsInChildren<TMP_Text>();
+        playerTexts[0].text = playerTexts[1].text = name;
         
         activated = false;
         diceScript = dice.GetComponent<Dice>();

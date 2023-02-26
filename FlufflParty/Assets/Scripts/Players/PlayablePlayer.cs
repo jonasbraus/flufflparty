@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mail;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -28,7 +29,8 @@ public class PlayablePlayer : Player
 
     public override void Init()
     {
-        GetComponentInChildren<TMP_Text>().text = name;
+        TMP_Text[] playerTexts = GetComponentsInChildren<TMP_Text>();
+        playerTexts[0].text = playerTexts[1].text = name;
 
         activated = false;
         QualitySettings.vSyncCount = 0;
@@ -202,10 +204,33 @@ public class PlayablePlayer : Player
         client.SendFinished();
     }
 
+
+    private Star currentStar = null;
     private void OnTriggerEnter(Collider collider)
     {
         base.OnTriggerEnter(collider);
-        Layout2.SetActive(true);
+        
+        if (collider.name.Equals("ItemShopTrigger"))
+        {
+            Layout2.SetActive(true);
+        }
+        else if (collider.name.Equals("StarTrigger"))
+        {
+            currentStar = collider.GetComponent<Star>();
+
+            uiHandler.ActivateLayoutBuyStar(this);
+        }
     }
-    
+
+    public void BuyStar(bool buy)
+    {
+        if (buy)
+        {
+            currentStar.Buy(this);
+        }
+        else
+        {
+            currentStar = null;
+        }
+    }
 }

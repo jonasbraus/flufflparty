@@ -116,6 +116,7 @@ public class Client : MonoBehaviour
                     players[job.data[1]].index = job.data[1];
                     players[job.data[1]].textCoinsInfo = playerInfoElements[job.data[1]].textCoinInfo;
                     players[job.data[1]].Layout2 = layout2;
+                    players[job.data[1]].uiHandler = uiHandler;
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");

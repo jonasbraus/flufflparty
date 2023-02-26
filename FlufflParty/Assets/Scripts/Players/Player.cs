@@ -20,6 +20,7 @@ public abstract class Player : MonoBehaviour
     public int coins = 0;
     public TMP_Text textCoinsInfo;
     protected bool eventstop = false;
+    public UIHandler uiHandler;
     
     //for coin animation
     private AnimationHandler animationHandler;
