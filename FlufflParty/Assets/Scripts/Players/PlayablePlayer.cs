@@ -208,29 +208,40 @@ public class PlayablePlayer : Player
     private Star currentStar = null;
     private void OnTriggerEnter(Collider collider)
     {
-        base.OnTriggerEnter(collider);
-        
         if (collider.name.Equals("ItemShopTrigger"))
         {
-            Layout2.SetActive(true);
+            base.OnTriggerEnter(collider);
+            uiHandler.ActivateLayout2(this);
         }
         else if (collider.name.Equals("StarTrigger"))
         {
             currentStar = collider.GetComponent<Star>();
 
-            uiHandler.ActivateLayoutBuyStar(this);
+            if(currentStar.IsActive)
+            {
+                base.OnTriggerEnter(collider);
+                uiHandler.ActivateLayoutBuyStar(this);
+            }
         }
     }
 
     public void BuyStar(bool buy)
     {
+        client.SendEventStopFinished();
+        
         if (buy)
         {
             currentStar.Buy(this);
+            client.SendBuyStar();
         }
         else
         {
             currentStar = null;
         }
+    }
+
+    public void SkipShop()
+    {
+        client.SendEventStopFinished();
     }
 }

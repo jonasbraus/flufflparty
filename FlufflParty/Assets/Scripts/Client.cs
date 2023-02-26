@@ -115,7 +115,6 @@ public class Client : MonoBehaviour
                     players[job.data[1]].name = Encoding.ASCII.GetString(name).Replace(" ", "");
                     players[job.data[1]].index = job.data[1];
                     players[job.data[1]].textCoinsInfo = playerInfoElements[job.data[1]].textCoinInfo;
-                    players[job.data[1]].Layout2 = layout2;
                     players[job.data[1]].uiHandler = uiHandler;
                     players[job.data[1]].Init();
 
@@ -132,6 +131,9 @@ public class Client : MonoBehaviour
                     break;
                 case 7:
                     (players[job.data[1]]).EventStopFinished();
+                    break;
+                case 8:
+                    ((NoPlayablePlayer)players[job.data[1]]).BuyStar();
                     break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
@@ -204,8 +206,13 @@ public class Client : MonoBehaviour
         stream.Write(new byte[]{6, (byte)action, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 
-    public void EventStopFinished()
+    public void SendEventStopFinished()
     {
         stream.Write(new byte[]{7, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    public void SendBuyStar()
+    {
+        stream.Write(new byte[]{8, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

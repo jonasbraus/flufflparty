@@ -6,8 +6,6 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
-    public GameObject Layout2; 
-    
     public string name = "";
     public bool activated = false;
     protected bool wurfelt = false;
@@ -55,7 +53,7 @@ public abstract class Player : MonoBehaviour
         Coin
     }
 
-    protected void AddCoins(int amount)
+    public void AddCoins(int amount)
     {
         coins += amount;
         if (coins < 0)

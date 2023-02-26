@@ -39,7 +39,7 @@ public class Star : MonoBehaviour
 
     public void Buy(Player player)
     {
-        player.coins -= cost;
+        player.AddCoins(-cost);
         starController.SwitchStar();
     }
 }

@@ -33,6 +33,12 @@ public class NoPlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
     }
 
+    public void BuyStar()
+    {
+        GameObject.Find("StarPositions").GetComponent<StarController>().SwitchStar();
+        AddCoins(-20);
+    }
+    
     public void CoinFieldAction(int action)
     {
         if (action == 0)
@@ -150,6 +156,25 @@ public class NoPlayablePlayer : Player
             nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
+        }
+    }
+
+    private Star currentStar;
+    
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.name.Equals("ItemShopTrigger"))
+        {
+            base.OnTriggerEnter(collider);
+        }
+        else if (collider.name.Equals("StarTrigger"))
+        {
+            currentStar = collider.GetComponent<Star>();
+
+            if(currentStar.IsActive)
+            {
+                base.OnTriggerEnter(collider);
+            }
         }
     }
 
