@@ -9,7 +9,7 @@ public class Star : MonoBehaviour
     private StarController starController;
     private int cost = 20;
 
-    [SerializeField] private GameObject starObject;
+    [SerializeField] private GameObject starObject, starObject2;
 
     public int Cost
     {
@@ -29,6 +29,7 @@ public class Star : MonoBehaviour
         {
             isActive = value;
             starObject.SetActive(value);
+            starObject2.SetActive(value);
         }
     }
 
