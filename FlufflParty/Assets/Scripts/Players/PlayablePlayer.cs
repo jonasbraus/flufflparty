@@ -49,23 +49,29 @@ public class PlayablePlayer : Player
         */
         if (activated && !name.Equals(""))
         {
+            
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
             if ((Input.GetMouseButtonDown(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
             {
-                wurfelt = true;
-                wurfelZahl = Random.Range(1, 7);
-                textLeftMoves.text = wurfelZahl + "";
+                    if(!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
+                    {
+                        wurfelt = true;
+                        wurfelZahl = Random.Range(1, 7);
+                        textLeftMoves.text = wurfelZahl + "";
 
-                client.SendWurfeln(wurfelZahl);
+                        client.SendWurfeln(wurfelZahl);
 
-                //nächstes Feld anvisieren
-                TargetNextField();
+                        //nächstes Feld anvisieren
+                        TargetNextField();
 
-                //stop the dice
-                diceScript.StopRandom(wurfelZahl);
+                        //stop the dice
+                        diceScript.StopRandom(wurfelZahl);
 
-                //delay for walk start
-                timeSinceWurfeln = Time.time;
+                        //delay for walk start
+                        timeSinceWurfeln = Time.time;
+                    }
+                
+            
             }
         }
     }
