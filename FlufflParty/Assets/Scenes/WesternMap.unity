@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812fca21913ccbd42a3f716f9c3b7727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textLeftMoves: {fileID: 0}
+  textLeftMoves: {fileID: 2122811708}
   playerPrefab: {fileID: 711685448941949428, guid: 9cb6f2379e137224e8f4450eae3198dc, type: 3}
   dice: {fileID: 1676575018}
   nextField: {fileID: 1406090859}
