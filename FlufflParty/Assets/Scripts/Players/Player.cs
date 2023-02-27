@@ -58,6 +58,7 @@ public abstract class Player : MonoBehaviour
     {
         stars += amount;
         textStarsInfo.text = stars + "";
+        Client.GetCurrentInstance().CalculatePlacement();
     }
 
     public void AddCoins(int amount)
@@ -69,6 +70,7 @@ public abstract class Player : MonoBehaviour
         }
         textCoinsInfo.text = coins + "";
         PlayAnimation(AnimationType.Coin);
+        Client.GetCurrentInstance().CalculatePlacement();
     }
     
     public void OnTriggerEnter(Collider c)

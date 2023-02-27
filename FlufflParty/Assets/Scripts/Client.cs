@@ -27,8 +27,19 @@ public class Client : MonoBehaviour
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
     [SerializeField] private GameObject layout2;
 
+    private int playerAmount = 0;
+
+    private static Client thisClient;
+
+    public static Client GetCurrentInstance()
+    {
+        return thisClient;
+    }
+    
     private void Start()
     {
+        thisClient = this;
+        
         for (int i = 0; i < 4; i++)
         {
             playerInfo[i].SetActive(false);
@@ -53,6 +64,42 @@ public class Client : MonoBehaviour
         new Thread(Read).Start();
     }
 
+    public void CalculatePlacement()
+    {
+        Player[] temp = new Player[playerAmount];
+
+        for (int j = 0; j < temp.Length; j++)
+        {
+            temp[j] = players[j];
+        }
+        
+        for (int i = 0; i < temp.Length - 1; i++)
+        {
+            for (int f = 0; f < temp.Length - 1; f++)
+            {
+                if (temp[f].stars < temp[f + 1].stars)
+                {
+                    (temp[f], temp[f + 1]) = (temp[f + 1], temp[f]);
+                }
+                else if (temp[f].stars == temp[f + 1].stars && temp[f].coins < temp[f + 1].coins)
+                {
+                    (temp[f], temp[f + 1]) = (temp[f + 1], temp[f]);              
+                }
+            }
+        }
+        
+        for (int j = 0; j < temp.Length; j++)
+        {
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[j] == players[i])
+                {
+                    playerInfoElements[i].textPlacement.text = j+1 + ".";
+                }
+            }
+        }
+    }
+
     private void Update()
     {
         if (jobs.Count > 0)
@@ -63,6 +110,8 @@ public class Client : MonoBehaviour
             {
                 //-----Create A new player-----
                 case 1:
+                    playerAmount++;
+                    
                     //player is playable
                     if (job.data[1] == 1)
                     {
