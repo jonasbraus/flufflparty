@@ -64,6 +64,7 @@ public class NoPlayablePlayer : Player
 
         //delay for walk start
         timeSinceWurfeln = Time.time;
+        textLeftMoves.text = wurfelZahl + "";
     }
 
     public void ArrowSelect(int idx)
@@ -101,6 +102,7 @@ public class NoPlayablePlayer : Player
                 else if (wurfelZahl > 0)
                 {
                     wurfelZahl--;
+                    textLeftMoves.text = wurfelZahl + "";
 
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
                     if (wurfelZahl > 0)
