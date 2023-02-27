@@ -10339,7 +10339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -90.099976}
+  m_AnchoredPosition: {x: 0, y: -113.6}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1550019641
@@ -10682,8 +10682,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -45.100006}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0.000019073, y: -56.85}
+  m_SizeDelta: {x: 202.8036, y: 53.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1600263023
 MonoBehaviour:
@@ -14460,8 +14460,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 161.41098, y: 37.503296, z: 45.18319}
-  m_Center: {x: -0.8694916, y: -1.9985962, z: 9.810416}
+  m_Size: {x: 223.44653, y: 86.49219, z: 45.18319}
+  m_Center: {x: -2.2122192, y: -11.080078, z: 9.810417}
 --- !u!54 &1988853067
 Rigidbody:
   m_ObjectHideFlags: 0

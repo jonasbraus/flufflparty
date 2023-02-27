@@ -51,7 +51,7 @@ public class PlayablePlayer : Player
         {
             
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
-            if ((Input.GetMouseButtonDown(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
+            if ((Input.GetMouseButtonUp(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
             {
                     if(!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
                     {
