@@ -68,10 +68,12 @@ public class Client : MonoBehaviour
     public void CalculatePlacement()
     {
         Player[] temp = new Player[playerAmount];
+        bool[] samePlacement = new bool[playerAmount];
 
         for (int j = 0; j < temp.Length; j++)
         {
             temp[j] = players[j];
+            samePlacement[j] = false;
         }
         
         for (int i = 0; i < temp.Length - 1; i++)
@@ -86,16 +88,27 @@ public class Client : MonoBehaviour
                 {
                     (temp[f], temp[f + 1]) = (temp[f + 1], temp[f]);              
                 }
+                else if(temp[f].stars == temp[f + 1].stars && temp[f].coins == temp[f + 1].coins)
+                {
+                    samePlacement[f] = true;
+                }
             }
         }
 
+        int currentPlacement = 1;
         for (int j = 0; j < temp.Length; j++)
         {
             for (int i = 0; i < temp.Length; i++)
             {
                 if (temp[j] == players[i])
                 {
-                    playerInfoElements[i].textPlacement.text = j+1 + ".";
+                    // playerInfoElements[i].textPlacement.text = j+1 + ".";
+                    playerInfoElements[i].textPlacement.text = currentPlacement + ".";
+
+                    if (!samePlacement[j])
+                    {
+                        currentPlacement++;
+                    }
                 }
             }
         }

@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 public class Room
 {
-    private Client[] players = new Client[2];
+    private Client[] players = new Client[3];
     private Vector3[] startPositions;
     private String roomCode;
     private Server server;
