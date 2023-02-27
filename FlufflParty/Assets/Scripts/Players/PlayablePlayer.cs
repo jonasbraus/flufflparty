@@ -50,7 +50,7 @@ public class PlayablePlayer : Player
         if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
-            if ((Input.GetMouseButtonDown(0)) && wurfelZahl == 0 && !wurfelt)
+            if ((Input.GetMouseButtonDown(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
             {
                 wurfelt = true;
                 wurfelZahl = Random.Range(1, 7);
@@ -233,6 +233,7 @@ public class PlayablePlayer : Player
         {
             currentStar.Buy(this);
             client.SendBuyStar();
+            AddStars(1);
         }
         else
         {

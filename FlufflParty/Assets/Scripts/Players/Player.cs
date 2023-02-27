@@ -16,7 +16,8 @@ public abstract class Player : MonoBehaviour
     protected Vector3 cameraOffset = new Vector3(-2.81f, 8.13f, 5.6f);
     public int index;
     public int coins = 0;
-    public TMP_Text textCoinsInfo;
+    public int stars = 0;
+    public TMP_Text textCoinsInfo, textStarsInfo;
     protected bool eventstop = false;
     public UIHandler uiHandler;
     
@@ -51,6 +52,12 @@ public abstract class Player : MonoBehaviour
     public enum AnimationType
     {
         Coin
+    }
+
+    public void AddStars(int amount)
+    {
+        stars += amount;
+        textStarsInfo.text = stars + "";
     }
 
     public void AddCoins(int amount)

@@ -11,6 +11,14 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject layoutMiniMap;
     [SerializeField] private GameObject layoutBuyStar;
 
+    public bool MapOpen
+    {
+        get
+        {
+            return layoutMiniMap.activeSelf;
+        }
+    }
+
     private Player currentPlayer = null;
 
     private void Start()

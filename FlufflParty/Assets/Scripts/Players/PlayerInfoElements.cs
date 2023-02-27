@@ -6,4 +6,5 @@ using UnityEngine;
 public class PlayerInfoElements : MonoBehaviour
 {
     public TMP_Text textCoinInfo;
+    public TMP_Text textStarsInfo;
 }

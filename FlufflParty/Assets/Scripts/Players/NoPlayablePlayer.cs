@@ -37,6 +37,7 @@ public class NoPlayablePlayer : Player
     {
         GameObject.Find("StarPositions").GetComponent<StarController>().SwitchStar();
         AddCoins(-20);
+        AddStars(1);
     }
     
     public void CoinFieldAction(int action)
