@@ -87,6 +87,8 @@ public class Client : MonoBehaviour
                 }
             }
         }
+
+        int current = 1;
         
         for (int j = 0; j < temp.Length; j++)
         {
@@ -94,7 +96,30 @@ public class Client : MonoBehaviour
             {
                 if (temp[j] == players[i])
                 {
-                    playerInfoElements[i].textPlacement.text = j+1 + ".";
+                    // playerInfoElements[i].textPlacement.text = j+1 + ".";
+
+                    if (j + 1 < temp.Length)
+                    {
+                        if (temp[j].stars == temp[j + 1].stars && temp[j].coins == temp[j + 1].coins)
+                        {
+                            playerInfoElements[i].textPlacement.text = current + ".";
+
+                            for (int f = 0; f < temp.Length; f++)
+                            {
+                                if (temp[j + 1] == players[f])
+                                {
+                                    playerInfoElements[f].textPlacement.text = current + ".";
+                                }
+                            }
+
+                            current += 2;
+                        }
+                        else
+                        {
+                            playerInfoElements[i].textPlacement.text = current + ".";
+                            current++;
+                        }
+                    }
                 }
             }
         }
