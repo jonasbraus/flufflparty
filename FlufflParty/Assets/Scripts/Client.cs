@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class Client : MonoBehaviour
 {
+    [SerializeField] private TMP_Text textLeftMoves;
     private TcpClient client;
     private Stream stream;
     [SerializeField] private GameObject playerPrefab;
@@ -191,6 +192,7 @@ public class Client : MonoBehaviour
                     players[job.data[1]].textCoinsInfo = playerInfoElements[job.data[1]].textCoinInfo;
                     players[job.data[1]].textStarsInfo = playerInfoElements[job.data[1]].textStarsInfo;
                     players[job.data[1]].uiHandler = uiHandler;
+                    players[job.data[1]].textLeftMoves = textLeftMoves;
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");

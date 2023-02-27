@@ -54,6 +54,7 @@ public class PlayablePlayer : Player
             {
                 wurfelt = true;
                 wurfelZahl = Random.Range(1, 7);
+                textLeftMoves.text = wurfelZahl + "";
 
                 client.SendWurfeln(wurfelZahl);
 
@@ -91,6 +92,7 @@ public class PlayablePlayer : Player
                 else if (wurfelZahl > 0)
                 {
                     wurfelZahl--;
+                    textLeftMoves.text = wurfelZahl + "";
 
                     //the next field is the current field XD
                     currentField = nextField;

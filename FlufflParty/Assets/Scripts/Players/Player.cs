@@ -17,7 +17,7 @@ public abstract class Player : MonoBehaviour
     public int index;
     public int coins = 0;
     public int stars = 0;
-    public TMP_Text textCoinsInfo, textStarsInfo;
+    public TMP_Text textCoinsInfo, textStarsInfo, textLeftMoves;
     protected bool eventstop = false;
     public UIHandler uiHandler;
     
