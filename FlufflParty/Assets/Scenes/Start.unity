@@ -664,7 +664,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -917,7 +917,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &293557777
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1284,17 +1284,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: Roomcode
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3f776446f6429de4b92b7db92e77952e, type: 2}
-  m_sharedMaterial: {fileID: -996942129922571021, guid: 3f776446f6429de4b92b7db92e77952e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 30b250cb342768045acde7309e218e46, type: 2}
+  m_sharedMaterial: {fileID: -996942129922571021, guid: 30b250cb342768045acde7309e218e46, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3767,7 +3767,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5362,7 +5362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5480,7 +5480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1178238780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6185,7 +6185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1e46bd9d3792ce408b6b614d27a8946, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6832,7 +6832,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7432,7 +7432,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1e46bd9d3792ce408b6b614d27a8946, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7566,7 +7566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8322,7 +8322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f1e46bd9d3792ce408b6b614d27a8946, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9376,7 +9376,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 952a5200c3226fd418c93d8ffb2708a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18dac7fc6a419404fad9f6964e47d671, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

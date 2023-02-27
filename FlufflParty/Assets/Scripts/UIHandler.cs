@@ -62,12 +62,12 @@ public class UIHandler : MonoBehaviour
 
         if (player.coins < 20)
         {
-            controller.infoText.text = "oh... sorry... but you do not have enough coins (20)";
+            controller.infoText.text = "sorry... but you do not have enough coins";
             controller.buttonBuy.SetActive(false);
         }
         else
         {
-            controller.infoText.text = "do you want to buy a star? (20 coins)";
+            controller.infoText.text = "A Star for you!";
             controller.buttonBuy.SetActive(true);
         }
     }
