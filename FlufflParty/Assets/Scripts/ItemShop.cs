@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ItemShop : MonoBehaviour
 {
-    [SerializeField] private GameObject Layout2;
-    [SerializeField] private GameObject LayoutItemShop;
-    [SerializeField] private Client client;
-    
+    [SerializeField] private UIItem[] items;
+
+    public static Player currentPlayer = null;
+
+    public void Init(Player _currentPlayer)
+    {
+        currentPlayer = _currentPlayer;
+    }
 }

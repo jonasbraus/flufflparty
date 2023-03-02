@@ -10,7 +10,15 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject layout2;
     [SerializeField] private GameObject layoutMiniMap;
     [SerializeField] private GameObject layoutBuyStar;
+    [SerializeField] private GameObject layoutItemShop;
 
+    private static UIHandler currentInstance;
+
+    public static UIHandler GetInstance()
+    {
+        return currentInstance;
+    }
+    
     public bool MapOpen
     {
         get
@@ -28,7 +36,9 @@ public class UIHandler : MonoBehaviour
         layoutMiniMap.SetActive(false);
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
-        
+        layoutItemShop.SetActive(false);
+
+        currentInstance = this;
     }
 
     public void ActivateLayout1()
@@ -38,6 +48,7 @@ public class UIHandler : MonoBehaviour
         layoutMiniMap.SetActive(false);
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
+        layoutItemShop.SetActive(false);
     }
 
     public void ActivateLayoutMiniMap()
@@ -47,6 +58,7 @@ public class UIHandler : MonoBehaviour
         layoutMiniMap.SetActive(true);
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
+        layoutItemShop.SetActive(false);
     }
 
     public void ActivateLayoutBuyStar(Player player)
@@ -57,6 +69,7 @@ public class UIHandler : MonoBehaviour
         layoutMiniMap.SetActive(false);
         layoutBuyStar.SetActive(true);
         layout2.SetActive(false);
+        layoutItemShop.SetActive(false);
 
         LayoutBuyStarController controller = layoutBuyStar.GetComponent<LayoutBuyStarController>();
 
@@ -81,6 +94,18 @@ public class UIHandler : MonoBehaviour
         layoutMiniMap.SetActive(false);
         layoutBuyStar.SetActive(false);
         layout2.SetActive(true);
+        layoutItemShop.SetActive(false);
+    }
+
+    public void ActivateLayoutItemShop()
+    {
+        layout0.SetActive(false);
+        layout1.SetActive(false);
+        layoutMiniMap.SetActive(false);
+        layoutBuyStar.SetActive(false);
+        layout2.SetActive(false);
+        layoutItemShop.SetActive(true);
+        layoutItemShop.GetComponent<ItemShop>().Init(currentPlayer);
     }
 
     public void ButtonBuyStar()
@@ -103,6 +128,12 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonEnter()
     {
-        
+        ActivateLayoutItemShop();
+    }
+
+    public void ButtonBack()
+    {
+        ActivateLayout1();
+        ((PlayablePlayer)currentPlayer).SkipShop();
     }
 }

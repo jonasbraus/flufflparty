@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Player : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public abstract class Player : MonoBehaviour
     public TMP_Text textCoinsInfo, textStarsInfo, textLeftMoves;
     protected bool eventstop = false;
     public UIHandler uiHandler;
+    public Item[] items = new Item[3];
+    public Image[] uiItems;
     
     //for coin animation
     private AnimationHandler animationHandler;
@@ -71,6 +74,19 @@ public abstract class Player : MonoBehaviour
         textCoinsInfo.text = coins + "";
         PlayAnimation(AnimationType.Coin);
         Client.GetCurrentInstance().CalculatePlacement();
+    }
+
+    public void AddItem(Item item)
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (items[i] == null)
+            {
+                items[i] = item;
+                uiItems[i].sprite = item.sprite;
+                break;
+            }
+        }
     }
     
     public void OnTriggerEnter(Collider c)

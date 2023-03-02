@@ -8,6 +8,7 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Client : MonoBehaviour
     [SerializeField] private GameObject[] playerInfo;
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
     [SerializeField] private GameObject layout2;
+    [SerializeField] private Image[] uiItems;
 
     private int playerAmount = 0;
 
@@ -182,6 +184,18 @@ public class Client : MonoBehaviour
                     players[job.data[1]].uiHandler = uiHandler;
                     players[job.data[1]].textLeftMoves = textLeftMoves;
                     players[job.data[1]].AddCoins(3);
+
+                    Image[] tempUIItems = new Image[3];
+
+                    int f = 0;
+                    
+                    for (int i = job.data[1] * 3; i < job.data[1] * 3 + 3; i++)
+                    {
+                        tempUIItems[f] = uiItems[i];
+                    }
+
+                    players[job.data[1]].uiItems = tempUIItems;
+                    
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");
@@ -281,4 +295,6 @@ public class Client : MonoBehaviour
     {
         stream.Write(new byte[]{8, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     }
+    
+    //TODO: SendBuyItem
 }
