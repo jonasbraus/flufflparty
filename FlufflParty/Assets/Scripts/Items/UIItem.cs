@@ -16,7 +16,7 @@ public class UIItem : MonoBehaviour
         {
             player.AddCoins(-item.Cost);
             UIHandler.GetInstance().ButtonBack();
-            player.AddItem(item);
+            ((PlayablePlayer)player).AddItem(item);
         }
     }
 }

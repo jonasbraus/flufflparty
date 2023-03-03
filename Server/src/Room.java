@@ -183,6 +183,15 @@ public class Room
                                             }
                                         }
                                         break;
+                                    case 9:
+                                        for (int i = 0; i < players.length; i++)
+                                        {
+                                            if (i != player)
+                                            {
+                                                players[i].output.write(new byte[]{9, (byte)player, readData[1], 0, 0, 0, 0, 0, 0, 0});
+                                            }
+                                        }
+                                        break;
                                     case 126:
                                         players[player].lastTimeSendTimeOutCheck = System.currentTimeMillis();
                                         break;

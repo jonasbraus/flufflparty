@@ -253,4 +253,10 @@ public class PlayablePlayer : Player
     {
         client.SendEventStopFinished();
     }
+
+    public new void AddItem(Item item)
+    {
+        base.AddItem(item);
+        client.SendBuyItem(item);
+    }
 }

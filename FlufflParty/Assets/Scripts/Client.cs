@@ -29,6 +29,7 @@ public class Client : MonoBehaviour
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
     [SerializeField] private GameObject layout2;
     [SerializeField] private Image[] uiItems;
+    [SerializeField] private Item[] items;
 
     private int playerAmount = 0;
 
@@ -215,6 +216,9 @@ public class Client : MonoBehaviour
                 case 8:
                     ((NoPlayablePlayer)players[job.data[1]]).BuyStar();
                     break;
+                case 9:
+                    players[job.data[1]].AddItem(items[job.data[3]]);
+                    break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
@@ -295,6 +299,9 @@ public class Client : MonoBehaviour
     {
         stream.Write(new byte[]{8, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     }
-    
-    //TODO: SendBuyItem
+
+    public void SendBuyItem(Item item)
+    {
+        stream.Write(new byte[] { 9, (byte)item.type, 0, 0, 0, 0, 0, 0, 0, 0 });
+    }
 }
