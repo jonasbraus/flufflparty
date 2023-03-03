@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoPlayablePlayer : Player
 {
@@ -31,6 +32,8 @@ public class NoPlayablePlayer : Player
         
         activated = false;
         diceScript = dice.GetComponent<Dice>();
+        
+     
     }
 
     public void BuyStar()
@@ -56,6 +59,13 @@ public class NoPlayablePlayer : Player
     {
         wurfelt = true;
         this.wurfelZahl = wurfelZahl;
+        
+        if (activeItem == Item.Type.Mushroom)
+        {
+            wurfelZahl += 3;
+            activeItem = Item.Type.None;
+        }
+        
         //nächstes Feld anvisieren
         TargetNextField();
 

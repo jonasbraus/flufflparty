@@ -118,6 +118,16 @@ public class Room
 
                                 timeOut = System.currentTimeMillis();
 
+
+                                /*
+                                ----------------------------------------
+                                ----------------------------------------
+                                ----------------------------------------
+                                HERE IS THE ROOM / GAME LOGIC
+                                ----------------------------------------
+                                ----------------------------------------
+                                ----------------------------------------
+                                 */
                                 switch (readData[0])
                                 {
 
@@ -158,6 +168,8 @@ public class Room
                                         }
                                         break;
 
+                                        //Es wurde auf ein CoinField getreten (Rot oder Blau)
+                                    //1 x, x = player; 2 y, y = Loose or Get
                                     case 6:
                                         for (int i = 0; i < players.length; i++)
                                         {
@@ -168,12 +180,15 @@ public class Room
                                         }
                                         break;
 
+                                        //Eventstop (ItemShop, BuyStar, ...) ist fertig
+                                    //1 x, x = player
                                     case 7:
                                         for (int i = 0; i < players.length; i++)
                                         {
                                                 players[i].output.write(new byte[]{7, (byte)player, 0, 0, 0, 0, 0, 0, 0, 0});
                                         }
                                         break;
+                                        //Spieler hat einen Stern gekauft
                                     case 8:
                                         for (int i = 0; i < players.length; i++)
                                         {
@@ -183,6 +198,9 @@ public class Room
                                             }
                                         }
                                         break;
+
+                                        //Spieler hat ein Item Gekauft
+                                    //1 x, x = player; 2 y, y = Item.Type (byte)
                                     case 9:
                                         for (int i = 0; i < players.length; i++)
                                         {

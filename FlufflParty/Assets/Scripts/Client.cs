@@ -30,6 +30,7 @@ public class Client : MonoBehaviour
     [SerializeField] private GameObject layout2;
     [SerializeField] private Image[] uiItems;
     [SerializeField] private Item[] items;
+    [SerializeField] private Button[] itemButtons;
 
     private int playerAmount = 0;
 
@@ -43,6 +44,11 @@ public class Client : MonoBehaviour
     private void Start()
     {
         thisClient = this;
+        
+        foreach(Image img in uiItems)
+        {
+            img.gameObject.SetActive(false);   
+        }
         
         for (int i = 0; i < 4; i++)
         {
@@ -142,6 +148,8 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
+
+                        itemButtons[job.data[5]].interactable = true;
                     }
                     //player is not playable
                     else
@@ -155,6 +163,8 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
+
+                        itemButtons[job.data[5]].interactable = false;
                     }
 
                     break;

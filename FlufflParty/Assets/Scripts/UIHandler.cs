@@ -108,6 +108,12 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.GetComponent<ItemShop>().Init(currentPlayer);
     }
 
+    //TODO: Only temp, make additional function for Item selection
+    public void ActivateLayoutItemSelect()
+    {
+        currentPlayer.ActivateItem(0, Item.Type.Mushroom);
+    }
+
     public void ButtonBuyStar()
     {
         ((PlayablePlayer)currentPlayer).BuyStar(true);

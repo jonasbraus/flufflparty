@@ -4,6 +4,7 @@ using System.Net.Mail;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayablePlayer : Player
 {
@@ -36,6 +37,7 @@ public class PlayablePlayer : Player
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 61;
         diceScript = dice.GetComponent<Dice>();
+        
     }
 
     private void Update()
@@ -53,25 +55,30 @@ public class PlayablePlayer : Player
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
             if ((Input.GetMouseButtonUp(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
             {
-                    if(!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
+                if (!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
+                {
+                    wurfelt = true;
+                    wurfelZahl = Random.Range(1, 7);
+                    
+                    if (activeItem == Item.Type.Mushroom)
                     {
-                        wurfelt = true;
-                        wurfelZahl = Random.Range(1, 7);
-                        textLeftMoves.text = wurfelZahl + "";
-
-                        client.SendWurfeln(wurfelZahl);
-
-                        //nächstes Feld anvisieren
-                        TargetNextField();
-
-                        //stop the dice
-                        diceScript.StopRandom(wurfelZahl);
-
-                        //delay for walk start
-                        timeSinceWurfeln = Time.time;
+                        wurfelZahl += 3;
+                        activeItem = Item.Type.None;
                     }
-                
-            
+                    
+                    textLeftMoves.text = wurfelZahl + "";
+
+                    client.SendWurfeln(wurfelZahl);
+
+                    //nächstes Feld anvisieren
+                    TargetNextField();
+
+                    //stop the dice
+                    diceScript.StopRandom(wurfelZahl);
+
+                    //delay for walk start
+                    timeSinceWurfeln = Time.time;
+                }
             }
         }
     }
