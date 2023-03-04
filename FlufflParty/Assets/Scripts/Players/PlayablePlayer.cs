@@ -28,6 +28,8 @@ public class PlayablePlayer : Player
 
     public Client client;
 
+    private static PlayablePlayer instance;
+
     public override void Init()
     {
         TMP_Text[] playerTexts = GetComponentsInChildren<TMP_Text>();
@@ -37,9 +39,15 @@ public class PlayablePlayer : Player
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 61;
         diceScript = dice.GetComponent<Dice>();
-        
+
+        instance = this;
     }
 
+    public static PlayablePlayer GetCurrentInstance()
+    {
+        return instance;
+    }
+    
     private void Update()
     {
         /*

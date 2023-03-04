@@ -11,6 +11,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject layoutMiniMap;
     [SerializeField] private GameObject layoutBuyStar;
     [SerializeField] private GameObject layoutItemShop;
+    [SerializeField] private GameObject layoutSelectItem;
 
     private static UIHandler currentInstance;
 
@@ -37,6 +38,7 @@ public class UIHandler : MonoBehaviour
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
 
         currentInstance = this;
     }
@@ -49,6 +51,7 @@ public class UIHandler : MonoBehaviour
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
     }
 
     public void ActivateLayoutMiniMap()
@@ -59,6 +62,7 @@ public class UIHandler : MonoBehaviour
         layoutBuyStar.SetActive(false);
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
     }
 
     public void ActivateLayoutBuyStar(Player player)
@@ -70,6 +74,7 @@ public class UIHandler : MonoBehaviour
         layoutBuyStar.SetActive(true);
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
 
         LayoutBuyStarController controller = layoutBuyStar.GetComponent<LayoutBuyStarController>();
 
@@ -95,6 +100,7 @@ public class UIHandler : MonoBehaviour
         layoutBuyStar.SetActive(false);
         layout2.SetActive(true);
         layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
     }
 
     public void ActivateLayoutItemShop()
@@ -106,12 +112,28 @@ public class UIHandler : MonoBehaviour
         layout2.SetActive(false);
         layoutItemShop.SetActive(true);
         layoutItemShop.GetComponent<ItemShop>().Init(currentPlayer);
+        layoutSelectItem.SetActive(false);
     }
 
-    //TODO: Only temp, make additional function for Item selection
+    
     public void ActivateLayoutItemSelect()
     {
-        currentPlayer.ActivateItem(0, Item.Type.Mushroom);
+
+        currentPlayer = PlayablePlayer.GetCurrentInstance();
+        
+        if(currentPlayer.activated)
+        {
+            layout0.SetActive(false);
+            layout1.SetActive(false);
+            layoutMiniMap.SetActive(false);
+            layoutBuyStar.SetActive(false);
+            layout2.SetActive(false);
+            layoutItemShop.SetActive(false);
+            
+            layoutSelectItem.GetComponent<ItemSelector>().Init(currentPlayer.items);
+            
+            layoutSelectItem.SetActive(true);
+        }
     }
 
     public void ButtonBuyStar()
@@ -141,5 +163,11 @@ public class UIHandler : MonoBehaviour
     {
         ActivateLayout1();
         ((PlayablePlayer)currentPlayer).SkipShop();
+    }
+
+    public void ButtonSelectItem(int index)
+    {
+        currentPlayer.ActivateItem(index);
+        ActivateLayout1();
     }
 }

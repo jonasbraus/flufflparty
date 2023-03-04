@@ -91,11 +91,11 @@ public abstract class Player : MonoBehaviour
         }
     }
 
-    public void ActivateItem(int index, Item.Type type)
+    public void ActivateItem(int index)
     {
+        activeItem = items[index].type;
         uiItems[index].gameObject.SetActive(false);
         items[index] = null;
-        activeItem = type;
     }
 
     public void OnTriggerEnter(Collider c)
