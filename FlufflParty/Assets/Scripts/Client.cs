@@ -227,6 +227,7 @@ public class Client : MonoBehaviour
                     ((NoPlayablePlayer)players[job.data[1]]).BuyStar();
                     break;
                 case 9:
+                    players[job.data[1]].AddCoins(-items[job.data[3]].Cost);
                     players[job.data[1]].AddItem(items[job.data[3]]);
                     break;
                 case 126:
