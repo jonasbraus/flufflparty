@@ -32,6 +32,8 @@ public class Client : MonoBehaviour
     [SerializeField] private Item[] items;
     [SerializeField] private Button[] itemButtons;
 
+    [SerializeField] private TMP_Text fpsText;
+
     private int playerAmount = 0;
 
     private static Client thisClient;
@@ -43,6 +45,8 @@ public class Client : MonoBehaviour
     
     private void Start()
     {
+        Application.targetFrameRate = 100;
+        
         thisClient = this;
         
         foreach(Image img in uiItems)
@@ -125,6 +129,8 @@ public class Client : MonoBehaviour
 
     private void Update()
     {
+        fpsText.text = "" + Time.frameCount / Time.time + "";
+        
         if (jobs.Count > 0)
         {
             Job job = jobs.Dequeue();
