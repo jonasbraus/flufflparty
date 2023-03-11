@@ -42,7 +42,12 @@ public class Client : MonoBehaviour
     {
         return thisClient;
     }
-    
+
+    private void Awake()
+    {
+        Time.fixedDeltaTime = 0.01f;
+    }
+
     private void Start()
     {
         Application.targetFrameRate = 100;
@@ -127,7 +132,7 @@ public class Client : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         fpsText.text = "" + Time.frameCount / Time.time + "";
         
