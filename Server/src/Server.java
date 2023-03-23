@@ -31,14 +31,14 @@ public class Server
     }
 
     /**
-     * tries to delete a room by its roomcode
+     * tries to delete a room by its roomcode (will be only called by a rooms timeout for now)
      */
     public void deleteRoom(String code)
     {
         rooms.get(code).closeRoom();
         rooms.remove(code);
 
-
+        //LOG
         System.out.println("[" + getDateTime() + "] Room" + code + " successfully deleted");
     }
 
