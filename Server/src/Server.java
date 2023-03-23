@@ -84,6 +84,9 @@ public class Server
                             byte[] readData = new byte[10];
 
                             //read incoming data into the buffer
+                            /**
+                             * INPUT FORMAT: [action, free space]
+                             */
                             input.read(readData);
 
                             //check for the incoming actions
@@ -107,13 +110,19 @@ public class Server
                                 //in this case a player wants to join an existing room (even the room creator will join via this method)
                                 case 1:
 
-                                    //fill the buffer with the incoming data (second data send after inital data transfer)
+                                    //fill the buffer with the incoming data (second data send after inital data transfer, no server response except TCP..)
+                                    /**
+                                     * INPUT FORMAT: [roomcode]
+                                     */
                                     input.read(readData);
 
                                     //deocde the roomcode to a string (ascii -> string)
                                     String roomCode = new String(readData, StandardCharsets.US_ASCII);
 
                                     //read the third message
+                                    /**
+                                     * INPUT FORMAT: [name]
+                                     */
                                     input.read(readData);
 
                                     //deocde the players name

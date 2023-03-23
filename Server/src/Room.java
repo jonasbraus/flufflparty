@@ -158,33 +158,40 @@ public class Room
                                 switch (readData[0])
                                 {
 
-                                    //spieler hat gewürfelt
-                                    //1 x, x = zahl
+                                    /**
+                                     * //spieler hat gewürfelt
+                                     */
                                     case 3:
                                         for (int i = 0; i < players.length; i++)
                                         {
                                             //sync to all OTHER players
                                             if (i != player)
                                             {
+                                                //!!data processing!!
+                                                //----------------------------action---player-------rolled number----free space--------
                                                 players[i].output.write(new byte[]{3, (byte) player, readData[1], 0, 0, 0, 0, 0, 0, 0});
                                             }
                                         }
                                         break;
-                                    //pfeil wurde ausgewählt
-                                    //1 x, x = idx
+                                    /**
+                                     * //pfeil wurde ausgewählt
+                                     */
                                     case 4:
                                         for (int i = 0; i < players.length; i++)
                                         {
+                                            //!!data processing!!
                                             //sync to all OTHER players
                                             if (i != player)
                                             {
+                                                //-------------------------------action----player-----arrow index--------free space-----
                                                 players[i].output.write(new byte[]{4, (byte) player, readData[1], 0, 0, 0, 0, 0, 0, 0});
                                             }
                                         }
                                         break;
 
-                                    //Spieler ist fertig mit seinem Zug
-                                    //1 x, x = next player
+                                    /**
+                                     * //Spieler ist fertig mit seinem Zug
+                                     */
                                     case 5:
                                         //calculate the next player
                                         currentPlayer++;
@@ -195,58 +202,76 @@ public class Room
                                         //sync the activation of the current player to ALL clients
                                         for (int i = 0; i < players.length; i++)
                                         {
+                                            //!!data processing!!
+                                            //----------------------------action--------the next player-----------free space------
                                             players[i].output.write(new byte[]{2, (byte) currentPlayer, 0, 0, 0, 0, 0, 0, 0, 0});
                                         }
                                         break;
 
-                                        //Es wurde auf ein CoinField getreten (Rot oder Blau)
-                                    //1 x, x = player; 2 y, y = Loose or Get
+                                    /**
+                                     * //Es wurde auf ein CoinField getreten (Rot oder Blau)
+                                     */
                                     case 6:
                                         for (int i = 0; i < players.length; i++)
                                         {
                                             //sync to OTHER players
                                             if (i != player)
                                             {
+                                                //!!data processing!!
+                                                //-----------------------------action--player-------losse or get------------free space--
                                                 players[i].output.write(new byte[]{6, (byte)player, readData[1], 0, 0, 0, 0, 0, 0, 0});
                                             }
                                         }
                                         break;
 
-                                    //Eventstop (ItemShop, BuyStar, ...) ist fertig
-                                    //1 x, x = player
+                                    /**
+                                     * //Eventstop (ItemShop, BuyStar, ...) ist fertig
+                                     */
                                     case 7:
                                         //sync to ALL players
                                         for (int i = 0; i < players.length; i++)
                                         {
+                                            //!!simple sync!!
+                                            //------------------------------action---player---------free space--------
                                             players[i].output.write(new byte[]{7, (byte)player, 0, 0, 0, 0, 0, 0, 0, 0});
                                         }
                                         break;
-                                        //Spieler hat einen Stern gekauft
+                                    /**
+                                     * //Spieler hat einen Stern gekauft
+                                     */
                                     case 8:
                                         for (int i = 0; i < players.length; i++)
                                         {
+                                            //!!simple sync!!
                                             //sync to OTHER players
                                             if (i != player)
                                             {
+                                                //-----------------------------action----player----------free space------
                                                 players[i].output.write(new byte[]{8, (byte)player, 0, 0, 0, 0, 0, 0, 0, 0});
                                             }
                                         }
                                         break;
 
-                                        //Spieler hat ein Item Gekauft
-                                    //1 x, x = player; 2 y, y = Item.Type (byte)
+                                    /**
+                                     * //Spieler hat ein Item Gekauft
+                                     */
                                     case 9:
                                         for (int i = 0; i < players.length; i++)
                                         {
                                             //Sync to OTHER players
                                             if (i != player)
                                             {
+                                                //!!data processing!!
+                                                //------------------------------action---player-------item ID--------free space--------
                                                 players[i].output.write(new byte[]{9, (byte)player, readData[1], 0, 0, 0, 0, 0, 0, 0});
                                             }
                                         }
                                         break;
-                                        //the timeout check action
+                                    /**
+                                     * //the timeout check action
+                                     */
                                     case 126:
+                                        //!!server action!!
                                         players[player].lastTimeSendTimeOutCheck = System.currentTimeMillis();
                                         break;
                                 }
