@@ -1,3 +1,7 @@
+/**
+ * A Simple Vector class according to the Unity vector
+ */
+
 public class Vector3
 {
     public float x, y, z;

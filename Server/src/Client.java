@@ -2,6 +2,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
 
+/**
+ * Instance of a Client connected
+ */
 public class Client
 {
     public DataOutputStream output;
