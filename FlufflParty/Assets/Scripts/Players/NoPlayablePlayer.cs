@@ -96,7 +96,6 @@ public class NoPlayablePlayer : Player
         if (activated && !name.Equals(""))
         {
             camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
-            
             if (!wait)
             {
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
@@ -115,7 +114,7 @@ public class NoPlayablePlayer : Player
                     textLeftMoves.text = wurfelZahl + "";
 
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
-                    if (wurfelZahl > 0)
+                    if (wurfelZahl > 0) 
                     {
                         TargetNextField();
                     }
@@ -125,10 +124,10 @@ public class NoPlayablePlayer : Player
                 {
                     if (!wurfelt)
                     {
-                        //start the dice
-                        dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
-                            transform.position + Vector3.up * 2, ref useLess, 0.2f);
-                        diceScript.StartRandom();
+                       StartDice(); 
+                    }else if (activated)
+                    {
+                        StartDice();
                     }
                 }
             }
@@ -191,4 +190,11 @@ public class NoPlayablePlayer : Player
         }
     }
 
+    public void StartDice()
+    {
+        //start the dice
+        dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
+            transform.position + Vector3.up * 2, ref useLess, 0.2f);
+        diceScript.StartRandom();
+    }
 }

@@ -28,7 +28,6 @@ public class Client : MonoBehaviour
     [SerializeField] private GameObject[] playerInfo;
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
     [SerializeField] private GameObject layout2;
-    [SerializeField] private Image[] uiItems;
     [SerializeField] private Item[] items;
     [SerializeField] private Button[] itemButtons;
 
@@ -53,12 +52,7 @@ public class Client : MonoBehaviour
         Application.targetFrameRate = 100;
         
         thisClient = this;
-        
-        foreach(Image img in uiItems)
-        {
-            img.gameObject.SetActive(false);   
-        }
-        
+
         for (int i = 0; i < 4; i++)
         {
             playerInfo[i].SetActive(false);
@@ -207,17 +201,7 @@ public class Client : MonoBehaviour
                     players[job.data[1]].textLeftMoves = textLeftMoves;
                     players[job.data[1]].AddCoins(3);
 
-                    Image[] tempUIItems = new Image[3];
 
-                    int f = 0;
-                    
-                    for (int i = job.data[1] * 3; i < job.data[1] * 3 + 3; i++)
-                    {
-                        tempUIItems[f] = uiItems[i];
-                    }
-
-                    players[job.data[1]].uiItems = tempUIItems;
-                    
                     players[job.data[1]].Init();
 
                     playerNameTexts[job.data[1]].text = Encoding.ASCII.GetString(name).Replace(" ", "");

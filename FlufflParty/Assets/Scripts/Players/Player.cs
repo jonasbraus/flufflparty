@@ -22,7 +22,6 @@ public abstract class Player : MonoBehaviour
     protected bool eventstop = false;
     public UIHandler uiHandler;
     public Item[] items = new Item[3];
-    public Image[] uiItems;
     public Item.Type activeItem = Item.Type.None;
     
     //for coin animation
@@ -84,8 +83,6 @@ public abstract class Player : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
-                uiItems[i].sprite = item.sprite;
-                uiItems[i].gameObject.SetActive(true);
                 break;
             }
         }
@@ -94,7 +91,6 @@ public abstract class Player : MonoBehaviour
     public void ActivateItem(int index)
     {
         activeItem = items[index].type;
-        uiItems[index].gameObject.SetActive(false);
         items[index] = null;
     }
 

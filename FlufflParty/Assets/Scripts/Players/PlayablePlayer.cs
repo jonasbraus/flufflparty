@@ -17,6 +17,7 @@ public class PlayablePlayer : Player
     private float speed = 5;
     private float interPol = 0;
     private int wurfelZahl = 0;
+    private bool checkDoubleDice = true;
 
     private bool wait = false;
 
@@ -65,14 +66,26 @@ public class PlayablePlayer : Player
             {
                 if (!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
                 {
+                    
                     wurfelt = true;
                     wurfelZahl = Random.Range(1, 7);
+
+                    switch (activeItem)
+                    {
+                        case Item.Type.Mushroom: wurfelZahl += 3; activeItem = Item.Type.None; break;
+                        case Item.Type.DoubleDice: checkDoubleDice = true; break; 
+                    }
                     
+                    /*
                     if (activeItem == Item.Type.Mushroom)
                     {
                         wurfelZahl += 3;
                         activeItem = Item.Type.None;
+                    }else if (activeItem == Item.Type.DoubleDice)
+                    {
+                        checkDoubleDice = true;
                     }
+                    */
                     
                     textLeftMoves.text = wurfelZahl + "";
 
@@ -144,15 +157,20 @@ public class PlayablePlayer : Player
                                 break;
                         }
 
-                        Invoke("Finish", 2);
-                        activated = false;
+                        if (!checkDoubleDice)
+                        {
+                            Invoke("Finish", 2);
+                            activated = false;
+                        }
+                        else
+                        {
+                            checkDoubleDice = false;
+                            wurfelt = false;
+                        }
                     }
                     else
                     {
-                        //start the dice
-                        dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
-                            transform.position + Vector3.up * 2, ref useLess, 0.2f);
-                        diceScript.StartRandom();
+                        StartDice();
                     }
                 }
             }
@@ -273,5 +291,13 @@ public class PlayablePlayer : Player
     {
         base.AddItem(item);
         client.SendBuyItem(item);
+    }
+
+    public void StartDice()
+    {
+        //start the dice
+        dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
+            transform.position + Vector3.up * 2, ref useLess, 0.2f);
+        diceScript.StartRandom();
     }
 }
