@@ -92,6 +92,10 @@ public class Server
                             //check for the incoming actions
                             switch(readData[0])
                             {
+                                /**
+                                 * !!!!!!!!!!!!!!!!!!!      0 is not used because of possible empty arrays read in because of inital connection errors  !!!!!!!!!!!!!!!!!!!!
+                                 */
+
                                 //this case generates a new room and sends the room code to the requester (not for join)
                                 case 2:
                                     //cache the generated room code
