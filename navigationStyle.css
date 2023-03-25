@@ -70,6 +70,7 @@ nav ul li div
     border-radius: 50px;
     padding-top: 70px;
     margin-left: -50px;
+    padding-bottom: 10px;
 }
 
 .menuDropdownDesktop:hover div
