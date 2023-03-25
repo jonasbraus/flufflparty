@@ -177,13 +177,28 @@ body {
     transition: all 0.5s ease 0s;
 }
 
-
-.mobileMenuDropDown li {
+.mobileMenuDropDown li
+{
     list-style: none;
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: center;
     padding: 20px;
+}
+
+.mobileMenuDropDown2 div
+{
+    display: none;
+}
+
+.mobileMenuDropDown2:hover div
+{
+    display: inherit;
+}
+
+.mobileMenuDropDown2:hover div li
+{
+    padding: 5px;
 }
 
 
@@ -193,6 +208,6 @@ body {
     position: absolute;
     right: 0;
     height: 100vh;
-    width: 150px;
-    margin-top: 3%;
+
+    margin-top: 6%;
 }
