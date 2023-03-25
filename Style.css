@@ -17,6 +17,14 @@ li, a, button
     text-decoration: none;
 }
 
+@media only screen and (max-width: 768px)
+{
+    li, a, button
+    {
+        font-size: 25px;
+    }
+}
+
 header
 {
     display: flex;
