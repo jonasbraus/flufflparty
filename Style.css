@@ -21,7 +21,7 @@ li, a, button
 {
     li, a, button
     {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .hideOnMobile
@@ -218,5 +218,6 @@ body
     position: absolute;
     right: 0;
     height: 100vh;
+    width: 150px;
     margin-top: 3%;
 }
