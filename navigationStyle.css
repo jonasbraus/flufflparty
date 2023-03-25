@@ -147,13 +147,14 @@ Mobile
     {
         display: flex;
         flex-direction: column;
+        list-style: none;
     }
 
     menu div ul li
     {
         text-align: center;
-        padding: 30px 30px 30px 30px;
-        margin: 5px;
+        padding: 20px 30px 20px 30px;
+        margin: 5px 30px;
         cursor: pointer;
         border-radius: 50px;
         background-color: rgba(136, 179, 174, 1);
