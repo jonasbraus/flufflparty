@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+*
+{
+    font-family: "Roboto Light", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+/*
+------------------------------------------------------------------------------------------
+Desktop
+------------------------------------------------------------------------------------------
+ */
+/*basic li a and button setup*/
+li, a, button
+{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+/*title bar*/
+header
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #41423f;
+}
+
+/*IO Game Studios button (only navigation)*/
+header button
+{
+    padding: 20px;
+    border-radius: 50px;
+    border-style: none;
+    background-color: #88b3ae;
+    cursor: pointer;
+}
+
+header button:hover
+{
+    background-color: rgba(136, 179, 174, 0.2);
+}
+
+/*List Element Style (only navigation)*/
+header nav li
+{
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+header nav li:hover
+{
+    color: #88b3ae;
+}
+
+/*Dropdown*/
+nav ul li div
+{
+    display: none;
+    position: absolute;
+    background-color: #41423f;
+    border-radius: 50px;
+    right: 330px;
+    padding-top: 70px;
+}
+
+.menuDropdownDesktop:hover div
+{
+    display: block;
+}
+
+nav ul li div ul
+{
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul li div ul li
+{
+    padding: 0 0 20px 20px;
+    text-align: center;
+}
+
+nav ul li div ul li button
+{
+    padding: 10px;
+}
+/*
+------------------------------------------------------------------------------------------
+Mobile
+------------------------------------------------------------------------------------------
+ */
+
+@media (max-width: 18cm)
+{
+    nav ul
+    {
+        display: none;
+    }
+}
