@@ -8,51 +8,56 @@
 </head>
 <body>
 
-    <header>
+<header>
 
-        <button>IO Game Studios</button>
+    <button><a href="#mainHeader">IO Game Studios</a></button>
 
-        <nav>
-            <!-- Desktop-->
-            <ul>
+    <nav>
+        <!-- Desktop-->
+        <ul>
 
-                <li class="menuDropdownDesktop">
-                    Games
-                    <div>
-                        <ul>
-                            <li><button>FlufflParty</button></li>
-                            <li><button>Other</button></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>Quicklinks</li>
-                <li>About</li>
-            </ul>
+            <li class="menuDropdownDesktop">
+                Games
+                <div>
+                    <ul>
+                        <li>
+                            <button>FlufflParty</button>
+                        </li>
+                        <li>
+                            <button>Other</button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>Quicklinks</li>
+            <li>About</li>
+        </ul>
 
-            <!--Mobile-->
-            <button onclick="showMobileMenuBar()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
-                </svg>
-            </button>
-        </nav>
-    </header>
+        <!--Mobile-->
+        <button onclick="showMobileMenuBar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
+                 viewBox="0 0 16 16">
+                <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+            </svg>
+        </button>
+    </nav>
+</header>
 
-    <!--Mobile-->
-    <menu id="mobileMenuBar">
-        <div>
-            <ul>
-                <li>Games</li>
+<!--Mobile-->
+<menu id="mobileMenuBar">
+    <div>
+        <ul>
+            <li>Games</li>
 
-                <li>Quicklinks</li>
+            <li>Quicklinks</li>
 
-                <li>About</li>
-            </ul>
-        </div>
-    </menu>
+            <li>About</li>
+        </ul>
+    </div>
+</menu>
 
 <div>
-    <h1>We create games like back in the days</h1>
+    <h1 id="mainHeader">We create games like back in the days</h1>
 
     <br/>
     <br/>
@@ -126,6 +131,7 @@
     <br/>
     <br/>
     <br/>
+
 
 </div>
 </body>
