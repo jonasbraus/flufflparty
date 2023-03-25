@@ -150,7 +150,7 @@ body
     .dropdown div
     {
         right: 150px;
-        border-radius: 50px 0px 0 50px;
+        border-radius: 0px;
         top: 10px;
     }
 
@@ -173,6 +173,7 @@ body
     .mobileMenuButton
     {
         display: inline-block;
+        transition: all 0.5s ease 0s;
     }
 }
 
@@ -182,14 +183,22 @@ body
     height: 50px;
     position: absolute;
     right: 30px;
-    top: 30px
+    top: 30px;
+    color: white;
+}
+
+.mobileMenuButton svg:hover
+{
+    color: #0088a9;
 }
 
 .mobileMenuDropDown
 {
     display: none;
     background-color: #24242A;
+    transition: all 0.5s ease 0s;
 }
+
 
 
 .mobileMenuDropDown li
