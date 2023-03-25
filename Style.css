@@ -17,11 +17,16 @@ li, a, button
     text-decoration: none;
 }
 
-@media only screen and (max-width: 10cm)
+@media only screen and (max-width: 18cm)
 {
     li, a, button
     {
         font-size: 25px;
+    }
+
+    .hideOnMobile
+    {
+        display: none;
     }
 }
 
@@ -37,6 +42,14 @@ header
 .navLinks
 {
     list-style: none;
+}
+
+@media only screen and (max-width: 18cm)
+{
+    .navLinks
+    {
+        display: none;
+    }
 }
 
 .navLinks li
@@ -116,8 +129,85 @@ body
     text-align: center;
 }
 
+@media only screen and (max-width: 18cm)
+{
+    .dropdown div ul li
+    {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        padding: 0;
+    }
+
+    .dropdown div ul li
+    {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        text-align: center;
+        padding: 0;
+    }
+
+    .dropdown div
+    {
+        right: 150px;
+        border-radius: 50px 0px 0 50px;
+        top: 10px;
+    }
+
+}
+
 .dropdown:hover div ul, .dropdown:hover div
 {
     display: flex;
     flex-direction: column;
+}
+
+.mobileMenuButton
+{
+    background-color: rgba(0, 0, 0, 0);
+    display: none;
+}
+
+@media only screen and (max-width: 18cm)
+{
+    .mobileMenuButton
+    {
+        display: inline-block;
+    }
+}
+
+.mobileMenuButton svg
+{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 30px;
+    top: 30px
+}
+
+.mobileMenuDropDown
+{
+    display: none;
+    background-color: #24242A;
+}
+
+
+.mobileMenuDropDown li
+{
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.mobileMenuButton:hover .mobileMenuDropDown
+{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    height: 100vh;
+    margin-top: 20px;
 }
