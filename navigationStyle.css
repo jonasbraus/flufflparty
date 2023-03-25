@@ -44,11 +44,6 @@ header button
     cursor: pointer;
 }
 
-header button:hover
-{
-    background-color: rgba(198, 119, 70, 0.5);
-
-}
 
 /*List Element Style (only navigation)*/
 nav li
