@@ -44,7 +44,8 @@ header button
 
 header button:hover
 {
-    background-color: rgba(136, 179, 174, 0.5);
+    background-color: rgba(198, 119, 70, 0.5);
+
 }
 
 /*List Element Style (only navigation)*/
@@ -68,7 +69,7 @@ nav ul li div
     background-color: #41423f;
     border-radius: 50px;
     padding-top: 70px;
-    margin-left: -40px;
+    margin-left: -50px;
 }
 
 .menuDropdownDesktop:hover div
@@ -84,13 +85,13 @@ nav ul li div ul
 
 nav ul li div ul li
 {
-    padding: 0 0 20px 20px;
+    padding: 0 0 10px 20px;
     text-align: center;
 }
 
 nav ul li div ul li button
 {
-    padding: 10px;
+    padding: 20px;
 }
 
 /*Mobile Excluded*/
@@ -162,7 +163,7 @@ Mobile
 
     menu div ul li:hover
     {
-        background-color: rgba(136, 179, 174, 0.5);
+        background-color: rgba(198, 119, 70, 0.5);
     }
 
 }
