@@ -44,18 +44,18 @@ header button
 
 header button:hover
 {
-    background-color: rgba(136, 179, 174, 0.2);
+    background-color: rgba(136, 179, 174, 0.5);
 }
 
 /*List Element Style (only navigation)*/
-header nav li
+nav li
 {
     display: inline-block;
     margin-right: 20px;
     cursor: pointer;
 }
 
-header nav li:hover
+nav li:hover
 {
     color: #88b3ae;
 }
@@ -67,8 +67,8 @@ nav ul li div
     position: absolute;
     background-color: #41423f;
     border-radius: 50px;
-    right: 330px;
     padding-top: 70px;
+    margin-left: -40px;
 }
 
 .menuDropdownDesktop:hover div
@@ -92,6 +92,18 @@ nav ul li div ul li button
 {
     padding: 10px;
 }
+
+/*Mobile Excluded*/
+nav > button
+{
+    display: none;
+}
+
+menu
+{
+    display: none;
+}
+
 /*
 ------------------------------------------------------------------------------------------
 Mobile
@@ -100,8 +112,56 @@ Mobile
 
 @media (max-width: 18cm)
 {
+
+    /*Hide the default navigation*/
     nav ul
     {
         display: none;
     }
+
+    /*Show the Mobile menu button*/
+    nav button
+    {
+        display: blocK;
+        margin-right: -20px;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    /*Style the Menu Icon*/
+    nav svg
+    {
+        color: white;
+        width: 30px;
+        height: 30px;
+    }
+
+
+    menu div
+    {
+        float: right;
+        background-color: #41423f;
+        height: 100vh;
+    }
+
+    menu div ul
+    {
+        display: flex;
+        flex-direction: column;
+    }
+
+    menu div ul li
+    {
+        text-align: center;
+        padding: 30px 30px 30px 30px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 50px;
+        background-color: rgba(136, 179, 174, 1);
+    }
+
+    menu div ul li:hover
+    {
+        background-color: rgba(136, 179, 174, 0.5);
+    }
+
 }
