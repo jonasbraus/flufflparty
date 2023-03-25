@@ -25,6 +25,8 @@ li, a, button
 /*title bar*/
 header
 {
+
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,6 +105,8 @@ nav > button
 
 menu
 {
+    position: absolute;
+    right: 0px;
     display: none;
 }
 
@@ -177,7 +181,7 @@ General
 body
 {
     background-image: linear-gradient(#c67746, #88b3ae);
-    height: 100vh;
+    height: 100%;
 }
 
 h1
@@ -188,3 +192,4 @@ h1
     padding: 20px;
     color: #41423f;
 }
+
