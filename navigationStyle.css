@@ -113,6 +113,11 @@ Mobile
 
 @media (max-width: 18cm)
 {
+header 
+{
+padding: 10px 0;
+}
+
 
     /*Hide the default navigation*/
     nav ul
