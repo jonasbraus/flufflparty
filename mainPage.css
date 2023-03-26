@@ -31,17 +31,18 @@ h1 {
 
 .color1
 {
-    background-color: #F7A4A4;
+    /*background-color: #F7A4A4;*/
+    background-image: linear-gradient(#F7A4A4, #FEBE8C);
 }
 
 .color2
 {
-    background-color: #FEBE8C;
+    background-image: linear-gradient(#FEBE8C, #b9a4f7);
 }
 
 .color3
 {
-    background-color: #B6E2A1;
+    background-image: linear-gradient(#B6E2A1, #FFFBC1);
 }
 
 h2

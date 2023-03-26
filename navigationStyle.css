@@ -29,7 +29,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 100px;
-    background-color: #FFFBC1;
+    background-color: #ffe2c1;
 }
 
 /*IO Game Studios button (only navigation)*/
@@ -140,7 +140,7 @@ Mobile
     }
 }
 
-img
+header img
 {
     border-radius: 50px;
     max-width: 150px;
