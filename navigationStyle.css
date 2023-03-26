@@ -72,9 +72,10 @@ nav > button {
 }
 
 menu {
-    position: absolute;
-    right: 0px;
     display: none;
+    margin-top: 95px;
+    position: fixed;
+    right: 0;
 }
 
 /*
@@ -139,6 +140,7 @@ Mobile
     {
         background-color: #B6E2A1;
     }
+
 }
 
 header img

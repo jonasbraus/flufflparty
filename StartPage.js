@@ -3,7 +3,7 @@ var menuActive = false;
 function showMobileMenuBar()
 {
     if(!menuActive) {
-        document.getElementById("mobileMenuBar").style.display = "block";
+        document.getElementById("mobileMenuBar").style.display = "inline-block";
         document.getElementById("mobileMenuBarButton").style.backgroundColor = "#B6E2A1";
         menuActive = true;
     }
