@@ -59,9 +59,10 @@ header button:hover {
     background-color: #B6E2A1;
 }
 
-.highlighted
-{
-    color: #F7A4A4;
+@media (min-width: 18.1cm) {
+    .highlighted {
+        color: #F7A4A4;
+    }
 }
 
 /*Mobile Excluded*/
@@ -130,6 +131,11 @@ Mobile
     }
 
     menu div ul li:hover {
+        background-color: #B6E2A1;
+    }
+
+    .highlighted
+    {
         background-color: #B6E2A1;
     }
 }
