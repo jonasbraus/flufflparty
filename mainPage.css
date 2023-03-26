@@ -79,6 +79,7 @@ h2
 
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 @media (min-width: 18.1cm)
@@ -128,6 +129,16 @@ h2
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+}
+
+
+.googlePlayCard
+{
+    background-image: url("https://cdn-icons-png.flaticon.com/512/732/732208.png"), linear-gradient(#b9a4f7, #ece2ff);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+    background-blend-mode: luminosity;
 }
 
 .imageFull
