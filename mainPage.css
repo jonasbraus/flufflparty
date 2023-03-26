@@ -4,9 +4,14 @@ General
 ------------------------------------------------------------------------------------------
  */
 
-body {
-    background-image: linear-gradient(#c67746, #88b3ae);
-    height: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
 }
 
 h1 {
@@ -15,5 +20,11 @@ h1 {
     text-align: center;
     padding: 20px;
     color: #41423f;
+}
+
+.contentArea
+{
+    display: flex;
+    flex-direction: column;
 }
 

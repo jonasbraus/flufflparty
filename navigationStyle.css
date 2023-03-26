@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 * {
-    font-family: "Roboto Light", sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -16,7 +17,7 @@ Desktop
 /*basic li a and button setup*/
 li, a, button {
     font-weight: 500;
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
@@ -28,7 +29,7 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 100px;
-    background-color: #41423f;
+    background-color: #FFFBC1;
 }
 
 /*IO Game Studios button (only navigation)*/
@@ -36,7 +37,7 @@ header button {
     padding: 20px;
     border-radius: 50px;
     border-style: none;
-    background-color: #88b3ae;
+    background-color: #F7A4A4;
     cursor: pointer;
 }
 
@@ -49,36 +50,18 @@ nav li {
 }
 
 nav li:hover {
-    color: #88b3ae;
+    color: #B6E2A1;
 }
 
-/*Dropdown*/
-nav ul li div {
-    display: none;
-    position: absolute;
-    background-color: #41423f;
-    border-radius: 50px;
-    padding-top: 70px;
-    margin-left: -50px;
-    padding-bottom: 10px;
-}
 
-nav ul li div ul {
-    display: flex;
-    flex-direction: column;
-}
-
-nav ul li div ul li {
-    padding: 0 0 10px 20px;
-    text-align: center;
-}
-
-nav ul li div ul li button {
-    padding: 20px;
-}
 
 header button:hover {
-    background-color: rgba(198, 119, 70, 0.5);
+    background-color: #B6E2A1;
+}
+
+.highlighted
+{
+    color: #F7A4A4;
 }
 
 /*Mobile Excluded*/
@@ -118,7 +101,7 @@ Mobile
 
     /*Style the Menu Icon*/
     nav svg {
-        color: white;
+        color: black;
         width: 30px;
         height: 30px;
     }
@@ -126,7 +109,7 @@ Mobile
 
     menu div {
         float: right;
-        background-color: #41423f;
+        background-color: #FFFBC1;
         border-radius: 0 0 0 50px;
         padding-bottom: 15px;
     }
@@ -143,10 +126,10 @@ Mobile
         margin: 5px 30px;
         cursor: pointer;
         border-radius: 50px;
-        background-color: rgba(136, 179, 174, 1);
+        background-color: #F7A4A4;
     }
 
     menu div ul li:hover {
-        background-color: rgba(198, 119, 70, 0.5);
+        background-color: #B6E2A1;
     }
 }

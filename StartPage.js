@@ -4,7 +4,7 @@ function showMobileMenuBar()
 {
     if(!menuActive) {
         document.getElementById("mobileMenuBar").style.display = "block";
-        document.getElementById("mobileMenuBarButton").style.backgroundColor = "rgba(198, 119, 70, 0.5)";
+        document.getElementById("mobileMenuBarButton").style.backgroundColor = "#B6E2A1";
         menuActive = true;
     }
     else
@@ -16,6 +16,6 @@ function showMobileMenuBar()
 function hideMobileMenuBar()
 {
     document.getElementById("mobileMenuBar").style.display = "none";
-    document.getElementById("mobileMenuBarButton").style.backgroundColor = "rgba(198, 119, 70, 0)";
+    document.getElementById("mobileMenuBarButton").style.backgroundColor = "rgba(0, 0, 0, 0)";
     menuActive = false;
 }
