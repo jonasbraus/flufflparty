@@ -53,7 +53,7 @@ h2
     color: #41423f;
 }
 
-#mainPageGames
+.mainPageCards
 {
     display: flex;
     align-items: center;
@@ -62,13 +62,13 @@ h2
 
 @media (max-width: 18cm)
 {
-    #mainPageGames
+    .mainPageCards
     {
         flex-direction: column;
     }
 }
 
-#mainPageGames div
+.mainPageCards div
 {
     min-height: 300px;
     max-height: 300px;
@@ -82,7 +82,7 @@ h2
 
 @media (min-width: 18.1cm)
 {
-    #mainPageGames div
+    .mainPageCards div
     {
         min-width: 30%;
         max-width: 30%;
@@ -91,7 +91,7 @@ h2
 
 @media (max-width: 18cm)
 {
-    #mainPageGames div
+    .mainPageCards div
     {
         min-width: 80%;
         max-width: 80%;
@@ -99,25 +99,34 @@ h2
 
 }
 
-#mainPageGames div h2
+.mainPageCards div h2
 {
     margin-bottom: 40px;
 }
 
-#mainPageGames p
+.mainPageCards p
 {
     color: #41423f;
     text-align: center;
+    font-size: 18px;
 }
 
-#mainPageGames button
+.contentArea button
 {
     margin-top: 20px;
     border-radius: 50px;
     border-style: none;
-    color: #41423f;
+    background-image: linear-gradient(#F7A4A4, #FEBE8C);
     cursor: pointer;
-    padding: 15px;
+    padding: 15px 50px;
+}
+
+.flufflPartyCard
+{
+    background-image: url("Icon.png"), linear-gradient(#F7A4A4, #FEBE8C);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
 }
 
 .imageFull
