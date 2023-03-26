@@ -1,61 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>IO Game Studios</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="navigationStyle.css">
-  <link rel="stylesheet" href="mainPage.css">
-  <link rel="stylesheet" href="Footerstyle.css">
+    <meta charset="UTF-8">
+    <title>IO Game Studios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="navigationStyle.css">
+    <link rel="stylesheet" href="mainPage.css">
+    <link rel="stylesheet" href="Footerstyle.css">
 </head>
 <body onresize="hideMobileMenuBar()">
 
 <header>
 
-  <img src="Logo.jpg" onclick="window.location.href='https://www.iogamestudios.de/index'" style="cursor: pointer">
+    <img src="Logo.jpg" onclick="window.location.href='https://www.iogamestudios.de/index'" style="cursor: pointer">
 
-  <nav>
-    <!-- Desktop-->
-    <ul>
-      <li><a href="https://www.iogamestudios.de/index">Home</a></li>
-      <li><a href="https://www.iogamestudios.de/games">Games</a></li>
-      <li><a class="highlighted"  href="https://www.iogamestudios.de/quicklinks">Quicklinks</a></li>
-      <li>About</li>
-    </ul>
+    <nav>
+        <!-- Desktop-->
+        <ul>
+            <li><a href="https://www.iogamestudios.de/index">Home</a></li>
+            <li><a href="https://www.iogamestudios.de/games">Games</a></li>
+            <li><a class="highlighted" href="https://www.iogamestudios.de/quicklinks">Quicklinks</a></li>
+            <li>About</li>
+        </ul>
 
-    <!--Mobile-->
-    <button onclick="showMobileMenuBar()" id="mobileMenuBarButton">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-      </svg>
-    </button>
-  </nav>
+        <!--Mobile-->
+        <button onclick="showMobileMenuBar()" id="mobileMenuBarButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                 viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        </button>
+    </nav>
 </header>
 
 <!--Mobile-->
 <menu id="mobileMenuBar">
-  <div>
-    <ul>
-      <li><a href="https://www.iogamestudios.de/index">Home</a></li>
+    <div>
+        <ul>
+            <li><a href="https://www.iogamestudios.de/index">Home</a></li>
 
-      <li><a href="https://www.iogamestudios.de/games">Games</a></li>
+            <li><a href="https://www.iogamestudios.de/games">Games</a></li>
 
-      <li class="highlighted"><a href="https://www.iogamestudios.de/quicklinks">Quicklinks</a></li>
+            <li class="highlighted"><a href="https://www.iogamestudios.de/quicklinks">Quicklinks</a></li>
 
-      <li>About</li>
-    </ul>
-  </div>
+            <li>About</li>
+        </ul>
+    </div>
 </menu>
 
 <!--Menu Ends here-->
 
 <div class="contentArea">
 
-  <div id="mainPageCards">
+    <h1 style="color: #F7A4A4">Welcome to the games section</h1>
 
-  </div>
+    <div class="mainPageCards">
+        <div class="color3">
+            <h2>Google Play</h2>
+            <p>
+                Visit our page on Google Play!
+            </p>
+
+            <button style="background-image: linear-gradient(#F7A4A4, #FEBE8C);" onclick="window.location.href='https://play.google.com/store/apps/dev?id=8307994172590653182'">Visit!</button>
+        </div>
+        <div class="flufflPartyCard">
+            <h2>FlufflParty</h2>
+
+            <p>
+                Explore our newest game on Google Play!
+            </p>
+
+            <button style="background-image: linear-gradient(#B6E2A1, #FFFBC1)" onclick="window.location.href='https://play.google.com/store/apps/details?id=com.IOGameStudios.FlufflParty'">Get!</button>
+
+        </div>
+        <div class="color2">
+            <h2>FlufflParty Test Build</h2>
+
+            <p>
+                You can download a test build of FlufflParty for PC now.
+            </p>
+
+            <button style="background-image: linear-gradient(#B6E2A1, #FFFBC1)" onclick="window.location.href='https://www.iogamestudios.de/FlufflParty.zip'">Download</button>
+        </div>
+    </div>
 
 </div>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 
 <footer>IOGameStudios 2023</footer>
 </body>
