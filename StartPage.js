@@ -9,8 +9,13 @@ function showMobileMenuBar()
     }
     else
     {
-        document.getElementById("mobileMenuBar").style.display = "none";
-        document.getElementById("mobileMenuBarButton").style.backgroundColor = "rgba(198, 119, 70, 0)";
-        menuActive = false;
+        hideMobileMenuBar();
     }
+}
+
+function hideMobileMenuBar()
+{
+    document.getElementById("mobileMenuBar").style.display = "none";
+    document.getElementById("mobileMenuBarButton").style.backgroundColor = "rgba(198, 119, 70, 0)";
+    menuActive = false;
 }

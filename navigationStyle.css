@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-*
-{
+* {
     font-family: "Roboto Light", sans-serif;
     box-sizing: border-box;
     margin: 0;
@@ -15,16 +14,14 @@ Desktop
 ------------------------------------------------------------------------------------------
  */
 /*basic li a and button setup*/
-li, a, button
-{
+li, a, button {
     font-weight: 500;
     color: white;
     text-decoration: none;
 }
 
 /*title bar*/
-header
-{
+header {
 
     width: 100%;
     display: flex;
@@ -35,8 +32,7 @@ header
 }
 
 /*IO Game Studios button (only navigation)*/
-header button
-{
+header button {
     padding: 20px;
     border-radius: 50px;
     border-style: none;
@@ -46,21 +42,18 @@ header button
 
 
 /*List Element Style (only navigation)*/
-nav li
-{
+nav li {
     display: inline-block;
     margin-right: 20px;
     cursor: pointer;
 }
 
-nav li:hover
-{
+nav li:hover {
     color: #88b3ae;
 }
 
 /*Dropdown*/
-nav ul li div
-{
+nav ul li div {
     display: none;
     position: absolute;
     background-color: #41423f;
@@ -70,36 +63,30 @@ nav ul li div
     padding-bottom: 10px;
 }
 
-.menuDropdownDesktop:hover div
-{
+.menuDropdownDesktop:hover div {
     display: block;
 }
 
-nav ul li div ul
-{
+nav ul li div ul {
     display: flex;
     flex-direction: column;
 }
 
-nav ul li div ul li
-{
+nav ul li div ul li {
     padding: 0 0 10px 20px;
     text-align: center;
 }
 
-nav ul li div ul li button
-{
+nav ul li div ul li button {
     padding: 20px;
 }
 
 /*Mobile Excluded*/
-nav > button
-{
+nav > button {
     display: none;
 }
 
-menu
-{
+menu {
     position: absolute;
     right: 0px;
     display: none;
@@ -111,52 +98,46 @@ Mobile
 ------------------------------------------------------------------------------------------
  */
 
-@media (max-width: 18cm)
-{
-header 
-{
-padding: 10px 40px;
-}
+@media (max-width: 18cm) {
+    header {
+        padding: 10px 40px;
+    }
 
 
     /*Hide the default navigation*/
-    nav ul
-    {
+    nav ul {
         display: none;
     }
 
     /*Show the Mobile menu button*/
-    nav button
-    {
+    nav button {
         display: blocK;
         margin-right: -20px;
         background-color: rgba(0, 0, 0, 0);
     }
 
     /*Style the Menu Icon*/
-    nav svg
-    {
+    nav svg {
         color: white;
         width: 30px;
         height: 30px;
     }
 
 
-    menu div
-    {
+    menu div {
         float: right;
         background-color: #41423f;
+        border-radius: 0 0 0 50px;
+        padding-bottom: 15px;
     }
 
-    menu div ul
-    {
+    menu div ul {
         display: flex;
         flex-direction: column;
         list-style: none;
     }
 
-    menu div ul li
-    {
+    menu div ul li {
         text-align: center;
         padding: 20px 30px 20px 30px;
         margin: 5px 30px;
@@ -165,8 +146,7 @@ padding: 10px 40px;
         background-color: rgba(136, 179, 174, 1);
     }
 
-    menu div ul li:hover
-    {
+    menu div ul li:hover {
         background-color: rgba(198, 119, 70, 0.5);
     }
 }
@@ -177,14 +157,12 @@ General
 ------------------------------------------------------------------------------------------
  */
 
-body
-{
+body {
     background-image: linear-gradient(#c67746, #88b3ae);
     height: 100%;
 }
 
-h1
-{
+h1 {
 
     font-size: 40px;
     text-align: center;
