@@ -26,5 +26,94 @@ h1 {
 {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
+.color1
+{
+    background-color: #F7A4A4;
+}
+
+.color2
+{
+    background-color: #FEBE8C;
+}
+
+.color3
+{
+    background-color: #B6E2A1;
+}
+
+h2
+{
+    font-size: 22px;
+    text-align: center;
+    padding: 20px;
+    color: #41423f;
+}
+
+#mainPageGames
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 18cm)
+{
+    #mainPageGames
+    {
+        flex-direction: column;
+    }
+}
+
+#mainPageGames div
+{
+    min-height: 300px;
+    max-height: 300px;
+    border-radius: 50px;
+    margin: 10px;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
+@media (min-width: 18.1cm)
+{
+    #mainPageGames div
+    {
+        min-width: 30%;
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 18cm)
+{
+    #mainPageGames div
+    {
+        min-width: 80%;
+        max-width: 80%;
+    }
+}
+
+
+
+#mainPageGames p
+{
+    color: #41423f;
+    text-align: center;
+}
+
+#mainPageGames button
+{
+    margin-top: 20px;
+    border-radius: 50px;
+    border-style: none;
+    color: #41423f;
+    cursor: pointer;
+    padding: 15px;
+}

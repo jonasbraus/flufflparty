@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IO Game Studios</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="navigationStyle.css">
+  <link rel="stylesheet" href="mainPage.css">
+</head>
+<body onresize="hideMobileMenuBar()">
+
+<header>
+
+  <button>IO Game Studios</button>
+
+  <nav>
+    <!-- Desktop-->
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="games.html">Games</a></li>
+      <li><a class="highlighted"  href="quicklinks.html">Quicklinks</a></li>
+      <li>About</li>
+    </ul>
+
+    <!--Mobile-->
+    <button onclick="showMobileMenuBar()" id="mobileMenuBarButton">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </button>
+  </nav>
+</header>
+
+<!--Mobile-->
+<menu id="mobileMenuBar">
+  <div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+
+      <li><a href="games.html">Games</a></li>
+
+      <li class="highlighted"><a href="quicklinks.html">Quicklinks</a></li>
+
+      <li>About</li>
+    </ul>
+  </div>
+</menu>
+
+<!--Menu Ends here-->
+
+<div class="contentArea">
+
+  <div id="mainPageGames">
+
+  </div>
+
+</div>
+</body>
+
+<script src="StartPage.js"></script>
+</html>

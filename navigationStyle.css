@@ -17,7 +17,7 @@ Desktop
 /*basic li a and button setup*/
 li, a, button {
     font-weight: 500;
-    color: black;
+    color: #41423f;;
     text-decoration: none;
 }
 
