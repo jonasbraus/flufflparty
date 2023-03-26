@@ -77,9 +77,6 @@ h2
     padding: 20px;
 
     display: flex;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
     flex-direction: column;
 }
 
@@ -99,9 +96,13 @@ h2
         min-width: 80%;
         max-width: 80%;
     }
+
 }
 
-
+#mainPageGames div h2
+{
+    margin-bottom: 40px;
+}
 
 #mainPageGames p
 {
