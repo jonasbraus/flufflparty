@@ -49,7 +49,7 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
-        Application.targetFrameRate = 100;
+        Application.targetFrameRate = 60;
         
         thisClient = this;
 

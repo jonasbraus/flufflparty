@@ -48,7 +48,7 @@ public class PlayablePlayer : Player
     {
         return instance;
     }
-    
+
     private void Update()
     {
         /*
@@ -60,48 +60,57 @@ public class PlayablePlayer : Player
         */
         if (activated && !name.Equals(""))
         {
-            
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
             if ((Input.GetMouseButtonUp(0) && !uiHandler.MapOpen) && wurfelZahl == 0 && !wurfelt)
             {
                 if (!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
                 {
-                    
-                    wurfelt = true;
-                    wurfelZahl = Random.Range(1, 7);
-
-                    switch (activeItem)
-                    {
-                        case Item.Type.Mushroom: wurfelZahl += 3; activeItem = Item.Type.None; break;
-                        case Item.Type.DoubleDice: checkDoubleDice = true; activeItem = Item.Type.None; break; 
-                    }
-                    
-                    /*
-                    if (activeItem == Item.Type.Mushroom)
-                    {
-                        wurfelZahl += 3;
-                        activeItem = Item.Type.None;
-                    }else if (activeItem == Item.Type.DoubleDice)
-                    {
-                        checkDoubleDice = true;
-                    }
-                    */
-                    
-                    textLeftMoves.text = wurfelZahl + "";
-
-                    client.SendWurfeln(wurfelZahl);
-
-                    //nächstes Feld anvisieren
-                    TargetNextField();
-
-                    //stop the dice
-                    diceScript.StopRandom(wurfelZahl);
-
-                    //delay for walk start
-                    timeSinceWurfeln = Time.time;
+                    DiceRollRoutine();   
                 }
             }
         }
+    }
+
+    private void DiceRollRoutine()
+    {
+        wurfelt = true;
+        wurfelZahl = Random.Range(1, 7);
+
+        switch (activeItem)
+        {
+            case Item.Type.Mushroom:
+                wurfelZahl += 3;
+                activeItem = Item.Type.None;
+                break;
+            case Item.Type.DoubleDice:
+                checkDoubleDice = true;
+                activeItem = Item.Type.None;
+                break;
+        }
+
+        /*
+        if (activeItem == Item.Type.Mushroom)
+        {
+            wurfelZahl += 3;
+            activeItem = Item.Type.None;
+        }else if (activeItem == Item.Type.DoubleDice)
+        {
+            checkDoubleDice = true;
+        }
+        */
+
+        textLeftMoves.text = wurfelZahl + "";
+
+        client.SendWurfeln(wurfelZahl);
+
+        //nächstes Feld anvisieren
+        TargetNextField();
+
+        //stop the dice
+        diceScript.StopRandom(wurfelZahl);
+
+        //delay for walk start
+        timeSinceWurfeln = Time.time;
     }
 
     private void FixedUpdate()
@@ -247,6 +256,7 @@ public class PlayablePlayer : Player
 
 
     private Star currentStar = null;
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.name.Equals("ItemShopTrigger"))
@@ -258,7 +268,7 @@ public class PlayablePlayer : Player
         {
             currentStar = collider.GetComponent<Star>();
 
-            if(currentStar.IsActive)
+            if (currentStar.IsActive)
             {
                 base.OnTriggerEnter(collider);
                 uiHandler.ActivateLayoutBuyStar(this);
@@ -269,7 +279,7 @@ public class PlayablePlayer : Player
     public void BuyStar(bool buy)
     {
         client.SendEventStopFinished();
-        
+
         if (buy)
         {
             currentStar.Buy(this);
@@ -300,7 +310,7 @@ public class PlayablePlayer : Player
             transform.position + Vector3.up * 2, ref useLess, 0.2f);
         diceScript.StartRandom();
     }
-    
+
     public void ActivateItem(int index)
     {
         activeItem = items[index].type;
