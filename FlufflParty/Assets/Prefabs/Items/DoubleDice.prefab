@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 21fdc6e1a620f7a4980664948770db2c, type: 3}
   type: 1
-  cost: 10
+  cost: 1
 --- !u!1 &8462770678847181660
 GameObject:
   m_ObjectHideFlags: 0
