@@ -129,14 +129,10 @@ public class NoPlayablePlayer : Player
                     }
                     else
                     {
-                        if (!checkDoubleDice)
-                        {
-                            activated = false;
-                        }
-                        else
+                        if (checkDoubleDice)
                         {
                             checkDoubleDice = false;
-                            wurfelt = false;
+                            wurfelt = false;  
                         }
                     }
                 }
