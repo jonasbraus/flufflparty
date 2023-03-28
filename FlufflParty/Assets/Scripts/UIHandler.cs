@@ -164,7 +164,7 @@ public class UIHandler : MonoBehaviour
         ActivateLayout1();
         ((PlayablePlayer)currentPlayer).SkipShop();
     }
-
+    
     public void ButtonSelectItem(int index)
     {
         ((PlayablePlayer)currentPlayer).ActivateItem(index);

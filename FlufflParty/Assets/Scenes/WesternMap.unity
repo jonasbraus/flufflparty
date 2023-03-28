@@ -5075,7 +5075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &584878063
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10937,7 +10937,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 47812149}
         m_TargetAssemblyTypeName: UIHandler, Assembly-CSharp
-        m_MethodName: ButtonBack
+        m_MethodName: ActivateLayout1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12318,8 +12318,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1129.2301, y: 599.6246, z: 1}
-  m_Center: {x: -3.4103851, y: -0.5167255, z: 0}
+  m_Size: {x: 1874.4869, y: 1411.1487, z: 340.12936}
+  m_Center: {x: 53.393764, y: 64.56608, z: 169.56474}
 --- !u!1 &1397027313
 GameObject:
   m_ObjectHideFlags: 0
