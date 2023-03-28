@@ -86,6 +86,8 @@ public abstract class Player : MonoBehaviour
                 break;
             }
         }
+        
+        Debug.Log(item.type);
     }
 
     public void ActivateItem(int index)

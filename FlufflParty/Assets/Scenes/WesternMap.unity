@@ -568,6 +568,7 @@ MonoBehaviour:
   layout2: {fileID: 1115580907}
   items:
   - {fileID: 8043942569442897806, guid: d00b626b793557643a67184af1354f88, type: 3}
+  - {fileID: 8407720689226963387, guid: 46bb574199f4be04e92e9601f8b5e2a5, type: 3}
   itemButtons:
   - {fileID: 823630953}
   - {fileID: 1021992538}
@@ -11041,6 +11042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 1547369680}
+  - {fileID: 1261969992}
 --- !u!1 &1237875978
 GameObject:
   m_ObjectHideFlags: 0
@@ -17961,7 +17963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010829641
 RectTransform:
   m_ObjectHideFlags: 0
