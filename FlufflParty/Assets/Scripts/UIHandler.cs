@@ -121,7 +121,7 @@ public class UIHandler : MonoBehaviour
 
         currentPlayer = PlayablePlayer.GetCurrentInstance();
         
-        if(currentPlayer.activated)
+        if(currentPlayer.activated && !currentPlayer.wurfelt)
         {
             layout0.SetActive(false);
             layout1.SetActive(false);

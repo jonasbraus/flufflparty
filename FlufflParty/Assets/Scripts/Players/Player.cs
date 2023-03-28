@@ -9,7 +9,7 @@ public abstract class Player : MonoBehaviour
 {
     public string name = "";
     public bool activated = false;
-    protected bool wurfelt = false;
+    public bool wurfelt = false;
     
     public GameObject camera;
     protected Vector3 velocity = Vector3.zero;
