@@ -17,7 +17,7 @@ public class PlayablePlayer : Player
     private float speed = 5;
     private float interPol = 0;
     private int wurfelZahl = 0;
-    private bool checkDoubleDice = true;
+    private bool checkDoubleDice = false;
 
     private bool wait = false;
 
