@@ -225,6 +225,9 @@ public class Client : MonoBehaviour
                     players[job.data[1]].AddCoins(-items[job.data[3]].Cost);
                     players[job.data[1]].AddItem(items[job.data[3]]);
                     break;
+                case 10:
+                    players[job.data[1]].ActivateItem(job.data[2]);
+                    break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
@@ -309,5 +312,10 @@ public class Client : MonoBehaviour
     public void SendBuyItem(Item item)
     {
         stream.Write(new byte[] { 9, (byte)item.type, 0, 0, 0, 0, 0, 0, 0, 0 });
+    }
+
+    public void SendActiveItem(byte index)
+    {
+        stream.Write(new byte[]{10, index, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

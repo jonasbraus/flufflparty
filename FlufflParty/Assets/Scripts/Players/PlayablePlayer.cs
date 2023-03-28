@@ -73,7 +73,7 @@ public class PlayablePlayer : Player
                     switch (activeItem)
                     {
                         case Item.Type.Mushroom: wurfelZahl += 3; activeItem = Item.Type.None; break;
-                        case Item.Type.DoubleDice: checkDoubleDice = true; break; 
+                        case Item.Type.DoubleDice: checkDoubleDice = true; activeItem = Item.Type.None; break; 
                     }
                     
                     /*
@@ -299,5 +299,12 @@ public class PlayablePlayer : Player
         dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
             transform.position + Vector3.up * 2, ref useLess, 0.2f);
         diceScript.StartRandom();
+    }
+    
+    public void ActivateItem(int index)
+    {
+        activeItem = items[index].type;
+        items[index] = null;
+        client.SendActiveItem((byte)index);
     }
 }

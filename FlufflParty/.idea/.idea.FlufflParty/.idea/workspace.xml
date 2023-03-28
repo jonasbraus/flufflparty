@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f0abe486-ee58-49bd-ad63-04a8b3fc78ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/WesternMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/WesternMap.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Client.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/NoPlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/NoPlayablePlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIHandler.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,7 +142,8 @@
       <workItem from="1677881158579" duration="8577000" />
       <workItem from="1678046412549" duration="3738000" />
       <workItem from="1679426348887" duration="3549000" />
-      <workItem from="1679597961773" duration="4070000" />
+      <workItem from="1679597961773" duration="4891000" />
+      <workItem from="1680022152724" duration="2273000" />
     </task>
     <servers />
   </component>

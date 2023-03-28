@@ -167,7 +167,8 @@ public class UIHandler : MonoBehaviour
 
     public void ButtonSelectItem(int index)
     {
-        currentPlayer.ActivateItem(index);
+        ((PlayablePlayer)currentPlayer).ActivateItem(index);
         ActivateLayout1();
+        
     }
 }

@@ -22,8 +22,9 @@ public class NoPlayablePlayer : Player
     private float timeSinceWurfeln = 0;
 
     private Vector3 useLess = new Vector3();
-    
-    
+
+    private bool checkDoubleDice = false;
+
 
     public override void Init()
     {
@@ -59,11 +60,11 @@ public class NoPlayablePlayer : Player
     {
         wurfelt = true;
         this.wurfelZahl = wurfelZahl;
-        
-        if (activeItem == Item.Type.Mushroom)
+
+        switch (activeItem)
         {
-            wurfelZahl += 3;
-            activeItem = Item.Type.None;
+            case Item.Type.Mushroom: wurfelZahl += 3; activeItem = Item.Type.None; break;
+            case Item.Type.DoubleDice: checkDoubleDice = true; activeItem = Item.Type.None; break;
         }
         
         //nächstes Feld anvisieren
@@ -125,9 +126,18 @@ public class NoPlayablePlayer : Player
                     if (!wurfelt)
                     {
                        StartDice(); 
-                    }else if (activated)
+                    }
+                    else
                     {
-                        StartDice();
+                        if (!checkDoubleDice)
+                        {
+                            activated = false;
+                        }
+                        else
+                        {
+                            checkDoubleDice = false;
+                            wurfelt = false;
+                        }
                     }
                 }
             }
