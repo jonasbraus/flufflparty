@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -66,6 +67,8 @@ public class StartHandler : MonoBehaviour
         PlayerPrefs.Save();
 
         layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code;
+        
+        stream.Close();
     }
 
     public void ButtonJoin()
@@ -151,5 +154,11 @@ public class StartHandler : MonoBehaviour
     {
         layout0.SetActive(true);
         layout1.SetActive(false);
+    }
+
+    private void OnApplicationQuit()
+    {
+        Stream stream = client.GetStream();
+        stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

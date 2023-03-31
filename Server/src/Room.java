@@ -48,47 +48,6 @@ public class Room
         startPositions[3] = new Vector3(92, 0, 128);
 
         this.server = server;
-
-        //calculates a room timeout
-        try
-        {
-            t = new Timer();
-            TimerTask tt = new TimerTask()
-            {
-                @Override
-                public void run()
-                {
-                    try
-                    {
-                        for (int p = 0; p < players.length; p++)
-                        {
-                            if (players[p] != null)
-                            {
-                                if (System.currentTimeMillis() - players[p].lastTimeSendTimeOutCheck > 30000 && players[p].lastTimeSendTimeOutCheck != -1)
-                                {
-                                    server.deleteRoom(roomCode);
-                                }
-
-                                players[p].output.write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
-                            }
-                        }
-                    } catch (Exception e)
-                    {
-
-                    }
-
-                    if (System.currentTimeMillis() - timeOut > 600000)
-                    {
-                        System.out.println("[" + Server.getDateTime() + "] Room " + roomCode + " closed due to timeout!");
-                        server.deleteRoom(roomCode);
-                    }
-                }
-            };
-
-            t.scheduleAtFixedRate(tt, 0, 10000);
-        } catch (Exception e)
-        {
-        }
     }
 
     /**
@@ -110,7 +69,7 @@ public class Room
                 playerCount++;
 
                 //LOG
-                System.out.println("[" + Server.getDateTime() + "] " + client.name.replace(" ", "") + " joined room " + roomCode + " successfully as player " + i);
+                System.out.println(client.name.replace(" ", "") + " joined room " + roomCode + " successfully as player " + i);
 
                 //creates a thread for the connection with the joined player
                 Thread t = new Thread(new Runnable()
@@ -128,7 +87,7 @@ public class Room
                             input = new DataInputStream(players[player].socket.getInputStream());
                         } catch (IOException e)
                         {
-                            throw new RuntimeException(e);
+                            server.deleteRoom(roomCode);
                         }
 
                         while (true)
@@ -267,9 +226,6 @@ public class Room
                                             }
                                         }
                                         break;
-                                    /**
-                                     * //the timeout check action
-                                     */
 
                                     case 10:
                                         for (int i = 0; i < players.length; i++)
@@ -283,10 +239,8 @@ public class Room
                                             }
                                         }
                                         break;
-
                                     case 126:
-                                        //!!server action!!
-                                        players[player].lastTimeSendTimeOutCheck = System.currentTimeMillis();
+                                        server.deleteRoom(roomCode);
                                         break;
                                 }
 
@@ -344,7 +298,7 @@ public class Room
                             //stop sending the name................................................................................
                         } catch (IOException e)
                         {
-
+                            server.deleteRoom(roomCode);
                         }
                     } 
                     //if the player should be a bot
@@ -366,7 +320,7 @@ public class Room
                             players[j].output.write(send);
                         } catch (IOException e)
                         {
-
+                            server.deleteRoom(roomCode);
                         }
                     }
                 }
@@ -384,7 +338,7 @@ public class Room
                 }
             } catch (IOException e)
             {
-
+                server.deleteRoom(roomCode);
             }
         }
     }
@@ -448,6 +402,7 @@ public class Room
             try
             {
                 threads.get(i).interrupt();
+                System.out.println("thread " + threads.get(i).getName() + " stopped!");
             } catch (Exception e)
             {
             }

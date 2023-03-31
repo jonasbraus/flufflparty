@@ -318,4 +318,9 @@ public class Client : MonoBehaviour
     {
         stream.Write(new byte[]{10, index, 0, 0, 0, 0, 0, 0, 0, 0});
     }
+
+    private void OnApplicationQuit()
+    {
+        stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
 }

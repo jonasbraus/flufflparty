@@ -19,27 +19,13 @@ public class Server
     private final Server server = this;
 
     //A Formatter for date and time log outputs
-    private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-
-    /**
-     * returns a date and time stamp
-     * @return
-     */
-    public static String getDateTime()
-    {
-        return dtf.format(LocalDateTime.now());
-    }
-
-    /**
-     * tries to delete a room by its roomcode (will be only called by a rooms timeout for now)
-     */
     public void deleteRoom(String code)
     {
         rooms.get(code).closeRoom();
         rooms.remove(code);
 
         //LOG
-        System.out.println("[" + getDateTime() + "] Room" + code + " successfully deleted");
+        System.out.println("Room" + code + " successfully deleted");
     }
 
     /**
@@ -54,19 +40,19 @@ public class Server
             serverSocket = new ServerSocket(8051);
 
             //LOG
-            System.out.println("[" + getDateTime() + "] Server started! IP 185.245.96.48 PORT 8051");
+            System.out.println("Server started! IP 185.245.96.48 PORT 8051");
 
             //a endless loop for accepting new connections
-            while(true)
+            while (true)
             {
                 //accept a connection from a client
                 Socket tempClient = serverSocket.accept();
 
                 //LOG
-                System.out.println("[" + getDateTime() + "] Client with IP " + tempClient.getInetAddress().getHostName() + " connected!");
+                System.out.println("Client connected!");
 
                 //create a new thread for the connected client to free up main thread resources for new connections
-                new Thread(new Runnable()
+                Thread t = new Thread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -90,7 +76,7 @@ public class Server
                             input.read(readData);
 
                             //check for the incoming actions
-                            switch(readData[0])
+                            switch (readData[0])
                             {
                                 /**
                                  * !!!!!!!!!!!!!!!!!!!      0 is not used because of possible empty arrays read in because of inital connection errors  !!!!!!!!!!!!!!!!!!!!
@@ -109,7 +95,7 @@ public class Server
                                     rooms.put(new String(code, StandardCharsets.US_ASCII), room);
 
                                     //LOG
-                                    System.out.println("[" + getDateTime() + "] Room " + new String(code, StandardCharsets.US_ASCII) + " successfully created!");
+                                    System.out.println("Room " + new String(code, StandardCharsets.US_ASCII) + " successfully created!");
                                     break;
                                 //in this case a player wants to join an existing room (even the room creator will join via this method)
                                 case 1:
@@ -134,31 +120,35 @@ public class Server
                                     name = name.replace("?", " ");
 
                                     //check if the room exists
-                                    if(rooms.containsKey(roomCode))
+                                    if (rooms.containsKey(roomCode))
                                     {
                                         //create the reference to the client
                                         Client client1 = new Client(output, input, client, name);
 
                                         //move the client to the room
                                         rooms.get(roomCode).addClient(client1);
-                                    }
-                                    else
+                                    } else
                                     {
                                         //room is not available, so the player should automatically go back to the start menu (kick action)
                                         output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
                                     }
 
                                     break;
+                                case 126:
+                                    Integer.parseInt("crash");
+                                    break;
                             }
 
-                        } catch (Exception e){
-                            //do not end the program on any main thread errors (unwated connection losses), because other players wont be able to connect to the server
+                        } catch (Exception e)
+                        {
+                            System.out.println("Client disconnected!");
                         }
                     }
-                }).start();
+                });
+                t.start();
             }
-        }
-        catch(Exception e){
+        } catch (Exception e)
+        {
             //do not end the program on any main thread errors (unwated connection losses), because other players wont be able to connect to the server
         }
     }
@@ -166,6 +156,7 @@ public class Server
     /**
      * Generates a ascii byte[] room code
      * please see the ascii table
+     *
      * @return
      */
     private byte[] generateRoomCode()
@@ -173,17 +164,17 @@ public class Server
         //buffer to store the code
         byte[] code = new byte[10];
 
-        for(int i = 0; i < code.length; i++)
+        for (int i = 0; i < code.length; i++)
         {
             //for the first 5 indexes user numbers (1-9)
-            if(i < code.length / 2)
+            if (i < code.length / 2)
             {
-                code[i] = (byte)(Math.random() * 8 + 49);
+                code[i] = (byte) (Math.random() * 8 + 49);
             }
             //for the last 5 indexes use letters (A-Z)
             else
             {
-                code[i] = (byte)(Math.random() * 25 + 97);
+                code[i] = (byte) (Math.random() * 25 + 97);
             }
         }
 
@@ -191,7 +182,7 @@ public class Server
         String roomCode = new String(code, StandardCharsets.US_ASCII);
 
         //in case the room code does allready exists, the roomcode generation will be called recursively
-        if(rooms.containsKey(roomCode))
+        if (rooms.containsKey(roomCode))
         {
             code = generateRoomCode();
         }
