@@ -22,18 +22,18 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private GameObject copiedMessage;
     [SerializeField] private TMP_Text backgroundNameText;
-    
+
     private string roomcode;
-    
+
     int width = Screen.width;
     int height = Screen.height;
     private float divisionLevel = 1;
-    
+
 
     private void Start()
     {
         copiedMessage.SetActive(false);
-        
+
         if (PlayerPrefs.HasKey("name"))
         {
             playerName.text = PlayerPrefs.GetString("name");
@@ -46,10 +46,10 @@ public class StartHandler : MonoBehaviour
             layout0.SetActive(true);
             layout1.SetActive(false);
         }
+
         layout2.SetActive(false);
         client = new TcpClient("185.245.96.48", 8051);
         buttonJoin.SetActive(false);
-        
     }
 
     public void ButtonNewRoom()
@@ -74,7 +74,7 @@ public class StartHandler : MonoBehaviour
         PlayerPrefs.Save();
 
         layout2.GetComponentInChildren<TMP_Text>().text = "Your room code is: \n" + code;
-        
+
         stream.Close();
     }
 
@@ -136,18 +136,18 @@ public class StartHandler : MonoBehaviour
     public void ButtonSubmitName()
     {
         string name = nameEnter.text;
-        if (name.Length>2) 
+        if (name.Length > 2)
         {
             for (int i = name.Length; i < 10; i++)
             {
                 name += " ";
             }
-        
+
             PlayerPrefs.SetString("name", name);
             PlayerPrefs.Save();
-        
+
             playerName.text = PlayerPrefs.GetString("name");
-        
+
             layout0.SetActive(false);
             layout1.SetActive(true);
         }
@@ -166,18 +166,24 @@ public class StartHandler : MonoBehaviour
     private void OnApplicationQuit()
     {
         Stream stream = client.GetStream();
-        stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0});
+        stream.Write(new byte[] { 126, 0, 0, 0, 0, 0, 0, 0, 0 });
+    }
+
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        Stream stream = client.GetStream();
+        stream.Write(new byte[] { 126, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     }
 
     public void OnQualitySliderChanged(float value)
     {
         divisionLevel = value;
-        
     }
 
     public void ButtonApply()
     {
-        if(Application.platform == RuntimePlatform.Android)
+        if (Application.platform == RuntimePlatform.Android)
         {
             Screen.SetResolution(width / (int)divisionLevel, height / (int)divisionLevel, Screen.fullScreen);
         }

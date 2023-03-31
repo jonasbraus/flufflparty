@@ -98,15 +98,6 @@ public class PlayablePlayer : Player
             }
         }
 
-        if (activated && wurfelZahl > 0 && !wait)
-        {
-            //delay
-            if (Time.time - timeSinceWurfeln > 2)
-            {
-                InterPolerate();
-            }
-        }
-        
         lastPosAnim = transform.position;
     }
 
@@ -155,10 +146,16 @@ public class PlayablePlayer : Player
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
                 if (interPol < 1 && wurfelZahl > 0)
                 {
+                    //delay
+                    if (Time.time - timeSinceWurfeln > 2)
+                    {
+                        InterPolerate();
+                    }
                 }
                 //Würfelzahl um 1 verringern falls noch züge übrig sind
                 else if (wurfelZahl > 0)
                 {
+                    InterPolerate();
                     wurfelZahl--;
                     textLeftMoves.text = wurfelZahl + "";
 

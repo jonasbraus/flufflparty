@@ -323,4 +323,9 @@ public class Client : MonoBehaviour
     {
         stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
     }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
 }
