@@ -8,6 +8,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartHandler : MonoBehaviour
 {
@@ -22,12 +23,26 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private GameObject copiedMessage;
     [SerializeField] private TMP_Text backgroundNameText;
+    [SerializeField] private GameObject layoutSelectCharacter;
+    [SerializeField] private Sprite[] characterFaces;
+    [SerializeField] private Image imageShowSelectedCharacter;
 
     private string roomcode;
 
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("characterID"))
+        {
+            int id = PlayerPrefs.GetInt("characterID");
+            imageShowSelectedCharacter.sprite = characterFaces[id];
+        }
+        else
+        {
+            PlayerPrefs.SetInt("characterID", 0);
+            imageShowSelectedCharacter.sprite = characterFaces[0];
+        }
+        
         copiedMessage.SetActive(false);
 
         if (PlayerPrefs.HasKey("name"))
@@ -172,5 +187,20 @@ public class StartHandler : MonoBehaviour
         stream.Write(new byte[] { 126, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     }
 
-   
+    public void ButtonShowCharacterSelectMenu()
+    {
+        layout1.SetActive(false);
+        layoutSelectCharacter.SetActive(true);
+    }
+    
+    public void ButtonSelectCharacter(int index)
+    {
+        PlayerPrefs.SetInt("characterID", index);
+        PlayerPrefs.Save();
+
+        imageShowSelectedCharacter.sprite = characterFaces[index];
+        
+        layout1.SetActive(true);
+        layoutSelectCharacter.SetActive(false);
+    }
 }
