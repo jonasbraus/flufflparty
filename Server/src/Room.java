@@ -348,6 +348,7 @@ public class Room
             {
                 //127 is the action for room cick
                 players[0].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                players[0].close();
             }
 
         } catch (Exception ex)
@@ -359,6 +360,7 @@ public class Room
             if (players[1] != null)
             {
                 players[1].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                players[1].close();
             }
 
         } catch (Exception ex)
@@ -370,6 +372,7 @@ public class Room
             if (players[2] != null)
             {
                 players[2].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                players[2].close();
             }
 
         } catch (Exception ex)
@@ -381,6 +384,7 @@ public class Room
             if (players[3] != null)
             {
                 players[3].output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+                players[3].close();
             }
 
         } catch (Exception ex)

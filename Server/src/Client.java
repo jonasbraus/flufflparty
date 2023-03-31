@@ -23,4 +23,22 @@ public class Client
         this.socket = socket;
         this.name = name;
     }
+
+    public void close()
+    {
+        try
+        {
+            input.close();
+        }catch(Exception e)
+        {
+
+        }
+        try
+        {
+            output.close();
+        }catch(Exception e)
+        {
+
+        }
+    }
 }

@@ -83,6 +83,9 @@ public class Server
                                  * !!!!!!!!!!!!!!!!!!!      0 is not used because of possible empty arrays read in because of inital connection errors  !!!!!!!!!!!!!!!!!!!!
                                  */
                                 case 0:
+                                case 126:
+                                    client.close();
+                                    client = null;
                                     Integer.parseInt("crash");
                                     break;
 
@@ -100,6 +103,8 @@ public class Server
 
                                     //LOG
                                     System.out.println("Room " + new String(code, StandardCharsets.US_ASCII) + " successfully created!");
+                                    client.close();
+                                    client = null;
                                     break;
                                 //in this case a player wants to join an existing room (even the room creator will join via this method)
                                 case 1:
@@ -137,9 +142,6 @@ public class Server
                                         output.write(new byte[]{127, 0, 0, 0, 0, 0, 0, 0, 0, 0});
                                     }
 
-                                    break;
-                                case 126:
-                                    Integer.parseInt("crash");
                                     break;
                             }
 

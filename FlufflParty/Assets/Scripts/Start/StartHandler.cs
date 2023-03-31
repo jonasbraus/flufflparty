@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,6 +24,11 @@ public class StartHandler : MonoBehaviour
     [SerializeField] private TMP_Text backgroundNameText;
     
     private string roomcode;
+    
+    int width = Screen.width;
+    int height = Screen.height;
+    private float divisionLevel = 1;
+    
 
     private void Start()
     {
@@ -43,6 +49,7 @@ public class StartHandler : MonoBehaviour
         layout2.SetActive(false);
         client = new TcpClient("185.245.96.48", 8051);
         buttonJoin.SetActive(false);
+        
     }
 
     public void ButtonNewRoom()
@@ -160,5 +167,19 @@ public class StartHandler : MonoBehaviour
     {
         Stream stream = client.GetStream();
         stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    public void OnQualitySliderChanged(float value)
+    {
+        divisionLevel = value;
+        
+    }
+
+    public void ButtonApply()
+    {
+        if(Application.platform == RuntimePlatform.Android)
+        {
+            Screen.SetResolution(width / (int)divisionLevel, height / (int)divisionLevel, Screen.fullScreen);
+        }
     }
 }
