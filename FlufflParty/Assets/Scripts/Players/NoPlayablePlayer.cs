@@ -146,6 +146,7 @@ public class NoPlayablePlayer : Player
                     //delay
                     if (Time.time - timeSinceWurfeln > 2)
                     {
+                        dice.SetActive(false);
                         InterPolerate();
                     }
                 }

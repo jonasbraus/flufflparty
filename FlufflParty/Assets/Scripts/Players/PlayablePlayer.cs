@@ -149,6 +149,7 @@ public class PlayablePlayer : Player
                     //delay
                     if (Time.time - timeSinceWurfeln > 2)
                     {
+                        dice.SetActive(false);
                         InterPolerate();
                     }
                 }
@@ -344,6 +345,7 @@ public class PlayablePlayer : Player
 
     public void StartDice()
     {
+        gameObject.SetActive(true);
         //start the dice
         dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
             transform.position + Vector3.up * 3f, ref useLess, 0.2f);
