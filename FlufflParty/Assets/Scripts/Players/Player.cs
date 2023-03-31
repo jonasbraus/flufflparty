@@ -24,6 +24,8 @@ public abstract class Player : MonoBehaviour
     public Item[] items = new Item[3];
     public Item.Type activeItem = Item.Type.None;
     protected float rotationDamping = 10;
+    public Image imageCurrentItem;
+    public Image[] itemInfoImages;
 
     protected Animator animator;
     
@@ -39,6 +41,7 @@ public abstract class Player : MonoBehaviour
     //Aktiviert den Player
     public void Activate()
     {
+        imageCurrentItem.color = new Color(0, 0, 0, 0);
         activated = true;
         wurfelt = false;
     }
@@ -87,6 +90,8 @@ public abstract class Player : MonoBehaviour
             if (items[i] == null)
             {
                 items[i] = item;
+                itemInfoImages[i].sprite = item.sprite;
+                itemInfoImages[i].color = new Color(1, 1, 1, 1);
                 break;
             }
         }
@@ -97,7 +102,11 @@ public abstract class Player : MonoBehaviour
     public void ActivateItem(int index)
     {
         activeItem = items[index].type;
+        imageCurrentItem.sprite = items[index].sprite;
+        imageCurrentItem.color = new Color(1, 1, 1, 1);
+        itemInfoImages[index].color = new Color(0, 0, 0, 0);
         items[index] = null;
+        
     }
 
     public void OnTriggerEnter(Collider c)

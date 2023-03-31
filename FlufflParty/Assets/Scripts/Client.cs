@@ -28,12 +28,15 @@ public class Client : MonoBehaviour
     [SerializeField] private GameObject[] playerInfo;
     private PlayerInfoElements[] playerInfoElements = new PlayerInfoElements[4];
     [SerializeField] private GameObject layout2;
-    [SerializeField] private Item[] items;
+    [SerializeField] public Item[] items;
     [SerializeField] private Button[] itemButtons;
 
     [SerializeField] private TMP_Text fpsText;
 
     private int playerAmount = 0;
+
+    [SerializeField] private Image imageCurrentItem;
+    [SerializeField] private Image[] playerItemInfoImages;
 
     private static Client thisClient;
 
@@ -153,6 +156,22 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
+                        script.imageCurrentItem = imageCurrentItem;
+                        
+                        //ITEM INFO IMAGES
+                        Image[] temp = new Image[3];
+                        
+                        int itemInfoImagesStartIndex = job.data[5] * 3;
+                        int idx = 0;
+                        for (int i = itemInfoImagesStartIndex; i < itemInfoImagesStartIndex + 3; i++)
+                        {
+                            temp[idx] = playerItemInfoImages[i];
+                            temp[idx].color = new Color(0, 0, 0, 0);
+                            idx++;
+                        }
+
+                        script.itemInfoImages = temp;
+                        //END
 
                         itemButtons[job.data[5]].interactable = true;
                     }
@@ -168,7 +187,23 @@ public class Client : MonoBehaviour
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
+                        script.imageCurrentItem = imageCurrentItem;
 
+                        //ITEM INFO IMAGES
+                        Image[] temp = new Image[3];
+                        
+                        int itemInfoImagesStartIndex = job.data[5] * 3;
+                        int idx = 0;
+                        for (int i = itemInfoImagesStartIndex; i < itemInfoImagesStartIndex + 3; i++)
+                        {
+                            temp[idx] = playerItemInfoImages[i];
+                            temp[idx].color = new Color(0, 0, 0, 0);
+                            idx++;
+                        }
+
+                        script.itemInfoImages = temp;
+                        //END
+                        
                         itemButtons[job.data[5]].interactable = false;
                     }
 

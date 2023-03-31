@@ -289,6 +289,7 @@ public class PlayablePlayer : Player
 
     private void Finish()
     {
+        imageCurrentItem.color = new Color(0, 0, 0, 0);
         client.SendFinished();
     }
 
@@ -352,7 +353,10 @@ public class PlayablePlayer : Player
     public void ActivateItem(int index)
     {
         activeItem = items[index].type;
+        imageCurrentItem.sprite = items[index].sprite;
+        imageCurrentItem.color = new Color(1, 1, 1, 1);
         items[index] = null;
+        itemInfoImages[index].color = new Color(0, 0, 0, 0);
         client.SendActiveItem((byte)index);
     }
 }
