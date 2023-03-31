@@ -115,7 +115,7 @@ public class Client : MonoBehaviour
                 if (temp[j] == players[i])
                 {
                     // playerInfoElements[i].textPlacement.text = j+1 + ".";
-                    playerInfoElements[i].textPlacement.text = currentPlacement + ".";
+                    playerInfoElements[i].textPlacement.text = currentPlacement + "";
 
                     if (!samePlacement[j])
                     {
