@@ -52,7 +52,8 @@ public class Server
                 System.out.println("Client connected!");
 
                 //create a new thread for the connected client to free up main thread resources for new connections
-                Thread t = new Thread(new Runnable()
+                Thread t = null;
+                t = new Thread(new Runnable()
                 {
                     @Override
                     public void run()
@@ -81,6 +82,9 @@ public class Server
                                 /**
                                  * !!!!!!!!!!!!!!!!!!!      0 is not used because of possible empty arrays read in because of inital connection errors  !!!!!!!!!!!!!!!!!!!!
                                  */
+                                case 0:
+                                    Integer.parseInt("crash");
+                                    break;
 
                                 //this case generates a new room and sends the room code to the requester (not for join)
                                 case 2:
@@ -138,6 +142,8 @@ public class Server
                                     Integer.parseInt("crash");
                                     break;
                             }
+
+                            System.out.println("Init Thread finished");
 
                         } catch (Exception e)
                         {

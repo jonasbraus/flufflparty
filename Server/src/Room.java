@@ -31,12 +31,9 @@ public class Room
     //tells players turn (array index)
     private int currentPlayer = 0;
 
-    private long timeOut = 0;
-    private Timer t;
 
     public Room(String roomCode, Server server)
     {
-        timeOut = System.currentTimeMillis();
 
         this.roomCode = roomCode;
         startPositions = new Vector3[4];
@@ -56,8 +53,6 @@ public class Room
      */
     public void addClient(Client client)
     {
-        //the timeout variable for a single player
-        timeOut = System.currentTimeMillis();
 
         //loops through all players existing and sends the needed information
         for (int i = 0; i < players.length; i++)
@@ -99,9 +94,6 @@ public class Room
 
                                 //read the data to the buffer
                                 input.read(readData);
-
-                                //reset the timeout once something is received
-                                timeOut = System.currentTimeMillis();
 
 
                                 /*
@@ -406,13 +398,6 @@ public class Room
             } catch (Exception e)
             {
             }
-        }
-
-        try
-        {
-            t.cancel();
-        } catch (Exception e)
-        {
         }
     }
 }
