@@ -56,13 +56,13 @@ public class UIHandler : MonoBehaviour
 
     public void ActivateLayoutMiniMap()
     {
-        layout0.SetActive(false);
-        layout1.SetActive(false);
-        layoutMiniMap.SetActive(true);
-        layoutBuyStar.SetActive(false);
-        layout2.SetActive(false);
-        layoutItemShop.SetActive(false);
-        layoutSelectItem.SetActive(false);
+        // layout0.SetActive(false);
+        // layout1.SetActive(false);
+        // layoutMiniMap.SetActive(true);
+        // layoutBuyStar.SetActive(false);
+        // layout2.SetActive(false);
+        // layoutItemShop.SetActive(false);
+        // layoutSelectItem.SetActive(false);
     }
 
     public void ActivateLayoutBuyStar(Player player)

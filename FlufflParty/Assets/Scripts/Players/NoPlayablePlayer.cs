@@ -24,6 +24,11 @@ public class NoPlayablePlayer : Player
     private Vector3 useLess = new Vector3();
 
     private bool checkDoubleDice = false;
+    
+    //Animation:
+    private Vector3 lastPosAnim = Vector3.zero;
+    private bool jumpRequest = false;
+    private float lastTimeDoneIdleAction = 0, idleActionDelay = 5;
 
 
     public override void Init()
@@ -34,7 +39,50 @@ public class NoPlayablePlayer : Player
         activated = false;
         diceScript = dice.GetComponent<Dice>();
         
-     
+    }
+
+    private void Start()
+    {
+        base.Start();
+        lastPosAnim = transform.position;
+    }
+
+
+    private void Update()
+    {
+        // //Animation Control
+        if (Vector3.Distance(transform.position, lastPosAnim) > 0f)
+        {
+            animator.SetInteger("value", 1);
+        }
+        else if(jumpRequest)
+        {
+            jumpRequest = false;
+            animator.SetInteger("value", 2);
+        }
+        else if(Time.time - lastTimeDoneIdleAction > idleActionDelay)
+        {
+            lastTimeDoneIdleAction = Time.time;
+            idleActionDelay = Random.Range(2f, 5f);
+            int randomAction = Random.Range(3, 6);
+            animator.SetInteger("value", randomAction);
+        }
+        else
+        {
+            animator.SetInteger("value", 0);
+        }
+        //END
+        
+        if (activated && wurfelZahl > 0 && !wait)
+        {
+            //delay
+            if (Time.time - timeSinceWurfeln > 2)
+            {
+                InterPolerate();
+            }
+        }
+        
+        lastPosAnim = transform.position;
     }
 
     public void BuyStar()
@@ -58,6 +106,8 @@ public class NoPlayablePlayer : Player
 
     public void Wurfeln(int wurfelZahl)
     {
+        jumpRequest = true;
+        
         wurfelt = true;
         this.wurfelZahl = wurfelZahl;
 
@@ -102,15 +152,11 @@ public class NoPlayablePlayer : Player
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
                 if (interPol < 1 && wurfelZahl > 0)
                 {
-                    //delay
-                    if (Time.time - timeSinceWurfeln > 2)
-                    {
-                        InterPolerate();
-                    }
                 }
                 //Würfelzahl um 1 verringern falls noch züge übrig sind
                 else if (wurfelZahl > 0)
                 {
+                    InterPolerate();
                     wurfelZahl--;
                     textLeftMoves.text = wurfelZahl + "";
 
@@ -123,6 +169,10 @@ public class NoPlayablePlayer : Player
                 //Der Spieler steht gerade
                 else
                 {
+                    Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
+                    currentRotation.y = -34;
+                    transform.rotation = Quaternion.Euler(currentRotation);
+                    
                     if (!wurfelt)
                     {
                        StartDice(); 
@@ -172,6 +222,16 @@ public class NoPlayablePlayer : Player
         if (!eventstop)
         {
             nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+            //Rotation in move direction
+            Vector3 lookPos = nextPoint - transform.position;
+            lookPos.y = 0;
+            if(lookPos != Vector3.zero)
+            {
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationDamping);
+            }
+            //END
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
         }
@@ -200,7 +260,7 @@ public class NoPlayablePlayer : Player
     {
         //start the dice
         dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
-            transform.position + Vector3.up * 2, ref useLess, 0.2f);
+            transform.position + Vector3.up * 3, ref useLess, 0.2f);
         diceScript.StartRandom();
     }
 }

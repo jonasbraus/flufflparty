@@ -23,12 +23,16 @@ public abstract class Player : MonoBehaviour
     public UIHandler uiHandler;
     public Item[] items = new Item[3];
     public Item.Type activeItem = Item.Type.None;
+    protected float rotationDamping = 10;
+
+    protected Animator animator;
     
     //for coin animation
     private AnimationHandler animationHandler;
 
-    private void Start()
+    protected void Start()
     {
+        animator = GetComponent<Animator>();
         animationHandler = GetComponentInChildren<AnimationHandler>();
     }
 

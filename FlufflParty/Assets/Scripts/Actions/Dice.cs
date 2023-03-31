@@ -45,8 +45,8 @@ public class Dice : MonoBehaviour
     {
         started = false;
 
-        rb.angularVelocity = new Vector3(5, 5, 5);
-        rb.useGravity = true;
+        rb.angularVelocity = new Vector3(0, 0, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
 
         foreach (TMP_Text t in numbers)
         {

@@ -30,6 +30,12 @@ public class PlayablePlayer : Player
     public Client client;
 
     private static PlayablePlayer instance;
+    
+    //Animation:
+    private Vector3 lastPosAnim = Vector3.zero;
+    private Quaternion rotation = Quaternion.identity;
+    private bool jumpRequest = false;
+    private float lastTimeDoneIdleAction = 0, idleActionDelay = 5;
 
     public override void Init()
     {
@@ -49,15 +55,37 @@ public class PlayablePlayer : Player
         return instance;
     }
 
+    private void Start()
+    {
+        base.Start();
+        lastPosAnim = transform.position;
+    }
+
     private void Update()
     {
-        /*
-         if (Input.GetMouseButtonDown(0))
+        //Animation Control
+        if (Vector3.Distance(transform.position, lastPosAnim) > 0)
         {
-            eventstop = false;
-            client.EventStopFinished();
+            animator.SetInteger("value", 1);
         }
-        */
+        else if(jumpRequest)
+        {
+            jumpRequest = false;
+            animator.SetInteger("value", 2);
+        }
+        else if(Time.time - lastTimeDoneIdleAction > idleActionDelay)
+        {
+            lastTimeDoneIdleAction = Time.time;
+            idleActionDelay = Random.Range(2f, 5f);
+            int randomAction = Random.Range(3, 6);
+            animator.SetInteger("value", randomAction);
+        }
+        else
+        {
+            animator.SetInteger("value", 0);
+        }
+        //END
+        
         if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
@@ -69,10 +97,23 @@ public class PlayablePlayer : Player
                 }
             }
         }
+
+        if (activated && wurfelZahl > 0 && !wait)
+        {
+            //delay
+            if (Time.time - timeSinceWurfeln > 2)
+            {
+                InterPolerate();
+            }
+        }
+        
+        lastPosAnim = transform.position;
     }
 
     private void DiceRollRoutine()
     {
+        jumpRequest = true;
+        
         wurfelt = true;
         wurfelZahl = Random.Range(1, 7);
 
@@ -87,17 +128,6 @@ public class PlayablePlayer : Player
                 activeItem = Item.Type.None;
                 break;
         }
-
-        /*
-        if (activeItem == Item.Type.Mushroom)
-        {
-            wurfelZahl += 3;
-            activeItem = Item.Type.None;
-        }else if (activeItem == Item.Type.DoubleDice)
-        {
-            checkDoubleDice = true;
-        }
-        */
 
         textLeftMoves.text = wurfelZahl + "";
 
@@ -125,11 +155,6 @@ public class PlayablePlayer : Player
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
                 if (interPol < 1 && wurfelZahl > 0)
                 {
-                    //delay
-                    if (Time.time - timeSinceWurfeln > 2)
-                    {
-                        InterPolerate();
-                    }
                 }
                 //Würfelzahl um 1 verringern falls noch züge übrig sind
                 else if (wurfelZahl > 0)
@@ -149,6 +174,10 @@ public class PlayablePlayer : Player
                 //Der Spieler steht gerade
                 else
                 {
+                    Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
+                    currentRotation.y = -34;
+                    transform.rotation = Quaternion.Euler(currentRotation);
+                    
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
@@ -233,6 +262,7 @@ public class PlayablePlayer : Player
         {
             wait = true;
         }
+        
     }
 
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
@@ -244,6 +274,17 @@ public class PlayablePlayer : Player
         if (!eventstop)
         {
             nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
+            
+            //Rotation in move direction
+            Vector3 lookPos = nextPoint - transform.position;
+            lookPos.y = 0;
+            if(lookPos != Vector3.zero)
+            {
+                Quaternion rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationDamping);
+            }
+            //END
+            
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
         }
@@ -307,7 +348,7 @@ public class PlayablePlayer : Player
     {
         //start the dice
         dice.transform.position = Vector3.SmoothDamp(dice.transform.position,
-            transform.position + Vector3.up * 2, ref useLess, 0.2f);
+            transform.position + Vector3.up * 3f, ref useLess, 0.2f);
         diceScript.StartRandom();
     }
 

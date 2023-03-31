@@ -42,10 +42,10 @@ public class Room
         startPositions = new Vector3[4];
 
         //set up the start positions
-        startPositions[0] = new Vector3(96, 1, 126);
-        startPositions[1] = new Vector3(92, 1, 126);
-        startPositions[2] = new Vector3(96, 1, 128);
-        startPositions[3] = new Vector3(92, 1, 128);
+        startPositions[0] = new Vector3(96, 0, 126);
+        startPositions[1] = new Vector3(92, 0, 126);
+        startPositions[2] = new Vector3(96, 0, 128);
+        startPositions[3] = new Vector3(92, 0, 128);
 
         this.server = server;
 

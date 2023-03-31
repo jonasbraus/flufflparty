@@ -1,0 +1,13 @@
+1-19 Walk
+21-39 FootTap
+41-69 Wabble
+71-104 Flatter
+108-129 Jump
+131-135 Idle
+
+Idle: 0
+Walk: 1
+Jump: 2
+FootTap: 3
+Flatter: 4
+Wabble: 5
