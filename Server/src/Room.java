@@ -399,5 +399,9 @@ public class Room
             {
             }
         }
+
+        threads = null;
+        players = null;
+        startPositions = null;
     }
 }
