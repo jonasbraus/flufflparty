@@ -25,10 +25,6 @@ public class StartHandler : MonoBehaviour
 
     private string roomcode;
 
-    int width = Screen.width;
-    int height = Screen.height;
-    private float divisionLevel = 1;
-
 
     private void Start()
     {
@@ -176,16 +172,5 @@ public class StartHandler : MonoBehaviour
         stream.Write(new byte[] { 126, 0, 0, 0, 0, 0, 0, 0, 0, 0 });
     }
 
-    public void OnQualitySliderChanged(float value)
-    {
-        divisionLevel = value;
-    }
-
-    public void ButtonApply()
-    {
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            Screen.SetResolution(width / (int)divisionLevel, height / (int)divisionLevel, Screen.fullScreen);
-        }
-    }
+   
 }

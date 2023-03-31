@@ -12,9 +12,14 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject layoutBuyStar;
     [SerializeField] private GameObject layoutItemShop;
     [SerializeField] private GameObject layoutSelectItem;
+    [SerializeField] private GameObject layoutOptions;
 
     private static UIHandler currentInstance;
 
+    int width = Screen.width;
+    int height = Screen.height;
+    private float divisionLevel = 1;
+    
     public static UIHandler GetInstance()
     {
         return currentInstance;
@@ -39,6 +44,7 @@ public class UIHandler : MonoBehaviour
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
 
         currentInstance = this;
     }
@@ -52,6 +58,7 @@ public class UIHandler : MonoBehaviour
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
     }
 
     public void ActivateLayoutMiniMap()
@@ -75,6 +82,7 @@ public class UIHandler : MonoBehaviour
         layout2.SetActive(false);
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
 
         LayoutBuyStarController controller = layoutBuyStar.GetComponent<LayoutBuyStarController>();
 
@@ -101,6 +109,7 @@ public class UIHandler : MonoBehaviour
         layout2.SetActive(true);
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
     }
 
     public void ActivateLayoutItemShop()
@@ -113,6 +122,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(true);
         layoutItemShop.GetComponent<ItemShop>().Init(currentPlayer);
         layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
     }
 
     
@@ -129,11 +139,24 @@ public class UIHandler : MonoBehaviour
             layoutBuyStar.SetActive(false);
             layout2.SetActive(false);
             layoutItemShop.SetActive(false);
+            layoutOptions.SetActive(false);
             
             layoutSelectItem.GetComponent<ItemSelector>().Init(currentPlayer.items);
             
             layoutSelectItem.SetActive(true);
         }
+    }
+
+    public void ActivateLayoutOptions()
+    {
+        layout0.SetActive(false);
+        layout1.SetActive(false);
+        layoutMiniMap.SetActive(false);
+        layoutBuyStar.SetActive(false);
+        layout2.SetActive(false);
+        layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(true);
     }
 
     public void ButtonBuyStar()
@@ -170,5 +193,19 @@ public class UIHandler : MonoBehaviour
         ((PlayablePlayer)currentPlayer).ActivateItem(index);
         ActivateLayout1();
         
+    }
+    public void OnQualitySliderChanged(float value)
+    {
+        divisionLevel = value;
+    }
+    
+    public void ButtonApplySettings()
+    {
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            Screen.SetResolution(width / (int)divisionLevel, height / (int)divisionLevel, Screen.fullScreen);
+        }
+        
+        ActivateLayout1();
     }
 }
