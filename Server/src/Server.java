@@ -25,7 +25,7 @@ public class Server
         rooms.remove(code);
 
         //LOG
-        System.out.println("Room" + code + " successfully deleted");
+        System.out.println("Room " + code + " successfully deleted");
     }
 
     /**
@@ -87,6 +87,12 @@ public class Server
                                     client.close();
                                     client = null;
                                     Integer.parseInt("crash");
+                                    break;
+                                case 3:
+                                    byte[] roomCodeToClose = new byte[10];
+                                    input.read(roomCodeToClose);
+                                    String roomCodeToCloseString = new String(roomCodeToClose, StandardCharsets.US_ASCII);
+                                    deleteRoom(roomCodeToCloseString);
                                     break;
 
                                 //this case generates a new room and sends the room code to the requester (not for join)
@@ -183,6 +189,10 @@ public class Server
             else
             {
                 code[i] = (byte) (Math.random() * 25 + 97);
+                while(code[i] == 111)
+                {
+                    code[i] = (byte) (Math.random() * 25 + 97);
+                }
             }
         }
 

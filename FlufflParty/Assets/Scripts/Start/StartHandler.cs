@@ -111,6 +111,13 @@ public class StartHandler : MonoBehaviour
 
     public void ButtonBack()
     {
+        client.Close();
+        client = new TcpClient("185.245.96.48", 8051);
+        Stream stream = client.GetStream();
+        stream.Write(new byte[]{3, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+        byte[] roomCode = Encoding.ASCII.GetBytes(PlayerPrefs.GetString("roomcode"));
+        stream.Write(roomCode);
+        
         SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
