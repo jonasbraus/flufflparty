@@ -71,6 +71,8 @@ public class Client : MonoBehaviour
         stream.Write(Encoding.ASCII.GetBytes(roomCode), 0, 10);
         string name = PlayerPrefs.GetString("name");
         stream.Write(Encoding.ASCII.GetBytes(name), 0, 10);
+        int characterID = PlayerPrefs.GetInt("characterID");
+        
 
         for (int i = 0; i < playerInfo.Length; i++)
         {

@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textLeftMoves: {fileID: 2122811708}
-  playerPrefab: {fileID: 5247910453208470208, guid: 59e100ca14490c747a2f7e7419c67425, type: 3}
+  playerPrefab: {fileID: 8816567085985930771, guid: 5fb5cbebdcdde5e4381eed73785da900, type: 3}
   dice: {fileID: 1676575018}
   nextField: {fileID: 1406090859}
   cam: {fileID: 1328561024}
@@ -12452,7 +12452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1235522789
 RectTransform:
   m_ObjectHideFlags: 0
