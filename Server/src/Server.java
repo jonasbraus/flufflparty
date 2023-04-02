@@ -134,11 +134,15 @@ public class Server
                                     String name = new String(readData, StandardCharsets.US_ASCII);
                                     name = name.replace("?", " ");
 
+                                    input.read(readData);
+
+                                    int characterID = readData[0];
+
                                     //check if the room exists
                                     if (rooms.containsKey(roomCode))
                                     {
                                         //create the reference to the client
-                                        Client client1 = new Client(output, input, client, name);
+                                        Client client1 = new Client(output, input, client, name, characterID);
 
                                         //move the client to the room
                                         rooms.get(roomCode).addClient(client1);

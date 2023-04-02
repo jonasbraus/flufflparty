@@ -12,16 +12,18 @@ public class Client
     public Socket socket;
 
     public String name;
+    public int characterID;
 
     public long lastTimeSendTimeOutCheck = -1;
 
 
-    public Client(DataOutputStream output, DataInputStream input, Socket socket, String name)
+    public Client(DataOutputStream output, DataInputStream input, Socket socket, String name, int characterID)
     {
         this.output = output;
         this.input = input;
         this.socket = socket;
         this.name = name;
+        this.characterID = characterID;
     }
 
     public void close()

@@ -15,7 +15,7 @@ public class Client : MonoBehaviour
     [SerializeField] private TMP_Text textLeftMoves;
     private TcpClient client;
     private Stream stream;
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject[] playerPrefab;
     private Player[] players = new Player[4];
     private Queue<Job> jobs = new Queue<Job>();
     [SerializeField] private GameObject dice;
@@ -37,6 +37,10 @@ public class Client : MonoBehaviour
 
     [SerializeField] private Image imageCurrentItem;
     [SerializeField] private Image[] playerItemInfoImages;
+    
+    //Icon
+    [SerializeField] private Image[] playerIconInfoImages;
+    [SerializeField] private Sprite[] playerIconInfoImagesPrefabs;
 
     private static Client thisClient;
 
@@ -72,7 +76,7 @@ public class Client : MonoBehaviour
         string name = PlayerPrefs.GetString("name");
         stream.Write(Encoding.ASCII.GetBytes(name), 0, 10);
         int characterID = PlayerPrefs.GetInt("characterID");
-        
+        stream.Write(new byte[] { (byte)characterID, 0, 0, 0, 0, 0, 0, 0, 0, 0 },0, 10);
 
         for (int i = 0; i < playerInfo.Length; i++)
         {
@@ -148,7 +152,8 @@ public class Client : MonoBehaviour
                     //player is playable
                     if (job.data[1] == 1)
                     {
-                        GameObject player = Instantiate(playerPrefab);
+                        GameObject player = Instantiate(playerPrefab[job.data[9]]);
+                        playerIconInfoImages[job.data[5]].sprite = playerIconInfoImagesPrefabs[job.data[9]];
 
                         player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
 
@@ -180,7 +185,8 @@ public class Client : MonoBehaviour
                     //player is not playable
                     else
                     {
-                        GameObject player = Instantiate(playerPrefab);
+                        GameObject player = Instantiate(playerPrefab[job.data[9]]);
+                        playerIconInfoImages[job.data[5]].sprite = playerIconInfoImagesPrefabs[job.data[9]];
 
                         player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
 

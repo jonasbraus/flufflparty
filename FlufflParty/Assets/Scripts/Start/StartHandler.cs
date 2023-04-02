@@ -39,8 +39,8 @@ public class StartHandler : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("characterID", 0);
-            imageShowSelectedCharacter.sprite = characterFaces[0];
+            PlayerPrefs.SetInt("characterID", 1);
+            imageShowSelectedCharacter.sprite = characterFaces[1];
         }
         
         copiedMessage.SetActive(false);

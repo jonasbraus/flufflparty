@@ -273,7 +273,7 @@ public class Room
                         try
                         {
                             //sends the inital message to the player
-                            players[j].output.write(new byte[]{1, 1, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, 0});
+                            players[j].output.write(new byte[]{1, 1, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, (byte)players[k].characterID});
 
                             //sends the name of the player (ASCII encoding)............................................................................
                             byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
@@ -298,7 +298,7 @@ public class Room
                     {
                         try
                         {
-                            players[j].output.write(new byte[]{1, 0, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, 0});
+                            players[j].output.write(new byte[]{1, 0, (byte) startPositions[k].x, (byte) startPositions[k].y, (byte) startPositions[k].z, (byte) k, 0, 0, 0, (byte)players[k].characterID});
                             byte[] name = players[k].name.substring(0, 8).getBytes(StandardCharsets.US_ASCII);
                             byte[] send = new byte[10];
                             send[0] = 5;
