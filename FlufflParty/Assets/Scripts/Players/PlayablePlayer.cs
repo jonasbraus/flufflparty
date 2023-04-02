@@ -72,6 +72,7 @@ public class PlayablePlayer : Player
         {
             jumpRequest = false;
             animator.SetInteger("value", 2);
+            lastTimeDoneIdleAction = Time.time;
         }
         else if(Time.time - lastTimeDoneIdleAction > idleActionDelay)
         {
