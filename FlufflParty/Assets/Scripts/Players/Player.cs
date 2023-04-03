@@ -106,7 +106,6 @@ public abstract class Player : MonoBehaviour
         imageCurrentItem.sprite = items[index].sprite;
         imageCurrentItem.color = new Color(1, 1, 1, 1);
         itemInfoImages[index].color = new Color(0, 0, 0, 0);
-        items[index] = null;
         if (items[index].type == Item.Type.Trap)
         {
             currentField.placedItem = items[index];
@@ -114,7 +113,7 @@ public abstract class Player : MonoBehaviour
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;
         }
-        
+        items[index] = null;
     }
 
     public void OnTriggerEnter(Collider c)

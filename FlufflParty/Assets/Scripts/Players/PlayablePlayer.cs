@@ -357,7 +357,6 @@ public class PlayablePlayer : Player
         activeItem = items[index].type;
         imageCurrentItem.sprite = items[index].sprite;
         imageCurrentItem.color = new Color(1, 1, 1, 1);
-        items[index] = null;
         itemInfoImages[index].color = new Color(0, 0, 0, 0);
         client.SendActiveItem((byte)index);
         if (items[index].type == Item.Type.Trap)
@@ -367,5 +366,6 @@ public class PlayablePlayer : Player
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;
         }
+        items[index] = null;
     }
 }
