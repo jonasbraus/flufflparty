@@ -19,6 +19,6 @@ public class Item : MonoBehaviour
 
     public enum Type
     {
-        None = -1, Mushroom = 0, DoubleDice = 1
+        None = -1, Mushroom = 0, DoubleDice = 1, Trap = 2
     }
 }

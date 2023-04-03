@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1261853142848542239}
   - component: {fileID: 2750814446728092090}
   - component: {fileID: 128401396820962672}
+  - component: {fileID: -9117868828834893705}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-9117868828834893705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930021224252099749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b369e867ce7bd2944baef65e2537086c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: 00828533b32c7964692b06d8fe99431d, type: 3}
+  type: 2
+  cost: 3
