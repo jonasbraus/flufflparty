@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class PlayablePlayer : Player
 {
     public Field nextField;
-    private Field currentField;
     public GameObject dice;
     private Dice diceScript;
     private Vector3 moveTo = Vector3.zero;
@@ -361,5 +360,12 @@ public class PlayablePlayer : Player
         items[index] = null;
         itemInfoImages[index].color = new Color(0, 0, 0, 0);
         client.SendActiveItem((byte)index);
+        if (items[index].type == Item.Type.Trap)
+        {
+            currentField.placedItem = items[index];
+            GameObject temp = Instantiate(items[index].gameObject);
+            temp.transform.position = currentField.transform.position + (Vector3.up / 2);
+            activeItem = Item.Type.None;
+        }
     }
 }

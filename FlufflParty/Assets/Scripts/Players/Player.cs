@@ -13,6 +13,7 @@ public abstract class Player : MonoBehaviour
     
     public GameObject camera;
     protected Vector3 velocity = Vector3.zero;
+    protected Field currentField;
 
     protected Vector3 cameraOffset = new Vector3(-2.81f, 8.13f, 5.6f);
     public int index;
@@ -106,6 +107,13 @@ public abstract class Player : MonoBehaviour
         imageCurrentItem.color = new Color(1, 1, 1, 1);
         itemInfoImages[index].color = new Color(0, 0, 0, 0);
         items[index] = null;
+        if (items[index].type == Item.Type.Trap)
+        {
+            currentField.placedItem = items[index];
+            GameObject temp = Instantiate(items[index].gameObject);
+            temp.transform.position = currentField.transform.position + (Vector3.up / 2);
+            activeItem = Item.Type.None;
+        }
         
     }
 

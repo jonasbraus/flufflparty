@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class NoPlayablePlayer : Player
 {
     public Field nextField;
-    private Field currentField;
     public GameObject dice;
     private Dice diceScript;
     private Vector3 moveTo = Vector3.zero;
@@ -157,6 +156,9 @@ public class NoPlayablePlayer : Player
                     InterPolerate();
                     wurfelZahl--;
                     textLeftMoves.text = wurfelZahl + "";
+                    
+                    //the next field is the current field XD
+                    currentField = nextField;
 
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
                     if (wurfelZahl > 0) 

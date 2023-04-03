@@ -7,6 +7,7 @@ public abstract class Field : MonoBehaviour
     //Liste der nächsten Feld, die auf das diesige Feld folgen
     [SerializeField] private Field[] target;
     [SerializeField] private Arrow[] directionalArrows;
+    public Item placedItem;
 
     /*
      * Field Definition:
