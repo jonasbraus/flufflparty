@@ -544,7 +544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &293557777
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4344,7 +4344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1844490421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4441,7 +4441,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 57e3c75103e6feb49985654c7af4524c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b69cae6d413f75b489dbe534eed44336, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4793,7 +4793,7 @@ MonoBehaviour:
   backgroundNameText: {fileID: 309674619}
   layoutSelectCharacter: {fileID: 813846768}
   characterFaces:
-  - {fileID: 21300000, guid: 57e3c75103e6feb49985654c7af4524c, type: 3}
+  - {fileID: 21300000, guid: b69cae6d413f75b489dbe534eed44336, type: 3}
   - {fileID: 21300000, guid: 84910def6c534a342b64c363954757f5, type: 3}
   - {fileID: 21300000, guid: 6ce91f2676559c8498bf6cf0e6db698f, type: 3}
   imageShowSelectedCharacter: {fileID: 492275789}

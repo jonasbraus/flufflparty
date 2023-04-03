@@ -16,6 +16,7 @@ public class Client : MonoBehaviour
     private TcpClient client;
     private Stream stream;
     [SerializeField] private GameObject[] playerPrefab;
+    [SerializeField] private PlayerHeightInfo[] playerPrefabsHeightInfo;
     private Player[] players = new Player[4];
     private Queue<Job> jobs = new Queue<Job>();
     [SerializeField] private GameObject dice;
@@ -155,7 +156,7 @@ public class Client : MonoBehaviour
                         GameObject player = Instantiate(playerPrefab[job.data[9]]);
                         playerIconInfoImages[job.data[5]].sprite = playerIconInfoImagesPrefabs[job.data[9]];
 
-                        player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
+                        player.transform.position = new Vector3(job.data[2], job.data[3] + playerPrefabsHeightInfo[job.data[9]].heightOffset, job.data[4]);
 
                         PlayablePlayer script = player.AddComponent<PlayablePlayer>();
                         players[job.data[5]] = script;
@@ -188,7 +189,7 @@ public class Client : MonoBehaviour
                         GameObject player = Instantiate(playerPrefab[job.data[9]]);
                         playerIconInfoImages[job.data[5]].sprite = playerIconInfoImagesPrefabs[job.data[9]];
 
-                        player.transform.position = new Vector3(job.data[2], job.data[3] + 0.5f, job.data[4]);
+                        player.transform.position = new Vector3(job.data[2], job.data[3] + playerPrefabsHeightInfo[job.data[9]].heightOffset, job.data[4]);
 
                         NoPlayablePlayer script = player.AddComponent<NoPlayablePlayer>();
                         players[job.data[5]] = script;

@@ -551,9 +551,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textLeftMoves: {fileID: 2122811708}
   playerPrefab:
-  - {fileID: 8816567085985930771, guid: 5fb5cbebdcdde5e4381eed73785da900, type: 3}
+  - {fileID: 837377722559810298, guid: 2d961b4f1a4c4e04a9f64ace393b4b84, type: 3}
   - {fileID: 5247910453208470208, guid: 59e100ca14490c747a2f7e7419c67425, type: 3}
   - {fileID: 8925129576854471352, guid: dacabcc369b57cd4699cbd9028805bb8, type: 3}
+  playerPrefabsHeightInfo:
+  - {fileID: 7490900872259122966, guid: 2d961b4f1a4c4e04a9f64ace393b4b84, type: 3}
+  - {fileID: 8231549820958033844, guid: 59e100ca14490c747a2f7e7419c67425, type: 3}
+  - {fileID: 8075745213474720708, guid: dacabcc369b57cd4699cbd9028805bb8, type: 3}
   dice: {fileID: 1676575018}
   nextField: {fileID: 1406090859}
   cam: {fileID: 1328561024}
@@ -598,7 +602,7 @@ MonoBehaviour:
   - {fileID: 2101210735}
   - {fileID: 651699163}
   playerIconInfoImagesPrefabs:
-  - {fileID: 21300000, guid: 57e3c75103e6feb49985654c7af4524c, type: 3}
+  - {fileID: 21300000, guid: b69cae6d413f75b489dbe534eed44336, type: 3}
   - {fileID: 21300000, guid: 84910def6c534a342b64c363954757f5, type: 3}
   - {fileID: 21300000, guid: 6ce91f2676559c8498bf6cf0e6db698f, type: 3}
 --- !u!114 &47812149
