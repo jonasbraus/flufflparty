@@ -16,6 +16,7 @@ public abstract class Player : MonoBehaviour
     protected Field currentField;
 
     protected Vector3 cameraOffset = new Vector3(-2.81f, 8.13f, 5.6f);
+    //players ID
     public int index;
     public int coins = 0;
     public int stars = 0;

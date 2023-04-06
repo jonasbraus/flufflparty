@@ -177,11 +177,15 @@ public class PlayablePlayer : Player
                         if (currentField.placedItem != null)
                         {
                             Trap t = currentField.placedItem.GetComponent<Trap>();
-                            AddCoins(-3);
-                            Debug.Log(t.name);
-                            t.target.AddCoins(3);
-                            currentField.placedItem = null;
-                            Destroy(t.gameObject);
+                            
+                            if(t.target.index != index)
+                            {
+                                AddCoins(-3);
+                                Debug.Log(t.name);
+                                t.target.AddCoins(3);
+                                currentField.placedItem = null;
+                                Destroy(t.gameObject);
+                            }
                         }
                     }
                     Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);

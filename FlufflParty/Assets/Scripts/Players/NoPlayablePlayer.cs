@@ -174,10 +174,14 @@ public class NoPlayablePlayer : Player
                         if (currentField.placedItem != null)
                         {
                             Trap t = currentField.placedItem.GetComponent<Trap>();
-                            AddCoins(-3);
-                            t.target.AddCoins(3);
-                            currentField.placedItem = null;
-                            Destroy(t.gameObject);
+                            
+                            if(t.target.index != index)
+                            {
+                                AddCoins(-3);
+                                t.target.AddCoins(3);
+                                currentField.placedItem = null;
+                                Destroy(t.gameObject);
+                            }
                         }
                     }
 
