@@ -106,7 +106,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(3, 4);
+        wurfelZahl = Random.Range(6, 7);
 
         switch (activeItem)
         {
@@ -180,8 +180,8 @@ public class PlayablePlayer : Player
                             AddCoins(-3);
                             Debug.Log(t.name);
                             t.target.AddCoins(3);
-                            Destroy(t.gameObject);
                             currentField.placedItem = null;
+                            Destroy(t.gameObject);
                         }
                     }
                     Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
@@ -373,9 +373,9 @@ public class PlayablePlayer : Player
         client.SendActiveItem((byte)index);
         if (items[index].type == Item.Type.Trap)
         {
-            currentField.placedItem = items[index];
             GameObject temp = Instantiate(items[index].gameObject);
             Trap t = temp.GetComponent<Trap>();
+            currentField.placedItem = t.gameObject;
             t.target = gameObject.GetComponent<PlayablePlayer>();
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;

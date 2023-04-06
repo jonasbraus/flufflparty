@@ -108,9 +108,9 @@ public abstract class Player : MonoBehaviour
         itemInfoImages[index].color = new Color(0, 0, 0, 0);
         if (items[index].type == Item.Type.Trap)
         {
-            currentField.placedItem = items[index];
             GameObject temp = Instantiate(items[index].gameObject);
             Trap t = temp.GetComponent<Trap>();
+            currentField.placedItem = t.gameObject;
             t.target = gameObject.GetComponent<NoPlayablePlayer>();
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;

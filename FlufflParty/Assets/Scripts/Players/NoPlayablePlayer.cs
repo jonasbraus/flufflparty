@@ -176,8 +176,8 @@ public class NoPlayablePlayer : Player
                             Trap t = currentField.placedItem.GetComponent<Trap>();
                             AddCoins(-3);
                             t.target.AddCoins(3);
-                            Destroy(t.gameObject);
                             currentField.placedItem = null;
+                            Destroy(t.gameObject);
                         }
                     }
 
