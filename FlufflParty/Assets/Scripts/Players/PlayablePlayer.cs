@@ -172,6 +172,14 @@ public class PlayablePlayer : Player
                 //Der Spieler steht gerade
                 else
                 {
+                    if (currentField.placedItem != null)
+                    {
+                        Trap t = currentField.placedItem.GetComponent<Trap>();
+                        AddCoins(-3);
+                        t.target.AddCoins(3);
+                        Destroy(t);
+                        currentField.placedItem = null;
+                    }
                     Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
                     currentRotation.y = -34;
                     transform.rotation = Quaternion.Euler(currentRotation);
