@@ -106,7 +106,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(1, 7);
+        wurfelZahl = Random.Range(3, 4);
 
         switch (activeItem)
         {
