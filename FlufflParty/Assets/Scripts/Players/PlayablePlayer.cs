@@ -178,8 +178,9 @@ public class PlayablePlayer : Player
                         {
                             Trap t = currentField.placedItem.GetComponent<Trap>();
                             AddCoins(-3);
+                            Debug.Log(t.name);
                             t.target.AddCoins(3);
-                            Destroy(t);
+                            Destroy(t.gameObject);
                             currentField.placedItem = null;
                         }
                     }
@@ -375,7 +376,7 @@ public class PlayablePlayer : Player
             currentField.placedItem = items[index];
             GameObject temp = Instantiate(items[index].gameObject);
             Trap t = temp.GetComponent<Trap>();
-            t.target = this;
+            t.target = gameObject.GetComponent<PlayablePlayer>();
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;
         }
