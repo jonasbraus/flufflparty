@@ -110,6 +110,8 @@ public abstract class Player : MonoBehaviour
         {
             currentField.placedItem = items[index];
             GameObject temp = Instantiate(items[index].gameObject);
+            Trap t = temp.GetComponent<Trap>();
+            t.target = this;
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;
         }
