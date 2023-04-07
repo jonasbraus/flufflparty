@@ -64,7 +64,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 42db707c721233547876203e2553789b, type: 2}
   - {fileID: 2100000, guid: 50d59ec4e3717ab46815fe06f5eac000, type: 2}
-  - {fileID: -876546973899608171, guid: bcff3b6992a10f245b41c89e969ecf52, type: 3}
+  - {fileID: 2100000, guid: 8950e67231a8c9b42b06cfd2417c9481, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,3 +100,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target:
   - {fileID: 0}
+  directionalArrows: []
+  placedItem: {fileID: 0}
