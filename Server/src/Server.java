@@ -24,8 +24,10 @@ public class Server
     //A Formatter for date and time log outputs
     public void deleteRoom(String code)
     {
-        rooms.get(code).closeRoom();
+        Room r = rooms.get(code);
+        r.closeRoom();
         rooms.remove(code);
+        publicRooms.remove(r);
 
         //LOG
         System.out.println("Room " + code + " successfully deleted");
