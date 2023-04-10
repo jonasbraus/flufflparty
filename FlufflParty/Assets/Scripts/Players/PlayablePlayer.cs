@@ -180,9 +180,9 @@ public class PlayablePlayer : Player
                             
                             if(t.target.index != index)
                             {
-                                AddCoins(-3);
-                                Debug.Log(t.name);
-                                t.target.AddCoins(3);
+                                int coinsAmount = (int)(coins * 0.1f);
+                                AddCoins(-coinsAmount);
+                                t.target.AddCoins(coinsAmount);
                                 currentField.placedItem = null;
                                 Destroy(t.gameObject);
                             }
