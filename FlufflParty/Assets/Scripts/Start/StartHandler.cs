@@ -89,6 +89,22 @@ public class StartHandler : MonoBehaviour
         stream.Close();
     }
 
+    public void ButtonFindPublicMatch()
+    {
+        Stream stream = client.GetStream();
+        byte[] readMessage = new byte[10];
+        
+        stream.Write(new byte[]{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        stream.Read(readMessage, 0, 10);
+
+        string s = Encoding.ASCII.GetString(readMessage);
+        
+        PlayerPrefs.SetString("roomcode", s);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
     public void ButtonJoin()
     {
         string code = roomCodeEnter.text.ToLower();

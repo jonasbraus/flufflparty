@@ -14,11 +14,11 @@ import java.util.TimerTask;
 public class Room
 {
     //tells how many clients can connect to a room
-    private Client[] players = new Client[2];
+    public Client[] players = new Client[2];
     //the array of players start positions
     private Vector3[] startPositions;
     //the generated roomcode
-    private String roomCode;
+    public String roomCode;
     //the instance to the main server
     private Server server;
 
@@ -26,7 +26,7 @@ public class Room
     private List<Thread> threads = new ArrayList<>();
 
     //count of players in the game
-    private int playerCount = 0;
+    public int playerCount = 0;
 
     //tells players turn (array index)
     private int currentPlayer = 0;

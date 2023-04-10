@@ -6,7 +6,9 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Server
 {
@@ -14,6 +16,7 @@ public class Server
     private ServerSocket serverSocket;
     //Roomcodes and Room objects are mapped here
     private HashMap<String, Room> rooms = new HashMap<>();
+    private List<Room> publicRooms = new ArrayList<>();
 
     //Server reference
     private final Server server = this;
@@ -153,6 +156,36 @@ public class Server
                                     }
 
                                     break;
+                                    //For Public Match
+                                case 4:
+                                    boolean success = false;
+
+                                    for(int i = 0; i < publicRooms.size(); i++)
+                                    {
+                                        Room temp = publicRooms.get(i);
+                                        if(temp.playerCount < temp.players.length)
+                                        {
+                                            String sendRoomCode = temp.roomCode;
+                                            output.write(sendRoomCode.getBytes(StandardCharsets.US_ASCII));
+                                            success = true;
+                                            client.close();
+                                            client = null;
+                                            break;
+                                        }
+                                    }
+
+                                    if(!success)
+                                    {
+                                        byte[] tempRoomCode = generateRoomCode();
+                                        Room tempRoom = new Room(new String(tempRoomCode, StandardCharsets.US_ASCII), server);
+                                        publicRooms.add(tempRoom);
+                                        output.write(tempRoomCode);
+
+                                        System.out.println("Room " + new String(tempRoomCode, StandardCharsets.US_ASCII) + " successfully created!");
+                                        client.close();
+                                        client = null;
+                                        break;
+                                    }
                             }
 
                             System.out.println("Init Thread finished");
