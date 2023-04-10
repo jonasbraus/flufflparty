@@ -44,6 +44,9 @@ public class Client : MonoBehaviour
     [SerializeField] private Sprite[] playerIconInfoImagesPrefabs;
 
     private static Client thisClient;
+    
+    //players in game text blub
+    [SerializeField] private TMP_Text playersInGameText;
 
     public static Client GetCurrentInstance()
     {
@@ -271,6 +274,9 @@ public class Client : MonoBehaviour
                     break;
                 case 10:
                     players[job.data[1]].ActivateItem(job.data[2]);
+                    break;
+                case 11:
+                    playersInGameText.text = job.data[1] + "/4";
                     break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);

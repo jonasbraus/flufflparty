@@ -85,6 +85,20 @@ public class Room
                             server.deleteRoom(roomCode);
                         }
 
+                        for(int i = 0; i < players.length; i++)
+                        {
+                            if(players[i] != null)
+                            {
+                                try
+                                {
+                                    players[i].output.write(new byte[]{11, (byte)playerCount, 0, 0, 0, 0, 0, 0, 0, 0});
+                                } catch (IOException e)
+                                {
+
+                                }
+                            }
+                        }
+
                         while (true)
                         {
                             try
