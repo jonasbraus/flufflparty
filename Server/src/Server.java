@@ -179,6 +179,7 @@ public class Server
                                         byte[] tempRoomCode = generateRoomCode();
                                         Room tempRoom = new Room(new String(tempRoomCode, StandardCharsets.US_ASCII), server);
                                         publicRooms.add(tempRoom);
+                                        rooms.put(new String(tempRoomCode, StandardCharsets.US_ASCII), tempRoom);
                                         output.write(tempRoomCode);
 
                                         System.out.println("Room " + new String(tempRoomCode, StandardCharsets.US_ASCII) + " successfully created!");

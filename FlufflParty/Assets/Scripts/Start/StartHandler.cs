@@ -94,15 +94,18 @@ public class StartHandler : MonoBehaviour
         Stream stream = client.GetStream();
         byte[] readMessage = new byte[10];
         
-        stream.Write(new byte[]{4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+        stream.Write(new byte[]{4, 0, 0, 0, 0, 0, 0, 0, 0, 0});
 
         stream.Read(readMessage, 0, 10);
 
         string s = Encoding.ASCII.GetString(readMessage);
+        Debug.Log(s);
         
         PlayerPrefs.SetString("roomcode", s);
         PlayerPrefs.Save();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
+        
+        stream.Close();
     }
 
     public void ButtonJoin()
