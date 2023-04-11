@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0abe486-ee58-49bd-ad63-04a8b3fc78ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlufflParty/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/PlayablePlayer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

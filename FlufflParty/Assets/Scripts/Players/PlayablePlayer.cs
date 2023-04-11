@@ -210,7 +210,7 @@ public class PlayablePlayer : Player
                                 AddCoins(-3);
                                 break;
                             case 2: //pinkes Feld
-                                int randyPinkField = Random.Range(2, 2);
+                                int randyPinkField = Random.Range(3, 3);
                                 int tempCurrentItems = -1;
                                 switch (randyPinkField)
                                 {
@@ -227,7 +227,6 @@ public class PlayablePlayer : Player
                                     case 3:
                                         int tempAddItem = Random.Range(0, 2);
                                         AddItem(client.items[tempAddItem]);
-                                        client.SendBuyItem(client.items[tempAddItem]);
                                         break;
                                     case 4:
                                         for (int i = 0; i < items.Length; i++)
