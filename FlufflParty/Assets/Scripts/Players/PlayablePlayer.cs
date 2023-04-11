@@ -244,6 +244,7 @@ public class PlayablePlayer : Player
                                             int pickRandomItem = Random.Range(0, tempCurrentItems);
                                             client.items[pickRandomItem] = null;
                                             itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
+                                            client.SendLostItem((byte)pickRandomItem);
                                         }
                                         break;
                                 }

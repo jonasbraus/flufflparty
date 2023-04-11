@@ -279,6 +279,9 @@ public class Client : MonoBehaviour
                 case 11:
                     playersInGameText.text = job.data[1] + "/4";
                     break;
+                case 12:
+                    ((NoPlayablePlayer)players[job.data[1]]).pinkFieldLostItem(job.data[2]);
+                    break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
@@ -378,5 +381,10 @@ public class Client : MonoBehaviour
     private void OnApplicationPause(bool pauseStatus)
     {
         stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    public void SendLostItem(byte index)
+    {
+        stream.Write(new byte[]{12, index, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

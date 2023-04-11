@@ -280,4 +280,9 @@ public class NoPlayablePlayer : Player
             transform.position + Vector3.up * 3, ref useLess, 0.2f);
         diceScript.StartRandom();
     }
+
+    public void pinkFieldLostItem(int index)
+    {
+        itemInfoImages[index].color = new Color(0, 0, 0, 0);
+    }
 }
