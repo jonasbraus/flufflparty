@@ -38,8 +38,6 @@ public class NoPlayablePlayer : Player
         
         activated = false;
         diceScript = dice.GetComponent<Dice>();
-        
-        AddItem(client.items[1]);
     }
 
     private void Start()
