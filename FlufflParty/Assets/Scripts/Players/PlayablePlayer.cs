@@ -221,7 +221,7 @@ public class PlayablePlayer : Player
                                         break;
                                     case 2:
                                         client.SendCoinFieldAction(1);
-                                        int tempLoseCoins = Random.Range(3, 6);
+                                        int tempLoseCoins = Random.Range(-3, -6);
                                         AddCoins(tempLoseCoins);
                                         break;
                                     case 3:
