@@ -108,7 +108,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(1, 7);
+        wurfelZahl = Random.Range(4, 4);
 
         switch (activeItem)
         {
@@ -210,15 +210,17 @@ public class PlayablePlayer : Player
                                 AddCoins(-3);
                                 break;
                             case 2: //pinkes Feld
-                                int randyPinkField = Random.Range(1, 4);
+                                int randyPinkField = Random.Range(1, 1);
                                 int tempCurrentItems = -1;
                                 switch (randyPinkField)
                                 {
                                     case 1:
+                                        client.SendCoinFieldAction(0);
                                         int tempAddCoins = Random.Range(3, 6);
                                         AddCoins(tempAddCoins);
                                         break;
                                     case 2:
+                                        client.SendCoinFieldAction(1);
                                         int tempLoseCoins = Random.Range(3, 6);
                                         AddCoins(tempLoseCoins);
                                         break;
