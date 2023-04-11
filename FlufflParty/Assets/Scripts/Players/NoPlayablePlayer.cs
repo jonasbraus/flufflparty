@@ -14,6 +14,7 @@ public class NoPlayablePlayer : Player
     private float speed = 5;
     private float interPol = 0;
     private int wurfelZahl = 0;
+    public Client client;
     
     private bool wait = false;
     private bool lastActivated = false;
@@ -38,6 +39,7 @@ public class NoPlayablePlayer : Player
         activated = false;
         diceScript = dice.GetComponent<Dice>();
         
+        AddItem(client.items[1]);
     }
 
     private void Start()

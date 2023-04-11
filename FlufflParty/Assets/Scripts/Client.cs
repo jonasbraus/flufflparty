@@ -196,6 +196,7 @@ public class Client : MonoBehaviour
 
                         NoPlayablePlayer script = player.AddComponent<NoPlayablePlayer>();
                         players[job.data[5]] = script;
+                        script.client = this;
                         script.nextField = nextField;
                         script.dice = dice;
                         script.camera = cam;
