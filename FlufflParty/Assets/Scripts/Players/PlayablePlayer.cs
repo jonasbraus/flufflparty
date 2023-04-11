@@ -210,7 +210,7 @@ public class PlayablePlayer : Player
                                 AddCoins(-3);
                                 break;
                             case 2: //pinkes Feld
-                                int randyPinkField = Random.Range(1, 1);
+                                int randyPinkField = Random.Range(2, 2);
                                 int tempCurrentItems = -1;
                                 switch (randyPinkField)
                                 {

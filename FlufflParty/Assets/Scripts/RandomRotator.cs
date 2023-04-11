@@ -55,22 +55,6 @@ public class RandomRotator : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        SetOptionsText(0, "Bub");
-        SetOptionsText(1, "Test");
-        SetOptionsText(2, "Hulululu");
-        SetOptionsText(3, "Testuuuu");
-        StartRandom();
-        
-        Invoke("Temp", 5);
-    }
-
-    private void Temp()
-    {
-        Stop(2);
-    }
-
     public void StartRandom()
     {
         lastTimeSwitched = Time.time;
