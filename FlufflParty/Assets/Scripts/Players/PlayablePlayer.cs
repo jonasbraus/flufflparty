@@ -243,6 +243,7 @@ public class PlayablePlayer : Player
                                         {
                                             int pickRandomItem = Random.Range(0, tempCurrentItems);
                                             items[pickRandomItem] = null;
+                                            itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
                                         }
                                         break;
                                 }
