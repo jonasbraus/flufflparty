@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mail;
@@ -5,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayablePlayer : Player
 {
@@ -199,13 +201,48 @@ public class PlayablePlayer : Player
 
                         switch (fieldReturnStatus)
                         {
-                            case 0:
+                            case 0: //Blaues Feld
                                 client.SendCoinFieldAction(0);
                                 AddCoins(3);
                                 break;
-                            case 1:
+                            case 1: //Rotes Feld
                                 client.SendCoinFieldAction(1);
                                 AddCoins(-3);
+                                break;
+                            case 2: //pinkes Feld
+                                int randyPinkField = Random.Range(1, 4);
+                                int tempCurrentItems = -1;
+                                switch (randyPinkField)
+                                {
+                                    case 1:
+                                        int tempAddCoins = Random.Range(3, 6);
+                                        AddCoins(tempAddCoins);
+                                        break;
+                                    case 2:
+                                        int tempLoseCoins = Random.Range(3, 6);
+                                        AddCoins(tempLoseCoins);
+                                        break;
+                                    case 3:
+                                        int tempAddItem = Random.Range(0, 2);
+                                        AddItem(client.items[tempAddItem]);
+                                        client.SendBuyItem(client.items[tempAddItem]);
+                                        break;
+                                    case 4:
+                                        for (int i = 0; i < items.Length; i++)
+                                        {
+                                            if (items[i] != null)
+                                            {
+                                                tempCurrentItems++;
+                                            }
+                                        }
+
+                                        if (tempCurrentItems >= 0)
+                                        {
+                                            int pickRandomItem = Random.Range(0, tempCurrentItems);
+                                            items[pickRandomItem] = null;
+                                        }
+                                        break;
+                                }
                                 break;
                         }
 
