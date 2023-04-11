@@ -242,7 +242,7 @@ public class PlayablePlayer : Player
                                         if (tempCurrentItems >= 0)
                                         {
                                             int pickRandomItem = Random.Range(0, tempCurrentItems);
-                                            items[pickRandomItem] = null;
+                                            client.items[pickRandomItem] = null;
                                             itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
                                         }
                                         break;
