@@ -51,6 +51,8 @@ public class PlayablePlayer : Player
         instance = this;
         
         AddItem(client.items[1]);
+        AddItem(client.items[0]);
+        AddItem(client.items[2]);
     }
 
     public static PlayablePlayer GetCurrentInstance()
