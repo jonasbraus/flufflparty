@@ -110,7 +110,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(4, 5);
+        wurfelZahl = Random.Range(1, 7);
 
         switch (activeItem)
         {
@@ -255,10 +255,8 @@ public class PlayablePlayer : Player
                             //     }
                             //     break;
                             case 2:
-                                
-                                
-                                int randCoins1 = Random.Range(2, 12);
-                                int randCoins2 = Random.Range(5, 10);
+                                int randCoins1 = Random.Range(2, 6);
+                                int randCoins2 = Random.Range(1, 4);
                                 int randCoins3 = Random.Range(-6, 0);
 
                                 RandomRotator rotator = uiHandler.rotator.GetComponent<RandomRotator>();
@@ -294,9 +292,8 @@ public class PlayablePlayer : Player
                                 }
 
                                 rotatorStopIndex = randomOption;
-                                Invoke("StopRotator", 4);
-                                Invoke("ActivateLayout1", 7.5f);
-                                
+                                Invoke("StopRotator", 2);
+                                Invoke("ActivateLayout1", 5.5f);
                                 break;
                         }
 
