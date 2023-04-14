@@ -19,6 +19,11 @@ public class RandomRotator : MonoBehaviour
         textOptions[index].text = text;
     }
 
+    private void Start()
+    {
+        StartRandom();
+    }
+
     private void ColorOption(int index)
     {
         for (int i = 0; i < options.Length; i++)
