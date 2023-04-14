@@ -12,12 +12,20 @@ public class Dice : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private bool started;
     private float timeLastNumberChanged = 0;
-    
+    //0 = default, 1 = double dice, 2 = red
+    [SerializeField] private Material[] materials;
+    private Renderer renderer;
 
+    public void SetMaterial(int mat)
+    {
+        renderer.material = materials[mat];
+    }
+    
     private void Start()
     {
         rb.useGravity = false;
         gameObject.SetActive(false);
+        renderer = GetComponent<Renderer>();
     }
 
     private void Update()
@@ -66,4 +74,6 @@ public class Dice : MonoBehaviour
             t.text = random.ToString();
         }
     }
+    
+    
 }

@@ -107,6 +107,8 @@ public class PlayablePlayer : Player
 
     private void DiceRollRoutine()
     {
+        diceScript.SetMaterial(0);
+        
         jumpRequest = true;
         
         wurfelt = true;
@@ -117,10 +119,12 @@ public class PlayablePlayer : Player
             case Item.Type.Mushroom:
                 wurfelZahl += 3;
                 activeItem = Item.Type.None;
+                diceScript.SetMaterial(2);
                 break;
             case Item.Type.DoubleDice:
                 checkDoubleDice = true;
                 activeItem = Item.Type.None;
+                diceScript.SetMaterial(1);
                 break;
         }
 
@@ -399,6 +403,7 @@ public class PlayablePlayer : Player
     private void Finish()
     {
         imageCurrentItem.color = new Color(0, 0, 0, 0);
+        diceScript.SetMaterial(0);
         client.SendFinished();
     }
 

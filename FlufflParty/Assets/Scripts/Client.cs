@@ -39,6 +39,8 @@ public class Client : MonoBehaviour
 
     [SerializeField] private Image imageCurrentItem;
     [SerializeField] private Image[] playerItemInfoImages;
+
+    private Dice diceScript;
     
     //Icon
     [SerializeField] private Image[] playerIconInfoImages;
@@ -61,6 +63,8 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
+        diceScript = dice.GetComponent<Dice>();
+        
         Application.targetFrameRate = 60;
         
         thisClient = this;
@@ -225,6 +229,7 @@ public class Client : MonoBehaviour
                 //---------------------------------------------------------
                 //-----Activate a Player
                 case 2:
+                    diceScript.SetMaterial(0);
                     Activate(job.data[1]);
                     break;
                 //Jemand hat gewürfelt

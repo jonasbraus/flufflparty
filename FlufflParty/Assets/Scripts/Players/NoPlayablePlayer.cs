@@ -15,7 +15,7 @@ public class NoPlayablePlayer : Player
     private float interPol = 0;
     private int wurfelZahl = 0;
     public Client client;
-    
+
     private bool wait = false;
     private bool lastActivated = false;
 
@@ -24,7 +24,7 @@ public class NoPlayablePlayer : Player
     private Vector3 useLess = new Vector3();
 
     private bool checkDoubleDice = false;
-    
+
     //Animation:
     private Vector3 lastPosAnim = Vector3.zero;
     private bool jumpRequest = false;
@@ -35,7 +35,7 @@ public class NoPlayablePlayer : Player
     {
         TMP_Text[] playerTexts = GetComponentsInChildren<TMP_Text>();
         playerTexts[0].text = playerTexts[1].text = name;
-        
+
         activated = false;
         diceScript = dice.GetComponent<Dice>();
     }
@@ -54,13 +54,13 @@ public class NoPlayablePlayer : Player
         {
             animator.SetInteger("value", 1);
         }
-        else if(jumpRequest)
+        else if (jumpRequest)
         {
             jumpRequest = false;
             animator.SetInteger("value", 2);
             lastTimeDoneIdleAction = Time.time;
         }
-        else if(Time.time - lastTimeDoneIdleAction > idleActionDelay)
+        else if (Time.time - lastTimeDoneIdleAction > idleActionDelay)
         {
             lastTimeDoneIdleAction = Time.time;
             idleActionDelay = Random.Range(2f, 5f);
@@ -72,7 +72,7 @@ public class NoPlayablePlayer : Player
             animator.SetInteger("value", 0);
         }
         //END
-        
+
         lastPosAnim = transform.position;
     }
 
@@ -82,7 +82,7 @@ public class NoPlayablePlayer : Player
         AddCoins(-20);
         AddStars(1);
     }
-    
+
     public void CoinFieldAction(int action)
     {
         if (action == 0)
@@ -97,17 +97,27 @@ public class NoPlayablePlayer : Player
 
     public void Wurfeln(int wurfelZahl)
     {
-        jumpRequest = true;
+        diceScript.SetMaterial(0);
         
+        jumpRequest = true;
+
         wurfelt = true;
         this.wurfelZahl = wurfelZahl;
 
         switch (activeItem)
         {
-            case Item.Type.Mushroom: wurfelZahl += 3; activeItem = Item.Type.None; break;
-            case Item.Type.DoubleDice: checkDoubleDice = true; activeItem = Item.Type.None; break;
+            case Item.Type.Mushroom:
+                wurfelZahl += 3;
+                activeItem = Item.Type.None;
+                diceScript.SetMaterial(2);
+                break;
+            case Item.Type.DoubleDice:
+                checkDoubleDice = true;
+                activeItem = Item.Type.None;
+                diceScript.SetMaterial(1);
+                break;
         }
-        
+
         //nächstes Feld anvisieren
         TargetNextField();
 
@@ -125,19 +135,19 @@ public class NoPlayablePlayer : Player
         {
             a.Deactivate();
         }
-        
-        nextField = nextField.Target[idx]; 
+
+        nextField = nextField.Target[idx];
         moveTo = nextField.transform.position;
         wait = false;
     }
-    
-    
+
+
     private void FixedUpdate()
     {
-        
         if (activated && !name.Equals(""))
         {
-            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset, ref velocity, 0.2f);
+            camera.transform.position = Vector3.SmoothDamp(camera.transform.position, transform.position + cameraOffset,
+                ref velocity, 0.2f);
             if (!wait)
             {
                 //Laufe zum nöchsten Feld, falls noch Züge übrig sind
@@ -156,12 +166,12 @@ public class NoPlayablePlayer : Player
                     InterPolerate();
                     wurfelZahl--;
                     textLeftMoves.text = wurfelZahl + "";
-                    
+
                     //the next field is the current field XD
                     currentField = nextField;
 
                     //Visiere das nächste Feld an falls noch ein Zug übrig ist (Player steht gerade auf einem Feld oder läuft darüber)
-                    if (wurfelZahl > 0) 
+                    if (wurfelZahl > 0)
                     {
                         TargetNextField();
                     }
@@ -174,8 +184,8 @@ public class NoPlayablePlayer : Player
                         if (currentField.placedItem != null)
                         {
                             Trap t = currentField.placedItem.GetComponent<Trap>();
-                            
-                            if(t.target.index != index)
+
+                            if (t.target.index != index)
                             {
                                 int coinsAmount = (int)(coins * 0.1f);
                                 AddCoins(-coinsAmount);
@@ -189,18 +199,18 @@ public class NoPlayablePlayer : Player
                     Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
                     currentRotation.y = -34;
                     transform.rotation = Quaternion.Euler(currentRotation);
-                    
-                    
+
+
                     if (!wurfelt)
                     {
-                       StartDice(); 
+                        StartDice();
                     }
                     else
                     {
                         if (checkDoubleDice)
                         {
                             checkDoubleDice = false;
-                            wurfelt = false;  
+                            wurfelt = false;
                         }
                     }
                 }
@@ -243,12 +253,13 @@ public class NoPlayablePlayer : Player
             //Rotation in move direction
             Vector3 lookPos = nextPoint - transform.position;
             lookPos.y = 0;
-            if(lookPos != Vector3.zero)
+            if (lookPos != Vector3.zero)
             {
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationDamping);
             }
+
             //END
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
@@ -256,7 +267,7 @@ public class NoPlayablePlayer : Player
     }
 
     private Star currentStar;
-    
+
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.name.Equals("ItemShopTrigger"))
@@ -267,7 +278,7 @@ public class NoPlayablePlayer : Player
         {
             currentStar = collider.GetComponent<Star>();
 
-            if(currentStar.IsActive)
+            if (currentStar.IsActive)
             {
                 base.OnTriggerEnter(collider);
             }
