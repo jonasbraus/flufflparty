@@ -13,15 +13,11 @@ public class RandomRotator : MonoBehaviour
     private int currentIndex = 0;
     private float lastTimeSwitched = 0;
     private int stopIndex = 0;
+    public UIHandler uiHandler;
 
     public void SetOptionsText(int index, string text)
     {
         textOptions[index].text = text;
-    }
-
-    private void Start()
-    {
-        StartRandom();
     }
 
     private void ColorOption(int index)
@@ -39,16 +35,17 @@ public class RandomRotator : MonoBehaviour
         }
     }
 
+    private float slowDown = 0.5f;
     private void Update()
     {
         if (started)
         {
-            if (Time.time - lastTimeSwitched > 0.1f)
+            if (Time.time - lastTimeSwitched > 0.2f)
             {
                 lastTimeSwitched = Time.time;
                 ColorOption(currentIndex);
                 currentIndex++;
-                if (currentIndex > options.Length - 1)
+                if (currentIndex > options.Length)
                 {
                     currentIndex = 0;
                 }
@@ -56,7 +53,24 @@ public class RandomRotator : MonoBehaviour
         }
         else
         {
-            ColorOption(stopIndex);
+            if (currentIndex != stopIndex)
+            {
+                if (Time.time - lastTimeSwitched > slowDown)
+                {
+                    slowDown += 0.2f;
+                    lastTimeSwitched = Time.time;
+                    ColorOption(currentIndex);
+                    currentIndex++;
+                    if (currentIndex > options.Length)
+                    {
+                        currentIndex = 0;
+                    }
+                }
+            }
+            else
+            {
+                ColorOption(stopIndex);
+            }
         }
     }
 

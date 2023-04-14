@@ -257,6 +257,16 @@ public class Room
                                             }
                                         }
                                         break;
+                                    case 13:
+                                        for (int i = 0; i < players.length; i++)
+                                        {
+                                            //Sync to OTHER players
+                                            if (i != player)
+                                            {
+                                                players[i].output.write(new byte[]{13, readData[1], readData[2], (byte)player, 0, 0, 0, 0, 0, 0});
+                                            }
+                                        }
+                                        break;
                                     case 126:
                                         server.deleteRoom(roomCode);
                                         break;

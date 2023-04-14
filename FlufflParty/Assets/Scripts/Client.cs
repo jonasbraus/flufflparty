@@ -282,6 +282,14 @@ public class Client : MonoBehaviour
                 case 12:
                     ((NoPlayablePlayer)players[job.data[1]]).pinkFieldLostItem(job.data[2]);
                     break;
+                case 13:
+                    int amount = job.data[2];
+                    if (job.data[1] == 0)
+                    {
+                        amount *= -1;
+                    }
+                    players[job.data[3]].AddCoins(amount);
+                    break;
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
@@ -386,5 +394,17 @@ public class Client : MonoBehaviour
     public void SendLostItem(byte index)
     {
         stream.Write(new byte[]{12, index, 0, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    public void SendCoins(int amount)
+    {
+        byte isPositive = 1;
+        if (amount < 0)
+        {
+            isPositive = 0;
+        }
+        
+        
+        stream.Write(new byte[]{13, isPositive, (byte)amount, 0, 0, 0, 0, 0, 0, 0});
     }
 }

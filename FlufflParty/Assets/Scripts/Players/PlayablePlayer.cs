@@ -19,6 +19,8 @@ public class PlayablePlayer : Player
     private float interPol = 0;
     private int wurfelZahl = 0;
     private bool checkDoubleDice = false;
+    private RandomRotator rotator;
+    private int rotatorStopIndex = 0;
 
     private bool wait = false;
 
@@ -49,10 +51,6 @@ public class PlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
 
         instance = this;
-        
-        AddItem(client.items[1]);
-        AddItem(client.items[0]);
-        AddItem(client.items[2]);
     }
 
     public static PlayablePlayer GetCurrentInstance()
@@ -112,7 +110,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(1, 7);
+        wurfelZahl = Random.Range(4, 5);
 
         switch (activeItem)
         {
@@ -198,10 +196,15 @@ public class PlayablePlayer : Player
                     currentRotation.y = -34;
                     transform.rotation = Quaternion.Euler(currentRotation);
                     
+                    int fieldReturnStatus = -1;
+                    if (currentField != null)
+                    {
+                        fieldReturnStatus = currentField.Action(index);
+                    }
+                    
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
-                        int fieldReturnStatus = currentField.Action(index);
 
                         switch (fieldReturnStatus)
                         {
@@ -213,49 +216,96 @@ public class PlayablePlayer : Player
                                 client.SendCoinFieldAction(1);
                                 AddCoins(-3);
                                 break;
-                            case 2: //pinkes Feld
-                                int randyPinkField = Random.Range(4, 4);
-                                int tempCurrentItems = -1;
-                                switch (randyPinkField)
+                            // case 2: //pinkes Feld
+                            //     int randyPinkField = Random.Range(4, 4);
+                            //     int tempCurrentItems = -1;
+                            //     switch (randyPinkField)
+                            //     {
+                            //         case 1:
+                            //             client.SendCoinFieldAction(0);
+                            //             int tempAddCoins = Random.Range(3, 6);
+                            //             AddCoins(tempAddCoins);
+                            //             break;
+                            //         case 2:
+                            //             client.SendCoinFieldAction(1);
+                            //             int tempLoseCoins = Random.Range(-3, -6);
+                            //             AddCoins(tempLoseCoins);
+                            //             break;
+                            //         case 3:
+                            //             int tempAddItem = Random.Range(0, 3);
+                            //             AddItem(client.items[tempAddItem]);
+                            //             break;
+                            //         case 4:
+                            //             for (int i = 0; i < items.Length; i++)
+                            //             {
+                            //                 if (items[i] != null)
+                            //                 {
+                            //                     tempCurrentItems++;
+                            //                 }
+                            //             }
+                            //
+                            //             if (tempCurrentItems >= 0)
+                            //             {
+                            //                 int pickRandomItem = Random.Range(0, tempCurrentItems);
+                            //                 client.items[pickRandomItem] = null;
+                            //                 itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
+                            //                 client.SendLostItem((byte)pickRandomItem);
+                            //             }
+                            //             break;
+                            //     }
+                            //     break;
+                            case 2:
+                                
+                                
+                                int randCoins1 = Random.Range(2, 12);
+                                int randCoins2 = Random.Range(5, 10);
+                                int randCoins3 = Random.Range(-6, 0);
+
+                                RandomRotator rotator = uiHandler.rotator.GetComponent<RandomRotator>();
+                                this.rotator = rotator;
+                                uiHandler.ActivateRotator();
+                                rotator.SetOptionsText(0, randCoins1 + " Coins");
+                                rotator.SetOptionsText(1, randCoins2 + " Coins");
+                                rotator.SetOptionsText(2, randCoins3 + " Coins");
+                                rotator.SetOptionsText(3, "Random Item");
+
+                                rotator.StartRandom();
+                                
+                                int randomOption = Random.Range(0, 4);
+                                switch (randomOption)
                                 {
+                                    case 0:
+                                        AddCoins(randCoins1);
+                                        client.SendCoins(randCoins1);
+                                        break;
                                     case 1:
-                                        client.SendCoinFieldAction(0);
-                                        int tempAddCoins = Random.Range(3, 6);
-                                        AddCoins(tempAddCoins);
+                                        AddCoins(randCoins2);
+                                        client.SendCoins(randCoins2);
                                         break;
                                     case 2:
-                                        client.SendCoinFieldAction(1);
-                                        int tempLoseCoins = Random.Range(-3, -6);
-                                        AddCoins(tempLoseCoins);
+                                        AddCoins(randCoins3);
+                                        client.SendCoins(randCoins3);
                                         break;
                                     case 3:
-                                        int tempAddItem = Random.Range(0, 2);
-                                        AddItem(client.items[tempAddItem]);
-                                        break;
-                                    case 4:
-                                        for (int i = 0; i < items.Length; i++)
-                                        {
-                                            if (items[i] != null)
-                                            {
-                                                tempCurrentItems++;
-                                            }
-                                        }
-
-                                        if (tempCurrentItems >= 0)
-                                        {
-                                            int pickRandomItem = Random.Range(0, tempCurrentItems);
-                                            client.items[pickRandomItem] = null;
-                                            itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
-                                            client.SendLostItem((byte)pickRandomItem);
-                                        }
+                                        int randomItem = Random.Range(0, 3);
+                                        AddItem(client.items[randomItem]);
                                         break;
                                 }
+
+                                rotatorStopIndex = randomOption;
+                                Invoke("StopRotator", 4);
+                                Invoke("ActivateLayout1", 7.5f);
+                                
                                 break;
                         }
 
                         if (!checkDoubleDice)
                         {
-                            Invoke("Finish", 2);
+                            if(fieldReturnStatus != 2)
+                            {
+                                Invoke("Finish", 2);
+                            }
+                            
                             activated = false;
                         }
                         else
@@ -429,5 +479,16 @@ public class PlayablePlayer : Player
             activeItem = Item.Type.None;
         }
         items[index] = null;
+    }
+
+    private void ActivateLayout1()
+    {
+        uiHandler.ActivateLayout1();
+        Finish();
+    }
+    
+    private void StopRotator()
+    {
+        rotator.Stop(rotatorStopIndex);
     }
 }

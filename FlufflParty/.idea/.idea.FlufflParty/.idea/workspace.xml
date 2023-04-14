@@ -43,6 +43,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   },
@@ -56,7 +58,7 @@
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build\FlufflParty.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Build/FlufflParty.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\braus\OneDrive\Desktop\FlufflPartyTestBuild" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -163,7 +165,7 @@
       <workItem from="1680813239896" duration="4155000" />
       <workItem from="1681056387914" duration="882000" />
       <workItem from="1681415672515" duration="5000" />
-      <workItem from="1681479671396" duration="265000" />
+      <workItem from="1681479671396" duration="5656000" />
     </task>
     <servers />
   </component>

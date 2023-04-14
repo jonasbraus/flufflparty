@@ -13,6 +13,7 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject layoutItemShop;
     [SerializeField] private GameObject layoutSelectItem;
     [SerializeField] private GameObject layoutOptions;
+    [SerializeField] public GameObject rotator;
 
     private static UIHandler currentInstance;
 
@@ -45,6 +46,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(false);
+        rotator.SetActive(false);
 
         currentInstance = this;
     }
@@ -59,6 +61,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(false);
+        rotator.SetActive(false);
     }
 
     public void ActivateLayoutMiniMap()
@@ -83,6 +86,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(false);
+        rotator.SetActive(false);
 
         LayoutBuyStarController controller = layoutBuyStar.GetComponent<LayoutBuyStarController>();
 
@@ -110,6 +114,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(false);
+        rotator.SetActive(false);
     }
 
     public void ActivateLayoutItemShop()
@@ -123,6 +128,7 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.GetComponent<ItemShop>().Init(currentPlayer);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(false);
+        rotator.SetActive(false);
     }
 
     
@@ -140,6 +146,7 @@ public class UIHandler : MonoBehaviour
             layout2.SetActive(false);
             layoutItemShop.SetActive(false);
             layoutOptions.SetActive(false);
+            rotator.SetActive(false);
             
             layoutSelectItem.GetComponent<ItemSelector>().Init(currentPlayer.items);
             
@@ -157,6 +164,21 @@ public class UIHandler : MonoBehaviour
         layoutItemShop.SetActive(false);
         layoutSelectItem.SetActive(false);
         layoutOptions.SetActive(true);
+        rotator.SetActive(false);
+    }
+
+    public void ActivateRotator()
+    {
+        rotator.GetComponent<RandomRotator>().uiHandler = this;
+        layout0.SetActive(false);
+        layout1.SetActive(false);
+        layoutMiniMap.SetActive(false);
+        layoutBuyStar.SetActive(false);
+        layout2.SetActive(false);
+        layoutItemShop.SetActive(false);
+        layoutSelectItem.SetActive(false);
+        layoutOptions.SetActive(false);
+        rotator.SetActive(true);
     }
 
     public void ButtonBuyStar()

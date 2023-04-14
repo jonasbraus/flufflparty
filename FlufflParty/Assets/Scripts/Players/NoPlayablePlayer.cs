@@ -190,6 +190,7 @@ public class NoPlayablePlayer : Player
                     currentRotation.y = -34;
                     transform.rotation = Quaternion.Euler(currentRotation);
                     
+                    
                     if (!wurfelt)
                     {
                        StartDice(); 
