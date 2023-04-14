@@ -20,6 +20,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fields/LuckField.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fields/UnluckyField.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Fields/VSField.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameCamera.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Items/Trap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/AnimationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/NoPlayablePlayer.cs" root0="FORCE_HIGHLIGHTING" />
@@ -165,7 +166,7 @@
       <workItem from="1680813239896" duration="4155000" />
       <workItem from="1681056387914" duration="882000" />
       <workItem from="1681415672515" duration="5000" />
-      <workItem from="1681479671396" duration="12582000" />
+      <workItem from="1681479671396" duration="13940000" />
     </task>
     <servers />
   </component>

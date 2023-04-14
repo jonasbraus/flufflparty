@@ -173,7 +173,8 @@ public class Client : MonoBehaviour
                         script.dice = dice;
                         script.camera = cam;
                         script.imageCurrentItem = imageCurrentItem;
-                        
+                        script.textName = playerNameTexts[job.data[5]];
+
                         //ITEM INFO IMAGES
                         Image[] temp = new Image[3];
                         
@@ -206,6 +207,7 @@ public class Client : MonoBehaviour
                         script.dice = dice;
                         script.camera = cam;
                         script.imageCurrentItem = imageCurrentItem;
+                        script.textName = playerNameTexts[job.data[5]];
 
                         //ITEM INFO IMAGES
                         Image[] temp = new Image[3];

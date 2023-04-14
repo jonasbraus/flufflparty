@@ -5,7 +5,13 @@ using UnityEngine;
 public class NamesText : MonoBehaviour
 {
     public float orgY;
+    private GameObject camera;
 
+    private void Start()
+    {
+        camera = GameCamera.gObject;
+    }
+    
     // Update is called once per frame
     void Update()
     {

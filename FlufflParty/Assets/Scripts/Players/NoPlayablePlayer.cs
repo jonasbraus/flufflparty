@@ -24,6 +24,8 @@ public class NoPlayablePlayer : Player
     private Vector3 useLess = new Vector3();
 
     private bool checkDoubleDice = false;
+    
+    public TMP_Text textName;
 
     //Animation:
     private Vector3 lastPosAnim = Vector3.zero;
@@ -97,6 +99,7 @@ public class NoPlayablePlayer : Player
 
     public void Wurfeln(int wurfelZahl)
     {
+        textName.gameObject.SetActive(true);
         diceScript.SetMaterial(0);
         
         jumpRequest = true;
