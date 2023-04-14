@@ -15,6 +15,7 @@ public class RandomRotator : MonoBehaviour
     private int stopIndex = 0;
     public UIHandler uiHandler;
     private bool ended = false;
+    [SerializeField] private GameObject fullBlocker;
 
     public void SetOptionsText(int index, string text)
     {
@@ -73,6 +74,7 @@ public class RandomRotator : MonoBehaviour
                 if (Time.time - lastTimeSwitched > slowDown)
                 {
                     ColorOption(stopIndex);
+                    fullBlocker.SetActive(false);
                     ended = true;
                 }
             }
@@ -81,6 +83,7 @@ public class RandomRotator : MonoBehaviour
 
     public void StartRandom()
     {
+        fullBlocker.SetActive(true);
         lastTimeSwitched = Time.time;
         started = true;
         ended = false;
