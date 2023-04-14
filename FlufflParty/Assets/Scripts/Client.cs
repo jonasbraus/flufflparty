@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Client : MonoBehaviour
 {
@@ -290,6 +291,44 @@ public class Client : MonoBehaviour
                     }
                     players[job.data[3]].AddCoins(amount);
                     break;
+                case 14:
+                    int type = job.data[9];
+                    RandomRotator rotator = uiHandler.rotator.GetComponent<RandomRotator>();
+                    switch (type)
+                    {
+                        case 0:
+
+                            for (int i = 0; i < 4; i++)
+                            {
+                                int option = job.data[i + 1];
+                                int value = job.data[i + 5];
+
+                                switch (option)
+                                {
+                                    case 0:
+                                        rotator.SetOptionsText(i, value + " Coins");
+                                        break;
+                                    case 1:
+                                        rotator.SetOptionsText(i, "-" + value + " Coins");
+                                        break;
+                                    case 2:
+                                        rotator.SetOptionsText(i, "Random Item");
+                                        break;
+                                }
+                            }
+                            
+                            break;
+                    }
+                    
+                    uiHandler.ActivateRotator();
+                    rotator.StartRandom();
+                    break;
+                case 15:
+                    RandomRotator rotator2 = uiHandler.rotator.GetComponent<RandomRotator>();
+                    rotator2.Stop(job.data[1]);
+                    Invoke("ActivateLayout1", 3.5f);
+                    break;
+                
                 case 126:
                     stream.Write(new byte[]{126, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 10);
                     break;
@@ -301,6 +340,11 @@ public class Client : MonoBehaviour
         }
     }
 
+    private void ActivateLayout1()
+    {
+        uiHandler.ActivateLayout1();
+    }
+    
     private void Activate(int player)
     {
         for (int i = 0; i < players.Length; i++)
@@ -402,9 +446,33 @@ public class Client : MonoBehaviour
         if (amount < 0)
         {
             isPositive = 0;
+            amount *= -1;
         }
         
         
         stream.Write(new byte[]{13, isPositive, (byte)amount, 0, 0, 0, 0, 0, 0, 0});
+    }
+
+    /*
+     * OPT:
+     * 0 = Get Coins
+     * 1 = Loose Coins
+     * 2 = Get Item (Random)
+     * 3 = Loose Item (Random)
+     *
+     * VAL:
+     * value of each option (not needed = 0)
+     *
+     * TYPE:
+     * 0 = Pink Field
+     */
+    public void SendStartRotator(int opt1, int opt2, int opt3, int opt4, int val1, int val2, int val3, int val4, int type)
+    {
+        stream.Write(new byte[]{14, (byte)opt1, (byte)opt2, (byte)opt3, (byte)opt4, (byte)val1, (byte)val2, (byte)val3, (byte)val4, (byte)type});
+    }
+
+    public void SendStopRotator(int stopIndex)
+    {
+        stream.Write(new byte[]{15, (byte)stopIndex, 0, 0, 0, 0, 0, 0, 0, 0});
     }
 }

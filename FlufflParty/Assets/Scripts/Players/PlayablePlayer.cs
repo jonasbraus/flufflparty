@@ -270,7 +270,8 @@ public class PlayablePlayer : Player
                                 rotator.SetOptionsText(3, "Random Item");
 
                                 rotator.StartRandom();
-                                
+                                client.SendStartRotator(0, 0, 1, 2, randCoins1, randCoins2, -randCoins3, 0, 0);
+
                                 int randomOption = Random.Range(0, 4);
                                 switch (randomOption)
                                 {
@@ -489,6 +490,7 @@ public class PlayablePlayer : Player
     
     private void StopRotator()
     {
+        client.SendStopRotator(rotatorStopIndex);
         rotator.Stop(rotatorStopIndex);
     }
 }
