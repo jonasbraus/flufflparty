@@ -51,6 +51,8 @@ public class PlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
 
         instance = this;
+        
+        AddItem(client.items[2]);
     }
 
     public static PlayablePlayer GetCurrentInstance()

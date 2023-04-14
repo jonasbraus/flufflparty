@@ -99,8 +99,7 @@ public class StartHandler : MonoBehaviour
         stream.Read(readMessage, 0, 10);
 
         string s = Encoding.ASCII.GetString(readMessage);
-        Debug.Log(s);
-        
+
         PlayerPrefs.SetString("roomcode", s);
         PlayerPrefs.Save();
         SceneManager.LoadScene(1, LoadSceneMode.Single);
