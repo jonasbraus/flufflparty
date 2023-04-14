@@ -34,7 +34,6 @@ public class PlayablePlayer : Player
 
     private static PlayablePlayer instance;
 
-    public TMP_Text textName;
     
     //Animation:
     private Vector3 lastPosAnim = Vector3.zero;
@@ -53,6 +52,8 @@ public class PlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
 
         instance = this;
+        
+        nameSign = playerTexts[1].gameObject;
     }
 
     public static PlayablePlayer GetCurrentInstance()
@@ -99,7 +100,6 @@ public class PlayablePlayer : Player
             {
                 if (!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
                 {
-                    textName.gameObject.SetActive(true);
                     DiceRollRoutine();   
                 }
             }
@@ -115,7 +115,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
         
         wurfelt = true;
-        wurfelZahl = Random.Range(4, 5);
+        wurfelZahl = Random.Range(1, 7);
 
         switch (activeItem)
         {
@@ -160,6 +160,7 @@ public class PlayablePlayer : Player
                     //delay
                     if (Time.time - timeSinceWurfeln > 2)
                     {
+                        nameSign.SetActive(true);
                         dice.SetActive(false);
                         InterPolerate();
                     }

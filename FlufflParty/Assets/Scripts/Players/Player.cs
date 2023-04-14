@@ -30,6 +30,8 @@ public abstract class Player : MonoBehaviour
     public Image[] itemInfoImages;
 
     protected Animator animator;
+
+    public GameObject nameSign;
     
     //for coin animation
     private AnimationHandler animationHandler;

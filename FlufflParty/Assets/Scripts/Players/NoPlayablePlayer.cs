@@ -25,8 +25,6 @@ public class NoPlayablePlayer : Player
 
     private bool checkDoubleDice = false;
     
-    public TMP_Text textName;
-
     //Animation:
     private Vector3 lastPosAnim = Vector3.zero;
     private bool jumpRequest = false;
@@ -40,6 +38,8 @@ public class NoPlayablePlayer : Player
 
         activated = false;
         diceScript = dice.GetComponent<Dice>();
+
+        nameSign = playerTexts[1].gameObject;
     }
 
     private void Start()
@@ -99,7 +99,6 @@ public class NoPlayablePlayer : Player
 
     public void Wurfeln(int wurfelZahl)
     {
-        textName.gameObject.SetActive(true);
         diceScript.SetMaterial(0);
         
         jumpRequest = true;
@@ -159,6 +158,7 @@ public class NoPlayablePlayer : Player
                     //delay
                     if (Time.time - timeSinceWurfeln > 2)
                     {
+                        nameSign.SetActive(true);
                         dice.SetActive(false);
                         InterPolerate();
                     }

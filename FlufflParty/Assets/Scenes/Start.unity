@@ -2608,7 +2608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Public match
+  m_text: 'Public Room
 
 '
   m_isRightToLeft: 0
@@ -3068,7 +3068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.37069702}
+  m_AnchoredPosition: {x: 0, y: -0.37072754}
   m_SizeDelta: {x: 0, y: 10.746399}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1440669665

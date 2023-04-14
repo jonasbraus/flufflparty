@@ -173,7 +173,6 @@ public class Client : MonoBehaviour
                         script.dice = dice;
                         script.camera = cam;
                         script.imageCurrentItem = imageCurrentItem;
-                        script.textName = playerNameTexts[job.data[5]];
 
                         //ITEM INFO IMAGES
                         Image[] temp = new Image[3];
@@ -207,7 +206,6 @@ public class Client : MonoBehaviour
                         script.dice = dice;
                         script.camera = cam;
                         script.imageCurrentItem = imageCurrentItem;
-                        script.textName = playerNameTexts[job.data[5]];
 
                         //ITEM INFO IMAGES
                         Image[] temp = new Image[3];
@@ -231,6 +229,7 @@ public class Client : MonoBehaviour
                 //---------------------------------------------------------
                 //-----Activate a Player
                 case 2:
+                    players[job.data[1]].nameSign.SetActive(false);
                     diceScript.SetMaterial(0);
                     Activate(job.data[1]);
                     break;
