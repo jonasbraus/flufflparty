@@ -26,6 +26,12 @@ public class Client
         this.characterID = characterID;
     }
 
+    public Client(DataOutputStream output, DataInputStream input, Socket socket) {
+        this.output = output;
+        this.input = input;
+        this.socket = socket;
+    }
+
     public void close()
     {
         try

@@ -46,6 +46,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -101,7 +102,7 @@
       <workItem from="1681130452664" duration="6192000" />
       <workItem from="1681217780586" duration="94000" />
       <workItem from="1681218296017" duration="162000" />
-      <workItem from="1681481242206" duration="5995000" />
+      <workItem from="1681481242206" duration="12651000" />
     </task>
     <servers />
   </component>

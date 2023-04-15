@@ -189,6 +189,19 @@ public class Server
                                         client = null;
                                         break;
                                     }
+                                    break;
+                                    //Player wats to join a minigame
+                                case 5:
+                                    int playerIDInRoom = readData[1];
+
+                                    input.read(readData);
+
+                                    String roomCodeOriginal = new String(readData, StandardCharsets.US_ASCII);
+                                    Client miniGameConnectorClient = new Client(output, input, client);
+                                    rooms.get(roomCodeOriginal).addPlayerToCurrentMiniGame(playerIDInRoom, miniGameConnectorClient);
+
+
+                                    break;
                             }
 
                             System.out.println("Init Thread finished");
