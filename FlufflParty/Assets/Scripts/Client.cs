@@ -89,6 +89,7 @@ public class Client : MonoBehaviour
             g.SetActive(true);
         }
 
+        MinigamesClient.currentInstance.Close();
         SceneManager.UnloadSceneAsync(miniGamesMapping[currentMiniGameId]);
     }
 
@@ -423,7 +424,6 @@ public class Client : MonoBehaviour
                     break;
 
                 case 101:
-                    Debug.Log("test");
                     UnloadMinigame();
                     break;
                 case 126:

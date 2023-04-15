@@ -13,9 +13,13 @@ public class MinigamesClient : MonoBehaviour
     private Stream stream;
 
     private Queue<Job> jobs = new Queue<Job>();
+
+    public static MinigamesClient currentInstance;
     
     private void Start()
     {
+        currentInstance = this;
+        
         client = new TcpClient("185.245.96.48", 8051);
         stream = client.GetStream();
         
@@ -54,5 +58,11 @@ public class MinigamesClient : MonoBehaviour
 
             jobs.Enqueue(new Job(read));
         }
+    }
+
+    public void Close()
+    {
+        stream.Close();
+        client.Close();
     }
 }
