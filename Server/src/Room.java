@@ -53,21 +53,28 @@ public class Room
 
     public void addPlayerToCurrentMiniGame(int index, Client tempClient)
     {
+        //fügt eine eingehende Verbindung vom Server dem Minigame hinzu
         currentMiniGame.addClient(tempClient, index);
     }
 
 
+    //erstellt ein neues minigame
     private void activateMinigame()
     {
         inMiniGame = true;
+
+        //zufälliges minigame auswählen (mapping hier zu im Client c#)
         int randomGame = (int) (Math.random() * 1);
 
+        //minigame instanz erstellen
         currentMiniGame = new Minigame(this);
 
         try
         {
+            //jedem client die anweisung geben die angegebene minigameinstanz zu laden
             for (int i = 0; i < players.length; i++)
             {
+                //i = jeder spieler bekommt vorübergehend seine Server ID zugeordnet um die Spieler im Minigame richtig mappen zu können
                 players[i].output.write(new byte[]{100, (byte) i, (byte) randomGame, 0, 0, 0, 0, 0, 0, 0});
             }
         } catch (Exception e)
@@ -78,15 +85,19 @@ public class Room
 
     public void closeMinigame()
     {
+        //überprüfen ob das minigame existiert
         if(currentMiniGame != null)
         {
             System.out.println("close minigame");
+            //das minigame beenden
             currentMiniGame.end();
+            //minigame objekt dem garbage collector überlassen XD
             currentMiniGame = null;
             inMiniGame = false;
 
             try
             {
+                //den clients die Anweisung geben die ursprüngliche welt zu laden und die Minigamemap zu töten ^^
                 for (int i = 0; i < players.length; i++)
                 {
                     players[i].output.write(new byte[]{101, 0, 0, 0, 0, 0, 0, 0, 0, 0});
@@ -97,7 +108,7 @@ public class Room
             }
         }
 
-        //sync the activation of the current player to ALL clients
+        //den nächsten spieler aktivieren (der vor dem minigame dran gewesen wäre)
         for (int i = 0; i < players.length; i++)
         {
             //!!data processing!!

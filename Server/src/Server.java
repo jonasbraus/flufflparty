@@ -190,14 +190,17 @@ public class Server
                                         break;
                                     }
                                     break;
-                                    //Player wats to join a minigame
+                                    //Player wats to join a minigame (nur möglich wenn bereits in einem bestehenden spiel)
                                 case 5:
                                     int playerIDInRoom = readData[1];
 
                                     input.read(readData);
 
+                                    //um die eingehende Verbindung einem bestehenden Raum zuordnen zu können
                                     String roomCodeOriginal = new String(readData, StandardCharsets.US_ASCII);
+                                    //ein temporäre instanz eines clients für das Minigame wird erstellt
                                     Client miniGameConnectorClient = new Client(output, input, client);
+                                    //die Verbindung wird an das Minigame des Angeforderten Raums weitergeleitet.
                                     rooms.get(roomCodeOriginal).addPlayerToCurrentMiniGame(playerIDInRoom, miniGameConnectorClient);
 
 

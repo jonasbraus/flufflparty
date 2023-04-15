@@ -8,8 +8,13 @@ import java.util.TimerTask;
 
 public class Minigame
 {
+    //referenz auf den ursprünglichen raum
     protected Room room;
+
+    //liste aller threads zum korrekten beenden dieser
     private List<Thread> threads = new ArrayList<>();
+
+    //liste aller temporären minigame verbindungen
     private Client[] players;
 
     public Minigame(Room room)
@@ -18,6 +23,7 @@ public class Minigame
         players = new Client[room.players.length];
     }
 
+    //fügt dem minigame "Raum" einen spieler hinzu (ähnlich wie im Room selbst)
     public void addClient(Client client, int index)
     {
         Thread t = new Thread(new Runnable()
@@ -25,9 +31,12 @@ public class Minigame
             @Override
             public void run()
             {
+
                 players[index] = client;
                 DataInputStream input = client.input;
                 DataOutputStream output = client.output;
+
+                //Buffer für eingehende narichten
                 byte[] readData = new byte[10];
 
 
@@ -40,6 +49,7 @@ public class Minigame
 
                 }
 
+                //eingehende narichten verarbeiten:
                 while (true)
                 {
                     try
@@ -79,8 +89,10 @@ public class Minigame
         t.start();
     }
 
+    //das minigame wird beendet
     public void end()
     {
+        //alle bestehenden threads in diesem Minigame beenden
         for (int i = 0; i < threads.size(); i++)
         {
             try
@@ -92,11 +104,13 @@ public class Minigame
             }
         }
 
+        //temporäre verbindungen schließen
         for(int i = 0; i < players.length; i++)
         {
             players[i].close();
         }
 
+        //threads liste löschen
         threads.clear();
     }
 }
