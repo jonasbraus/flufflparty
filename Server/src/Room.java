@@ -67,7 +67,7 @@ public class Room
         int randomGame = (int) (Math.random() * 1);
 
         //minigame instanz erstellen
-        currentMiniGame = new Minigame(this);
+        currentMiniGame = new TestMiniGame(this);
 
         try
         {
