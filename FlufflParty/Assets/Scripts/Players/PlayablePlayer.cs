@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Net.Mail;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -300,6 +302,24 @@ public class PlayablePlayer : Player
                                 }
 
                                 rotatorStopIndex = randomOption;
+                                Invoke("StopRotator", 2);
+                                Invoke("ActivateLayout1", 5.5f);
+                                break;
+                            
+                            case 3: //Item Field keine Ahnung ob das funktioniert XD muss man mal testen; Keine Ahnung was SendStartRotator an den Server weitersendet MUSS überarbeitet werden
+                                RandomRotator rotatorItemField = uiHandler.rotator.GetComponent<RandomRotator>();
+                                this.rotator = rotatorItemField;
+                                uiHandler.ActivateRotator();
+                                rotatorItemField.SetOptionsText(0, "Mushroom");
+                                rotatorItemField.SetOptionsText(1, "Double Dice");
+                                rotatorItemField.SetOptionsText(2, "Trap");
+
+                                rotatorItemField.StartRandom();
+                                //???client.SendStartRotator(0, 1, 2, randCoins1, randCoins2, -randCoins3, 0, 0);
+
+                                int randomItemField = Random.Range(0, 3);
+                                AddItem(client.items[randomItemField]);
+                                rotatorStopIndex = randomItemField;
                                 Invoke("StopRotator", 2);
                                 Invoke("ActivateLayout1", 5.5f);
                                 break;
