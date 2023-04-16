@@ -64,15 +64,15 @@ public class PlayablePlayer : Player
     private void Update()
     {
         //Animation Control
-        if (Vector3.Distance(transform.position, lastPosAnim) > 0)
-        {
-            animator.SetInteger("value", 1);
-        }
-        else if (jumpRequest)
+        if (jumpRequest)
         {
             jumpRequest = false;
             animator.SetInteger("value", 2);
             lastTimeDoneIdleAction = Time.time;
+        }
+        else if (Vector3.Distance(transform.position, lastPosAnim) > 0)
+        {
+            animator.SetInteger("value", 1);
         }
         else if (Time.time - lastTimeDoneIdleAction > idleActionDelay)
         {
@@ -109,7 +109,7 @@ public class PlayablePlayer : Player
         jumpRequest = true;
 
         wurfelt = true;
-        wurfelZahl = Random.Range(2, 3);
+        wurfelZahl = Random.Range(1, 7);
 
         switch (activeItem)
         {
@@ -290,15 +290,17 @@ public class PlayablePlayer : Player
                         {
                             if (fieldReturnStatus != 2 && fieldReturnStatus != 3)
                             {
-                                Invoke("Finish", 2);
+                                Invoke("Finish", 3);
                             }
 
                             activated = false;
                         }
                         else
                         {
-                            checkDoubleDice = false;
-                            wurfelt = false;
+                            if (fieldReturnStatus != 2 && fieldReturnStatus != 3)
+                            {
+                                Invoke("RollDiceAgain", 3);
+                            }
                         }
                     }
                     else
@@ -479,5 +481,11 @@ public class PlayablePlayer : Player
     {
         client.SendStopRotator(rotatorStopIndex);
         rotator.Stop(rotatorStopIndex);
+    }
+
+    private void RollDiceAgain()
+    {
+        checkDoubleDice = false;
+        wurfelt = false;
     }
 }

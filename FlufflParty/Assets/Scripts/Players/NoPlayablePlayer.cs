@@ -51,16 +51,16 @@ public class NoPlayablePlayer : Player
 
     private void Update()
     {
-        // //Animation Control
-        if (Vector3.Distance(transform.position, lastPosAnim) > 0f)
-        {
-            animator.SetInteger("value", 1);
-        }
-        else if (jumpRequest)
+        //Animation Control
+        if (jumpRequest)
         {
             jumpRequest = false;
             animator.SetInteger("value", 2);
             lastTimeDoneIdleAction = Time.time;
+        }
+        else if (Vector3.Distance(transform.position, lastPosAnim) > 0)
+        {
+            animator.SetInteger("value", 1);
         }
         else if (Time.time - lastTimeDoneIdleAction > idleActionDelay)
         {
