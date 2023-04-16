@@ -1,13 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.Mail;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
-using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class PlayablePlayer : Player
@@ -36,7 +28,7 @@ public class PlayablePlayer : Player
 
     private static PlayablePlayer instance;
 
-    
+
     //Animation:
     private Vector3 lastPosAnim = Vector3.zero;
     private Quaternion rotation = Quaternion.identity;
@@ -54,7 +46,7 @@ public class PlayablePlayer : Player
         diceScript = dice.GetComponent<Dice>();
 
         instance = this;
-        
+
         nameSign = playerTexts[1].gameObject;
     }
 
@@ -76,13 +68,13 @@ public class PlayablePlayer : Player
         {
             animator.SetInteger("value", 1);
         }
-        else if(jumpRequest)
+        else if (jumpRequest)
         {
             jumpRequest = false;
             animator.SetInteger("value", 2);
             lastTimeDoneIdleAction = Time.time;
         }
-        else if(Time.time - lastTimeDoneIdleAction > idleActionDelay)
+        else if (Time.time - lastTimeDoneIdleAction > idleActionDelay)
         {
             lastTimeDoneIdleAction = Time.time;
             idleActionDelay = Random.Range(2f, 5f);
@@ -94,7 +86,7 @@ public class PlayablePlayer : Player
             animator.SetInteger("value", 0);
         }
         //END
-        
+
         if (activated && !name.Equals(""))
         {
             //Generiere Würfelzahl von 1-6 wenn gerade gewürfelt werden darf
@@ -102,7 +94,7 @@ public class PlayablePlayer : Player
             {
                 if (!Physics.Raycast(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -200), Vector3.forward))
                 {
-                    DiceRollRoutine();   
+                    DiceRollRoutine();
                 }
             }
         }
@@ -113,11 +105,11 @@ public class PlayablePlayer : Player
     private void DiceRollRoutine()
     {
         diceScript.SetMaterial(0);
-        
+
         jumpRequest = true;
-        
+
         wurfelt = true;
-        wurfelZahl = Random.Range(1, 7);
+        wurfelZahl = Random.Range(2, 3);
 
         switch (activeItem)
         {
@@ -191,8 +183,8 @@ public class PlayablePlayer : Player
                         if (currentField.placedItem != null)
                         {
                             Trap t = currentField.placedItem.GetComponent<Trap>();
-                            
-                            if(t.target.index != index)
+
+                            if (t.target.index != index)
                             {
                                 int coinsAmount = (int)(coins * 0.1f);
                                 AddCoins(-coinsAmount);
@@ -202,20 +194,20 @@ public class PlayablePlayer : Player
                             }
                         }
                     }
+
                     Vector3 currentRotation = Quaternion.ToEulerAngles(transform.rotation);
                     currentRotation.y = -34;
                     transform.rotation = Quaternion.Euler(currentRotation);
-                    
+
                     int fieldReturnStatus = -1;
                     if (currentField != null)
                     {
                         fieldReturnStatus = currentField.Action(index);
                     }
-                    
+
                     //TODO: temp spieler finsihed erst, wenn field action ausgeführt wurde
                     if (wurfelt)
                     {
-
                         switch (fieldReturnStatus)
                         {
                             case 0: //Blaues Feld
@@ -226,44 +218,6 @@ public class PlayablePlayer : Player
                                 client.SendCoinFieldAction(1);
                                 AddCoins(-3);
                                 break;
-                            // case 2: //pinkes Feld
-                            //     int randyPinkField = Random.Range(4, 4);
-                            //     int tempCurrentItems = -1;
-                            //     switch (randyPinkField)
-                            //     {
-                            //         case 1:
-                            //             client.SendCoinFieldAction(0);
-                            //             int tempAddCoins = Random.Range(3, 6);
-                            //             AddCoins(tempAddCoins);
-                            //             break;
-                            //         case 2:
-                            //             client.SendCoinFieldAction(1);
-                            //             int tempLoseCoins = Random.Range(-3, -6);
-                            //             AddCoins(tempLoseCoins);
-                            //             break;
-                            //         case 3:
-                            //             int tempAddItem = Random.Range(0, 3);
-                            //             AddItem(client.items[tempAddItem]);
-                            //             break;
-                            //         case 4:
-                            //             for (int i = 0; i < items.Length; i++)
-                            //             {
-                            //                 if (items[i] != null)
-                            //                 {
-                            //                     tempCurrentItems++;
-                            //                 }
-                            //             }
-                            //
-                            //             if (tempCurrentItems >= 0)
-                            //             {
-                            //                 int pickRandomItem = Random.Range(0, tempCurrentItems);
-                            //                 client.items[pickRandomItem] = null;
-                            //                 itemInfoImages[pickRandomItem].color = new Color(0, 0, 0, 0);
-                            //                 client.SendLostItem((byte)pickRandomItem);
-                            //             }
-                            //             break;
-                            //     }
-                            //     break;
                             case 2:
                                 int randCoins1 = Random.Range(2, 6);
                                 int randCoins2 = Random.Range(1, 4);
@@ -305,7 +259,7 @@ public class PlayablePlayer : Player
                                 Invoke("StopRotator", 2);
                                 Invoke("ActivateLayout1", 5.5f);
                                 break;
-                            
+
                             case 3: //Item Field keine Ahnung ob das funktioniert XD muss man mal testen; Keine Ahnung was SendStartRotator an den Server weitersendet MUSS überarbeitet werden
                                 RandomRotator rotatorItemField = uiHandler.rotator.GetComponent<RandomRotator>();
                                 this.rotator = rotatorItemField;
@@ -313,13 +267,18 @@ public class PlayablePlayer : Player
                                 rotatorItemField.SetOptionsText(0, "Mushroom");
                                 rotatorItemField.SetOptionsText(1, "Double Dice");
                                 rotatorItemField.SetOptionsText(2, "Trap");
+                                rotatorItemField.SetOptionsText(3, "Trap");
 
                                 rotatorItemField.StartRandom();
-                                //???client.SendStartRotator(0, 1, 2, randCoins1, randCoins2, -randCoins3, 0, 0);
+                                client.SendStartRotator(0, 1, 2, 2, 0, 0, 0, 0, 1);
 
-                                int randomItemField = Random.Range(0, 3);
-                                AddItem(client.items[randomItemField]);
+                                int randomItemField = Random.Range(0, 4);
+
                                 rotatorStopIndex = randomItemField;
+
+                                randomItemField = randomItemField == 3 ? randomItemField - 1 : randomItemField;
+                                AddItem(client.items[randomItemField]);
+
                                 Invoke("StopRotator", 2);
                                 Invoke("ActivateLayout1", 5.5f);
                                 break;
@@ -327,11 +286,11 @@ public class PlayablePlayer : Player
 
                         if (!checkDoubleDice)
                         {
-                            if(fieldReturnStatus != 2)
+                            if (fieldReturnStatus != 2 && fieldReturnStatus != 3)
                             {
                                 Invoke("Finish", 2);
                             }
-                            
+
                             activated = false;
                         }
                         else
@@ -396,7 +355,6 @@ public class PlayablePlayer : Player
         {
             wait = true;
         }
-        
     }
 
     //Bewegt den Player von einem Punkt(lastPos) zu einem anderen Punkt(moveTo) mit konstanter Geschwindigkeit
@@ -408,17 +366,17 @@ public class PlayablePlayer : Player
         if (!eventstop)
         {
             nextPoint = Vector3.Lerp(lastPos, moveTo, interPol);
-            
+
             //Rotation in move direction
             Vector3 lookPos = nextPoint - transform.position;
             lookPos.y = 0;
-            if(lookPos != Vector3.zero)
+            if (lookPos != Vector3.zero)
             {
                 Quaternion rotation = Quaternion.LookRotation(lookPos);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationDamping);
             }
             //END
-            
+
             transform.position = new Vector3(nextPoint.x, transform.position.y, nextPoint.z);
             interPol += (Time.deltaTime * speed) / Mathf.Abs(Vector3.Distance(moveTo, lastPos));
         }
@@ -505,6 +463,7 @@ public class PlayablePlayer : Player
             temp.transform.position = currentField.transform.position + (Vector3.up / 2);
             activeItem = Item.Type.None;
         }
+
         items[index] = null;
     }
 
@@ -513,7 +472,7 @@ public class PlayablePlayer : Player
         uiHandler.ActivateLayout1();
         Finish();
     }
-    
+
     private void StopRotator()
     {
         client.SendStopRotator(rotatorStopIndex);

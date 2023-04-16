@@ -406,6 +406,28 @@ public class Client : MonoBehaviour
                             }
 
                             break;
+                        
+                        case 1:
+                            for (int i = 0; i < 4; i++)
+                            {
+                                int option = job.data[i + 1];
+                                int value = job.data[i + 5];
+
+                                switch (option)
+                                {
+                                    case 0:
+                                        rotator.SetOptionsText(i, "Mushroom");
+                                        break;
+                                    case 1:
+                                        rotator.SetOptionsText(i, "Doubledice");
+                                        break;
+                                    case 2:
+                                        rotator.SetOptionsText(i, "Trap");
+                                        break;
+                                }
+                            }
+
+                            break;
                     }
 
                     uiHandler.ActivateRotator();
@@ -551,6 +573,9 @@ public class Client : MonoBehaviour
     }
 
     /*
+     * TYPE:
+     * 0 = Pink Field!!!!
+     * 
      * OPT:
      * 0 = Get Coins
      * 1 = Loose Coins
@@ -560,8 +585,18 @@ public class Client : MonoBehaviour
      * VAL:
      * value of each option (not needed = 0)
      *
+     *
      * TYPE:
-     * 0 = Pink Field
+     * 1 = Item Field!!!!
+     * 
+     * OPT:
+     * 0 = Mushroom
+     * 1 = Double Dice
+     * 2 = Trap
+     * 3 = Trap
+     *
+     * VAL:
+     * value of each option (not needed = 0)
      */
     public void SendStartRotator(int opt1, int opt2, int opt3, int opt4, int val1, int val2, int val3, int val4,
         int type)
