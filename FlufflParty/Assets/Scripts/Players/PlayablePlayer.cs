@@ -230,6 +230,7 @@ public class PlayablePlayer : Player
                                 rotator.SetOptionsText(1, randCoins2 + " Coins");
                                 rotator.SetOptionsText(2, randCoins3 + " Coins");
                                 rotator.SetOptionsText(3, "Random Item");
+                                rotator.SetHint(0);
 
                                 rotator.StartRandom();
                                 client.SendStartRotator(0, 0, 1, 2, randCoins1, randCoins2, -randCoins3, 0, 0);
@@ -268,6 +269,7 @@ public class PlayablePlayer : Player
                                 rotatorItemField.SetOptionsText(1, "Double Dice");
                                 rotatorItemField.SetOptionsText(2, "Trap");
                                 rotatorItemField.SetOptionsText(3, "Trap");
+                                rotatorItemField.SetHint(1);
 
                                 rotatorItemField.StartRandom();
                                 client.SendStartRotator(0, 1, 2, 2, 0, 0, 0, 0, 1);

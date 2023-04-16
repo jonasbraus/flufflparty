@@ -382,6 +382,7 @@ public class Client : MonoBehaviour
                 case 14:
                     int type = job.data[9];
                     RandomRotator rotator = uiHandler.rotator.GetComponent<RandomRotator>();
+                    rotator.SetHint(type);
                     switch (type)
                     {
                         case 0:
@@ -408,6 +409,7 @@ public class Client : MonoBehaviour
                             break;
                         
                         case 1:
+
                             for (int i = 0; i < 4; i++)
                             {
                                 int option = job.data[i + 1];

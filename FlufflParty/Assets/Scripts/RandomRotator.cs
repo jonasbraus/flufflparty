@@ -17,6 +17,17 @@ public class RandomRotator : MonoBehaviour
     private bool ended = false;
     [SerializeField] private GameObject fullBlocker;
 
+    [SerializeField] private Sprite[] hintImages;
+    private string[] hintTexts = { "Lucky Field", "Item Field" };
+    [SerializeField] private Image hintImage;
+    [SerializeField] private TMP_Text hintText;
+
+    public void SetHint(int type)
+    {
+        hintText.text = hintTexts[type];
+        hintImage.sprite = hintImages[type];
+    }
+    
     public void SetOptionsText(int index, string text)
     {
         textOptions[index].text = text;
