@@ -218,7 +218,7 @@ public class PlayablePlayer : Player
                                 client.SendCoinFieldAction(1);
                                 AddCoins(-3);
                                 break;
-                            case 2:
+                            case 2: //LuckField
                                 int randCoins1 = Random.Range(2, 6);
                                 int randCoins2 = Random.Range(1, 4);
                                 int randCoins3 = Random.Range(-6, 0);
@@ -284,6 +284,49 @@ public class PlayablePlayer : Player
                                 Invoke("StopRotator", 2);
                                 Invoke("ActivateLayout1", 5.5f);
                                 break;
+                            
+                            /*case 4: //UnluckyField
+                                int looseRandCoins1 = Random.Range(-6, -2);
+                                int looseRandCoins2 = Random.Range(-4, -1);
+                                int looseRandCoins3 = Random.Range(-6, 0);
+
+                                RandomRotator rotatorUnluckyField = uiHandler.rotator.GetComponent<RandomRotator>();
+                                this.rotator = rotatorUnluckyField;
+                                uiHandler.ActivateRotator();
+                                rotatorUnluckyField.SetOptionsText(0, "Loose" + looseRandCoins1 + " Coins");
+                                rotatorUnluckyField.SetOptionsText(1, "Loose" + looseRandCoins2 + " Coins");
+                                rotatorUnluckyField.SetOptionsText(2, "Loose" + looseRandCoins3 + " Coins");
+                                rotatorUnluckyField.SetOptionsText(3, "Loose a star");
+                                rotatorUnluckyField.SetHint(0);
+
+                                rotatorUnluckyField.StartRandom();
+                                client.SendStartRotator(0, 0, 1, 2, looseRandCoins1, looseRandCoins2, looseRandCoins3, 0, 0); //TODO: Überprüfen, keine Ahnung ob das stimmt :D
+
+                                int randomOptionUnluckyField = Random.Range(0, 4);
+                                switch (randomOptionUnluckyField)
+                                {
+                                    case 0:
+                                        AddCoins(looseRandCoins1);
+                                        client.SendCoins(looseRandCoins1);
+                                        break;
+                                    case 1:
+                                        AddCoins(looseRandCoins2);
+                                        client.SendCoins(looseRandCoins2);
+                                        break;
+                                    case 2:
+                                        AddCoins(looseRandCoins3);
+                                        client.SendCoins(looseRandCoins3);
+                                        break;
+                                    case 3:
+                                        AddStars(-1);
+                                        client.SendLostStar();
+                                        break;
+                                }
+
+                                rotatorStopIndex = randomOptionUnluckyField;
+                                Invoke("StopRotator", 2);
+                                Invoke("ActivateLayout1", 5.5f);
+                                break;*/
                         }
 
                         if (!checkDoubleDice)

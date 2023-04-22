@@ -574,6 +574,11 @@ public class Client : MonoBehaviour
         stream.Write(new byte[] { 13, isPositive, (byte)amount, 0, 0, 0, 0, 0, 0, 0 });
     }
 
+    public void SendLostStar()
+    {
+        //TODO: stream.Write implementieren 
+    }
+
     /*
      * TYPE:
      * 0 = Pink Field!!!!
